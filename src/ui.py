@@ -36,7 +36,7 @@ class GameHelperApp(DraggableWindow):
         # --- FORCE ON TOP SETTINGS ---
         self.attributes("-topmost", True)
         self.attributes("-alpha", 0.80) 
-        self.lift() # Lift to top immediately
+        self.lift() 
         
         # Start the "Watchdog" to keep it on top
         self.enforce_topmost()
@@ -47,6 +47,7 @@ class GameHelperApp(DraggableWindow):
         else:
             self.show_hud()
 
+        # Update Check
         self.update_available = False
         self.update_url = None
         threading.Thread(target=self.bg_update_check, daemon=True).start()
@@ -92,10 +93,12 @@ class GameHelperApp(DraggableWindow):
         self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#f72585")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        self.render_markdown(f"READY\n[F11] Analyze\n[F12] Quit")
+        # --- SHOW VERSION HERE ---
+        ver = updater.CURRENT_VERSION
+        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit")
 
         # Bindings
-        self.text_area.bind("<Button-3>", lambda e: self.render_markdown("")) # Right-click to clear
+        self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
 
@@ -103,10 +106,10 @@ class GameHelperApp(DraggableWindow):
             self.start_hotkeys()
 
     def render_markdown(self, raw_text):
+        """Renders text and Auto-Resizes window to fit"""
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
-        # --- 1. Parse and Insert Text ---
         lines = raw_text.split("\n")
         for line in lines:
             if line.startswith("#"):
@@ -120,33 +123,27 @@ class GameHelperApp(DraggableWindow):
                     self.text_area.insert("end", part, tag)
                 self.text_area.insert("end", "\n")
 
-        # remove the extra newline at the very end to prevent a dangling empty line
-        self.text_area.delete("end-1c", "end") 
+        # Remove trailing newline to avoid empty space
+        self.text_area.delete("end-1c", "end")
         self.text_area.config(state="disabled") 
         
-        # --- 2. Calculate Exact Height ---
-        # We force an update so tkinter knows the new pixel heights
+        # --- AUTO-FIT HEIGHT ---
         self.text_area.update_idletasks() 
-        
-        # Get the bounding box of the text (lines, pixels)
-        # 'end-1c' gets the position of the last character
         dline = self.text_area.dlineinfo("end-1c")
         
         if dline:
-            # y + height of the last line gives total text height
             text_height_px = dline[1] + dline[3]
         else:
-            # Fallback if empty
             text_height_px = 50
 
-        # Add padding (20px top + 20px bottom)
-        final_height = text_height_px + 40
+        # Add Padding & Clamp size
+        final_height = max(80, min(800, text_height_px + 30))
         
-        # Clamp it (Min: 80px, Max: 800px)
-        final_height = max(80, min(800, final_height))
-        
-        # Apply the new geometry (Keep the current Width and X/Y position)
+        # Apply Geometry (Keep Width/X/Y, only change Height)
         current_width = self.winfo_width()
+        # If width is 1 (app just started), default to 400
+        if current_width < 100: current_width = 400
+            
         x = self.winfo_x()
         y = self.winfo_y()
         self.geometry(f"{current_width}x{final_height}+{x}+{y}")
@@ -178,29 +175,24 @@ class GameHelperApp(DraggableWindow):
             pass
 
     def bg_update_check(self):
-        """Runs silently on startup"""
         available, url, version = updater.check_for_updates()
         if available:
             self.update_available = True
             self.update_url = url
             self.new_version = version
-            # If HUD is already open, show the alert
             if hasattr(self, 'text_area'):
                 self.show_update_alert()
 
     def show_update_alert(self):
-        """Injects a link into the Markdown text"""
+        # Append update message to whatever is currently on screen
+        current_text = self.text_area.get("1.0", "end-1c")
         msg = f"\n\n🚨 UPDATE AVAILABLE: {self.new_version}\n[Right-Click to Update Now]"
-        # We append this to the text area
-        self.render_markdown(self.text_area.get("1.0", "end") + msg)
-        # Bind Right-Click to Trigger Update (Override the 'Clear' binding if update exists)
-        self.text_area.bind("<Button-3>", self.trigger_update)
+        self.render_markdown(current_text + msg)
 
-    def trigger_update(self, event):
+    def trigger_update_or_clear(self, event):
+        """Right click: Updates app OR clears text"""
         if self.update_available:
             self.render_markdown(f"⬇ Downloading {self.new_version}...\nPlease wait, app will restart.")
-            # Run download in thread to avoid freezing UI
             threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
         else:
-            # Standard Clear behavior
-            self.render_markdown("")
+            self.render_markdown(f"READY ({updater.CURRENT_VERSION})\n[F11] Analyze\n[F12] Quit")
