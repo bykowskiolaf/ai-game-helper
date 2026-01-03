@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2026-01-03)
+
+### Added
+
+* [d67be] feat: enhance text area rendering and auto-resize functionality in GameHelperApp (Olaf Bykowski)
+
+# Changelog
+
 ## 0.3.0 (2026-01-03)
 
 ### Added
