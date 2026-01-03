@@ -1,119 +1,148 @@
 import customtkinter as ctk
+import tkinter as tk
 import threading
 import config
 import capture
 import ai
 
-class GameHelperApp(ctk.CTk):
+class DraggableWindow(ctk.CTk):
+    """A frameless window that can be dragged"""
+    def __init__(self):
+        super().__init__()
+        self.overrideredirect(True) # Removes Title Bar & Borders
+        self._offsetx = 0
+        self._offsety = 0
+        self.bind('<Button-1>', self.clickwin)
+        self.bind('<B1-Motion>', self.dragwin)
+
+    def clickwin(self, event):
+        self._offsetx = event.x
+        self._offsety = event.y
+
+    def dragwin(self, event):
+        x = self.winfo_pointerx() - self._offsetx
+        y = self.winfo_pointery() - self._offsety
+        self.geometry(f'+{x}+{y}')
+
+class GameHelperApp(DraggableWindow):
     def __init__(self):
         super().__init__()
         
-        self.title("ESO Helper")
-        self.geometry("400x600")
+        # Window Setup
+        self.geometry("400x150+50+50") 
+        self.configure(fg_color="#1a1a1a") # Dark background
         
-        # --- OVERLAY SETTINGS ---
-        self.attributes("-topmost", True)  # Always on top
-        self.attributes("-alpha", 0.85)    # 85% Opacity (See-through!)
-        ctk.set_appearance_mode("Dark")
+        # --- FORCE ON TOP SETTINGS ---
+        self.attributes("-topmost", True)
+        self.attributes("-alpha", 0.80) 
+        self.lift() # Lift to top immediately
         
-        # Check if we need to ask for a key
+        # Start the "Watchdog" to keep it on top
+        self.enforce_topmost()
+
+        # Check API Key
         if not config.get_api_key():
-            self.show_login_screen()
+            self.show_login()
         else:
-            self.show_main_screen()
+            self.show_hud()
 
-    def show_login_screen(self):
-        """Screen 1: Ask for API Key"""
-        self.clear_window()
-        self.attributes("-alpha", 1.0) # Solid window for login
-        
-        ctk.CTkLabel(self, text="🔑 Enter Google API Key", font=("Arial", 16, "bold")).pack(pady=(50, 10))
-        
-        self.key_entry = ctk.CTkEntry(self, width=300, placeholder_text="Paste key here...")
-        self.key_entry.pack(pady=10)
+    def enforce_topmost(self):
+        """Forces the window to the top layer every 2 seconds"""
+        self.lift()
+        self.attributes("-topmost", True)
+        self.after(2000, self.enforce_topmost)
 
-        ctk.CTkButton(self, text="Save & Start", command=self.save_key).pack(pady=10)
-        ctk.CTkLabel(self, text="Saved locally in .env", text_color="gray").pack(pady=20)
+    def show_login(self):
+        self.overrideredirect(False) 
+        ctk.CTkLabel(self, text="🔑 Enter API Key & Press Enter", font=("Segoe UI", 14, "bold")).pack(pady=20)
+        self.entry = ctk.CTkEntry(self, width=300)
+        self.entry.pack()
+        self.entry.bind("<Return>", self.save_key)
 
-    def save_key(self):
-        key = self.key_entry.get().strip()
+    def save_key(self, event):
+        key = self.entry.get().strip()
         if len(key) > 5:
             config.save_api_key(key)
-            self.show_main_screen()
+            for widget in self.winfo_children(): widget.destroy()
+            self.show_hud()
 
-    def show_main_screen(self):
-        """Screen 2: The Main App"""
-        self.clear_window()
-        self.attributes("-alpha", 0.85) # Back to transparent mode
-
-        # Header
-        ctk.CTkLabel(self, text="ESO Companion", font=("Arial", 20, "bold")).pack(pady=10)
+    def show_hud(self):
+        self.overrideredirect(True) 
         
-        # Status
-        hotkey_text = "Press Ctrl+Alt+Z" if capture.is_windows() else "Click Capture Button"
-        self.status_label = ctk.CTkLabel(self, text=f"Ready. {hotkey_text}", text_color="gray")
-        self.status_label.pack(pady=5)
-
-        # Button
-        ctk.CTkButton(self, text="📸 Capture & Analyze", command=self.run_analysis_thread, height=40, fg_color="#1a73e8").pack(pady=10)
-
-        # Text Area (Slightly more opaque for readability)
-        self.textbox = ctk.CTkTextbox(self, width=380, height=400, wrap="word", fg_color="#2b2b2b")
-        self.textbox.pack(padx=10, pady=10)
-        self.textbox.insert("0.0", "Waiting for command...")
+        # Text Area (HUD Style)
+        self.text_area = tk.Text(
+            self, 
+            bg="#1a1a1a", 
+            fg="#e0e0e0", 
+            font=("Consolas", 11), 
+            wrap="word", 
+            bd=0, 
+            highlightthickness=0,
+            padx=10, pady=10
+        )
+        self.text_area.pack(fill="both", expand=True)
         
-        # Opacity Slider (Optional cool feature)
-        self.slider = ctk.CTkSlider(self, from_=0.2, to=1.0, command=self.change_opacity)
-        self.slider.set(0.85)
-        self.slider.pack(pady=10)
-        ctk.CTkLabel(self, text="Opacity", font=("Arial", 10)).pack()
+        # Markdown Styles
+        self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#4cc9f0")
+        self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#f72585")
+        self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        # Start Hotkeys (Windows Only)
+        self.render_markdown(f"READY\n[F11] Analyze\n[F12] Quit")
+
+        # Bindings
+        self.text_area.bind("<Button-3>", lambda e: self.render_markdown("")) # Right-click to clear
+        self.text_area.bind('<Button-1>', self.clickwin)
+        self.text_area.bind('<B1-Motion>', self.dragwin)
+
         if capture.is_windows():
             self.start_hotkeys()
 
-    def change_opacity(self, value):
-        self.attributes("-alpha", value)
+    def render_markdown(self, raw_text):
+        self.text_area.config(state="normal")
+        self.text_area.delete("1.0", "end")
+        
+        lines = raw_text.split("\n")
+        for line in lines:
+            if line.startswith("#"):
+                self.text_area.insert("end", line.replace("#", "").strip() + "\n", "header")
+            elif line.strip().startswith("* ") or line.strip().startswith("- "):
+                self.text_area.insert("end", " • " + line.strip()[2:] + "\n", "bullet")
+            else:
+                parts = line.split("**")
+                for i, part in enumerate(parts):
+                    tag = "bold" if i % 2 == 1 else "normal"
+                    self.text_area.insert("end", part, tag)
+                self.text_area.insert("end", "\n")
+
+        self.text_area.config(state="disabled") 
+        
+        # Auto-Resize Window Height
+        num_lines = int(self.text_area.index('end-1c').split('.')[0])
+        new_height = min(600, max(100, num_lines * 20 + 30))
+        self.geometry(f"400x{new_height}")
 
     def run_analysis_thread(self):
-        """Runs logic in background to keep UI responsive"""
         t = threading.Thread(target=self.run_logic, daemon=True)
         t.start()
 
     def run_logic(self):
-        self.update_text("📸 Capturing...")
-        
+        self.render_markdown("... 👀 Looking ...")
         try:
-            # 1. Capture
             img = capture.capture_screen()
-            img.thumbnail((1024, 1024)) # Resize for speed
-
-            # 2. Analyze
-            self.update_text("🧠 Analyzing...")
+            img.thumbnail((1024, 1024))
+            self.render_markdown("... 🧠 Thinking ...")
             result = ai.analyze_image(img)
-            
-            # 3. Show
-            self.update_text(result)
-            self.status_label.configure(text="✅ Done")
-
+            self.render_markdown(result)
         except Exception as e:
-            self.update_text(f"Error: {e}")
-
-    def update_text(self, text):
-        self.textbox.delete("0.0", "end")
-        self.textbox.insert("0.0", text)
-
-    def clear_window(self):
-        for widget in self.winfo_children():
-            widget.destroy()
+            self.render_markdown(f"Error: {e}")
 
     def start_hotkeys(self):
-        """Safe Windows hotkey listener"""
         try:
             import keyboard
             def listen():
-                keyboard.add_hotkey("ctrl+alt+z", self.run_analysis_thread)
+                keyboard.add_hotkey(config.TRIGGER_KEY, self.run_analysis_thread)
+                keyboard.add_hotkey(config.EXIT_KEY, self.quit)
                 keyboard.wait()
             threading.Thread(target=listen, daemon=True).start()
         except ImportError:
-            print("Keyboard library not found (okay if on Mac)")
+            pass

@@ -1,13 +1,61 @@
-name: Build Windows Exe
+name: Release & Build
 
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "CHANGELOG.md"
+      - ".nyx-state.json"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
+  # -----------------------------------------------------------------
+  # JOB 1: Release (Calculate Version & Create Tag)
+  # -----------------------------------------------------------------
+  release:
+    name: 🚀 Draft Release
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.nyx.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Nyx to read history
+
+      - name: Nyx Release
+        id: nyx
+        uses: mooltiverse/nyx@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: "publish"
+          # configurationFile: ".nyx.json" # Auto-detected
+          verbosity: "INFO"
+
+      # Optional: Commit the updated CHANGELOG back to the repo
+      - name: Commit Changelog
+        if: steps.nyx.outputs.newVersion == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          # Only commit if there are changes
+          git diff-index --quiet HEAD || git commit -m "docs: update changelog for ${{ steps.nyx.outputs.version }} [skip ci]"
+          git push
+
+  # -----------------------------------------------------------------
+  # JOB 2: Build Windows EXE
+  # -----------------------------------------------------------------
   build:
+    name: 📦 Build Windows EXE
+    needs: release
     runs-on: windows-latest
+    if: needs.release.outputs.version != '' # Only build if a version was generated
 
     steps:
       - uses: actions/checkout@v4
@@ -19,19 +67,23 @@ jobs:
         run: uv python install 3.10
 
       - name: Install Dependencies
-        # 1. Create the environment (uv venv)
-        # 2. Install specific libraries (including the NEW google-genai)
         run: |
           uv venv
           uv pip install mss customtkinter keyboard google-genai pillow pyinstaller python-dotenv
 
       - name: Build EXE
-        # We use 'uv run' to ensure it uses the libraries we just installed
+        # We name the file using the version from the 'release' job
         run: |
-          uv run pyinstaller --noconsole --onefile --name "ESO-Helper" src/main.py
+          $Version = "${{ needs.release.outputs.version }}"
+          uv run pyinstaller --noconsole --onefile --name "ESO-Helper-$Version" src/main.py
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      # -----------------------------------------------------------------
+      # JOB 3: Upload Asset to Release
+      # -----------------------------------------------------------------
+      - name: Upload EXE to GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: ESO-Helper-Windows
-          path: dist/ESO-Helper.exe
+          tag_name: ${{ needs.release.outputs.version }}
+          files: dist/ESO-Helper-*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
