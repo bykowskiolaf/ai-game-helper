@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2026-01-03)
+
+### Added
+
+* [21832] feat: enhance update alert system and improve text area rendering in GameHelperApp (Olaf Bykowski)
+
+# Changelog
+
 ## 0.4.0 (2026-01-03)
 
 ### Added
