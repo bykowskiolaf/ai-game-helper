@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.0-rc.1 (2026-01-03)
+
+### Added
+
+* [b21fd] feat: allow workflow to trigger on pushes to the dev branch (Olaf Bykowski)
+
+* [32497] feat: add packaging dependency for improved version handling and update checks (Olaf Bykowski)
+
+* [2cba2] feat: enhance text area rendering with improved height calculation and padding (Olaf Bykowski)
+
+# Changelog
+
 ## 0.6.0 (2026-01-03)
 
 ### Added

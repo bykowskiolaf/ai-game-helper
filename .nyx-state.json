@@ -1,11 +1,11 @@
 {
-  "branch": "main",
+  "branch": "dev",
   "bump": "minor",
   "changelog": {
     "releases": [
       {
         "date": "2026-01-03",
-        "name": "0.6.0",
+        "name": "0.8.0-rc.1",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767482153000,
+                    "timeStamp": 1767482691000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,81 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767482153000,
+                    "timeStamp": 1767482691000,
                     "offset": 60
                   }
                 },
-                "date": 1767482153000,
+                "date": 1767482691000,
                 "message": {
-                  "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
-                  "shortMessage": "feat: improve update check logic and error handling in updater.py"
+                  "fullMessage": "feat: allow workflow to trigger on pushes to the dev branch\n",
+                  "shortMessage": "feat: allow workflow to trigger on pushes to the dev branch"
                 },
                 "parents": [
-                  "7412b14511aa7cdfb6e54540c21711395002fb34"
+                  "3249723283453884699d1f268d638d014ebbc823"
                 ],
-                "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
+                "sha": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767482673000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767482673000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767482673000,
+                "message": {
+                  "fullMessage": "feat: add packaging dependency for improved version handling and update checks\n",
+                  "shortMessage": "feat: add packaging dependency for improved version handling and update checks"
+                },
+                "parents": [
+                  "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
+                ],
+                "sha": "3249723283453884699d1f268d638d014ebbc823"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767482528000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767482528000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767482528000,
+                "message": {
+                  "fullMessage": "feat: enhance text area rendering with improved height calculation and padding\n",
+                  "shortMessage": "feat: enhance text area rendering with improved height calculation and padding"
+                },
+                "parents": [
+                  "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
+                ],
+                "sha": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
               }
             ]
           }
@@ -153,7 +215,7 @@
     "summaryFile": ".nyx-summary.txt",
     "verbosity": "INFO"
   },
-  "coreVersion": true,
+  "coreVersion": false,
   "directory": "/github/workspace",
   "internals": {
     "infer.input.configured.bump": "null",
@@ -162,25 +224,25 @@
     "infer.input.configured.releasePrefix": "null",
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
-    "infer.input.repository.current.branch": "main",
-    "infer.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
-    "infer.output.state.version": "0.6.0",
+    "infer.input.repository.current.branch": "dev",
+    "infer.input.repository.last.commit": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd",
+    "infer.output.state.version": "0.8.0-rc.1",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
-    "make.input.repository.current.branch": "main",
-    "make.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
-    "make.input.state.initialCommit": "7412b14511aa7cdfb6e54540c21711395002fb34",
+    "make.input.repository.current.branch": "dev",
+    "make.input.repository.last.commit": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd",
+    "make.input.state.initialCommit": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.6.0",
+    "make.input.version": "0.8.0-rc.1",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
-    "mark.input.repository.current.branch": "main",
-    "mark.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
-    "mark.input.state.initialCommit": "7412b14511aa7cdfb6e54540c21711395002fb34",
+    "mark.input.repository.current.branch": "dev",
+    "mark.input.repository.last.commit": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd",
+    "mark.input.state.initialCommit": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.6.0",
-    "publish.input.state.version": "0.6.0",
-    "publish.output.state.version": "0.6.0"
+    "mark.input.state.version": "0.8.0-rc.1",
+    "publish.input.state.version": "0.8.0-rc.1",
+    "publish.output.state.version": "0.8.0-rc.1"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +257,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767482153000,
+            "timeStamp": 1767482691000,
             "offset": 60
           }
         },
@@ -205,50 +267,81 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767482153000,
+            "timeStamp": 1767482691000,
             "offset": 60
           }
         },
-        "date": 1767482153000,
+        "date": 1767482691000,
         "message": {
-          "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
-          "shortMessage": "feat: improve update check logic and error handling in updater.py"
+          "fullMessage": "feat: allow workflow to trigger on pushes to the dev branch\n",
+          "shortMessage": "feat: allow workflow to trigger on pushes to the dev branch"
         },
         "parents": [
-          "7412b14511aa7cdfb6e54540c21711395002fb34"
+          "3249723283453884699d1f268d638d014ebbc823"
         ],
-        "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
+        "sha": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd"
       },
       {
         "authorAction": {
           "identity": {
-            "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-            "name": "gh-actions-releaser[bot]"
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481999000,
-            "offset": 0
+            "timeStamp": 1767482673000,
+            "offset": 60
           }
         },
         "commitAction": {
           "identity": {
-            "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-            "name": "gh-actions-releaser[bot]"
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481999000,
-            "offset": 0
+            "timeStamp": 1767482673000,
+            "offset": 60
           }
         },
-        "date": 1767481999000,
+        "date": 1767482673000,
         "message": {
-          "fullMessage": "ci: update 0.5.0 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.5.0 changelog and state [skip ci]"
+          "fullMessage": "feat: add packaging dependency for improved version handling and update checks\n",
+          "shortMessage": "feat: add packaging dependency for improved version handling and update checks"
         },
         "parents": [
-          "2183257fde36f14fea93404f346e616a0ffa308e"
+          "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
         ],
-        "sha": "7412b14511aa7cdfb6e54540c21711395002fb34"
+        "sha": "3249723283453884699d1f268d638d014ebbc823"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482528000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482528000,
+            "offset": 60
+          }
+        },
+        "date": 1767482528000,
+        "message": {
+          "fullMessage": "feat: enhance text area rendering with improved height calculation and padding\n",
+          "shortMessage": "feat: enhance text area rendering with improved height calculation and padding"
+        },
+        "parents": [
+          "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
+        ],
+        "sha": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
       }
     ],
     "finalCommit": {
@@ -258,7 +351,7 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767482153000,
+          "timeStamp": 1767482691000,
           "offset": 60
         }
       },
@@ -268,52 +361,52 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767482153000,
+          "timeStamp": 1767482691000,
           "offset": 60
         }
       },
-      "date": 1767482153000,
+      "date": 1767482691000,
       "message": {
-        "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
-        "shortMessage": "feat: improve update check logic and error handling in updater.py"
+        "fullMessage": "feat: allow workflow to trigger on pushes to the dev branch\n",
+        "shortMessage": "feat: allow workflow to trigger on pushes to the dev branch"
       },
       "parents": [
-        "7412b14511aa7cdfb6e54540c21711395002fb34"
+        "3249723283453884699d1f268d638d014ebbc823"
       ],
-      "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
+      "sha": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd"
     },
     "initialCommit": {
       "authorAction": {
         "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481999000,
-          "offset": 0
+          "timeStamp": 1767482528000,
+          "offset": 60
         }
       },
       "commitAction": {
         "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481999000,
-          "offset": 0
+          "timeStamp": 1767482528000,
+          "offset": 60
         }
       },
-      "date": 1767481999000,
+      "date": 1767482528000,
       "message": {
-        "fullMessage": "ci: update 0.5.0 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.5.0 changelog and state [skip ci]"
+        "fullMessage": "feat: enhance text area rendering with improved height calculation and padding\n",
+        "shortMessage": "feat: enhance text area rendering with improved height calculation and padding"
       },
       "parents": [
-        "2183257fde36f14fea93404f346e616a0ffa308e"
+        "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
       ],
-      "sha": "7412b14511aa7cdfb6e54540c21711395002fb34"
+      "sha": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
     },
-    "previousVersion": "0.5.0",
+    "previousVersion": "0.7.0",
     "previousVersionCommit": {
       "authorAction": {
         "identity": {
@@ -321,7 +414,7 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481987000,
+          "timeStamp": 1767482313000,
           "offset": 60
         }
       },
@@ -331,27 +424,27 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481987000,
+          "timeStamp": 1767482313000,
           "offset": 60
         }
       },
-      "date": 1767481987000,
+      "date": 1767482313000,
       "message": {
-        "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
-        "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
+        "fullMessage": "feat: enhance update check logic with status reporting and delay\n",
+        "shortMessage": "feat: enhance update check logic with status reporting and delay"
       },
       "parents": [
-        "9d36734001967509031d40fe1e354bcb941a41a3"
+        "a7e652090617869fa1a8350272697ae2561283b4"
       ],
       "tags": [
         {
-          "name": "0.5.0",
-          "target": "2183257fde36f14fea93404f346e616a0ffa308e"
+          "name": "0.7.0",
+          "target": "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
         }
       ],
-      "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
+      "sha": "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
     },
-    "primeVersion": "0.5.0",
+    "primeVersion": "0.7.0",
     "primeVersionCommit": {
       "authorAction": {
         "identity": {
@@ -359,7 +452,7 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481987000,
+          "timeStamp": 1767482313000,
           "offset": 60
         }
       },
@@ -369,25 +462,25 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481987000,
+          "timeStamp": 1767482313000,
           "offset": 60
         }
       },
-      "date": 1767481987000,
+      "date": 1767482313000,
       "message": {
-        "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
-        "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
+        "fullMessage": "feat: enhance update check logic with status reporting and delay\n",
+        "shortMessage": "feat: enhance update check logic with status reporting and delay"
       },
       "parents": [
-        "9d36734001967509031d40fe1e354bcb941a41a3"
+        "a7e652090617869fa1a8350272697ae2561283b4"
       ],
       "tags": [
         {
-          "name": "0.5.0",
-          "target": "2183257fde36f14fea93404f346e616a0ffa308e"
+          "name": "0.7.0",
+          "target": "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
         }
       ],
-      "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
+      "sha": "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
     },
     "significantCommits": [
       {
@@ -397,7 +490,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767482153000,
+            "timeStamp": 1767482691000,
             "offset": 60
           }
         },
@@ -407,34 +500,98 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767482153000,
+            "timeStamp": 1767482691000,
             "offset": 60
           }
         },
-        "date": 1767482153000,
+        "date": 1767482691000,
         "message": {
-          "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
-          "shortMessage": "feat: improve update check logic and error handling in updater.py"
+          "fullMessage": "feat: allow workflow to trigger on pushes to the dev branch\n",
+          "shortMessage": "feat: allow workflow to trigger on pushes to the dev branch"
         },
         "parents": [
-          "7412b14511aa7cdfb6e54540c21711395002fb34"
+          "3249723283453884699d1f268d638d014ebbc823"
         ],
-        "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
+        "sha": "b21fdf0eb2c2c1b85aba1ad245485bf1526e8abd"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482673000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482673000,
+            "offset": 60
+          }
+        },
+        "date": 1767482673000,
+        "message": {
+          "fullMessage": "feat: add packaging dependency for improved version handling and update checks\n",
+          "shortMessage": "feat: add packaging dependency for improved version handling and update checks"
+        },
+        "parents": [
+          "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
+        ],
+        "sha": "3249723283453884699d1f268d638d014ebbc823"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482528000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767482528000,
+            "offset": 60
+          }
+        },
+        "date": 1767482528000,
+        "message": {
+          "fullMessage": "feat: enhance text area rendering with improved height calculation and padding\n",
+          "shortMessage": "feat: enhance text area rendering with improved height calculation and padding"
+        },
+        "parents": [
+          "b7dfb52e6335cbc0a5c5d348028007e0645198d7"
+        ],
+        "sha": "2cba2e9c47f4c71f759f20b5a53508d5d6169e06"
       }
     ]
   },
   "releaseType": {
     "assets": [],
-    "collapseVersions": false,
+    "collapseVersions": true,
+    "collapsedVersionQualifier": "rc",
     "gitPush": "true",
     "gitTag": "true",
-    "matchBranches": "^(master|main)$",
+    "matchBranches": "^dev$",
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767482166456,
-  "version": "0.6.0",
+  "timestamp": 1767482704680,
+  "version": "0.8.0-rc.1",
   "versionMajorNumber": "0",
-  "versionMinorNumber": "6",
-  "versionPatchNumber": "0"
+  "versionMinorNumber": "8",
+  "versionPatchNumber": "0",
+  "versionPreReleaseIdentifier": "rc.1"
 }
