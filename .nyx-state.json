@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-03",
-        "name": "0.5.0",
+        "name": "0.6.0",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767481987000,
+                    "timeStamp": 1767482153000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767481987000,
+                    "timeStamp": 1767482153000,
                     "offset": 60
                   }
                 },
-                "date": 1767481987000,
+                "date": 1767482153000,
                 "message": {
-                  "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
-                  "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
+                  "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
+                  "shortMessage": "feat: improve update check logic and error handling in updater.py"
                 },
                 "parents": [
-                  "9d36734001967509031d40fe1e354bcb941a41a3"
+                  "7412b14511aa7cdfb6e54540c21711395002fb34"
                 ],
-                "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
+                "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "main",
-    "infer.input.repository.last.commit": "2183257fde36f14fea93404f346e616a0ffa308e",
-    "infer.output.state.version": "0.5.0",
+    "infer.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
+    "infer.output.state.version": "0.6.0",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "main",
-    "make.input.repository.last.commit": "2183257fde36f14fea93404f346e616a0ffa308e",
-    "make.input.state.initialCommit": "9d36734001967509031d40fe1e354bcb941a41a3",
+    "make.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
+    "make.input.state.initialCommit": "7412b14511aa7cdfb6e54540c21711395002fb34",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.5.0",
+    "make.input.version": "0.6.0",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "main",
-    "mark.input.repository.last.commit": "2183257fde36f14fea93404f346e616a0ffa308e",
-    "mark.input.state.initialCommit": "9d36734001967509031d40fe1e354bcb941a41a3",
+    "mark.input.repository.last.commit": "34226df082c389d5a56058ac56b239ec82ee70a7",
+    "mark.input.state.initialCommit": "7412b14511aa7cdfb6e54540c21711395002fb34",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.5.0",
-    "publish.input.state.version": "0.5.0",
-    "publish.output.state.version": "0.5.0"
+    "mark.input.state.version": "0.6.0",
+    "publish.input.state.version": "0.6.0",
+    "publish.output.state.version": "0.6.0"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481987000,
+            "timeStamp": 1767482153000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481987000,
+            "timeStamp": 1767482153000,
             "offset": 60
           }
         },
-        "date": 1767481987000,
+        "date": 1767482153000,
         "message": {
-          "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
-          "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
+          "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
+          "shortMessage": "feat: improve update check logic and error handling in updater.py"
         },
         "parents": [
-          "9d36734001967509031d40fe1e354bcb941a41a3"
+          "7412b14511aa7cdfb6e54540c21711395002fb34"
         ],
-        "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
+        "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767481903000,
+            "timeStamp": 1767481999000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767481903000,
+            "timeStamp": 1767481999000,
             "offset": 0
           }
         },
-        "date": 1767481903000,
+        "date": 1767481999000,
         "message": {
-          "fullMessage": "ci: update 0.4.0 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.4.0 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.5.0 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.5.0 changelog and state [skip ci]"
         },
         "parents": [
-          "d67bea454fa7031bbd4ec78307ec592c619bae78"
+          "2183257fde36f14fea93404f346e616a0ffa308e"
         ],
-        "sha": "9d36734001967509031d40fe1e354bcb941a41a3"
+        "sha": "7412b14511aa7cdfb6e54540c21711395002fb34"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767482153000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767482153000,
+          "offset": 60
+        }
+      },
+      "date": 1767482153000,
+      "message": {
+        "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
+        "shortMessage": "feat: improve update check logic and error handling in updater.py"
+      },
+      "parents": [
+        "7412b14511aa7cdfb6e54540c21711395002fb34"
+      ],
+      "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767481999000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767481999000,
+          "offset": 0
+        }
+      },
+      "date": 1767481999000,
+      "message": {
+        "fullMessage": "ci: update 0.5.0 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.5.0 changelog and state [skip ci]"
+      },
+      "parents": [
+        "2183257fde36f14fea93404f346e616a0ffa308e"
+      ],
+      "sha": "7412b14511aa7cdfb6e54540c21711395002fb34"
+    },
+    "previousVersion": "0.5.0",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,78 +343,15 @@
       "parents": [
         "9d36734001967509031d40fe1e354bcb941a41a3"
       ],
-      "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767481903000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767481903000,
-          "offset": 0
-        }
-      },
-      "date": 1767481903000,
-      "message": {
-        "fullMessage": "ci: update 0.4.0 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.4.0 changelog and state [skip ci]"
-      },
-      "parents": [
-        "d67bea454fa7031bbd4ec78307ec592c619bae78"
-      ],
-      "sha": "9d36734001967509031d40fe1e354bcb941a41a3"
-    },
-    "previousVersion": "0.4.0",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767481889000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767481889000,
-          "offset": 60
-        }
-      },
-      "date": 1767481889000,
-      "message": {
-        "fullMessage": "feat: enhance text area rendering and auto-resize functionality in GameHelperApp\nfix: update default version return value in get_version function\n",
-        "shortMessage": "feat: enhance text area rendering and auto-resize functionality in GameHelperApp"
-      },
-      "parents": [
-        "6f407f0cad1833c0ecca6f65eaa32cbff5c54ddc"
-      ],
       "tags": [
         {
-          "name": "0.4.0",
-          "target": "d67bea454fa7031bbd4ec78307ec592c619bae78"
+          "name": "0.5.0",
+          "target": "2183257fde36f14fea93404f346e616a0ffa308e"
         }
       ],
-      "sha": "d67bea454fa7031bbd4ec78307ec592c619bae78"
+      "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
     },
-    "primeVersion": "0.4.0",
+    "primeVersion": "0.5.0",
     "primeVersionCommit": {
       "authorAction": {
         "identity": {
@@ -359,7 +359,7 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481889000,
+          "timeStamp": 1767481987000,
           "offset": 60
         }
       },
@@ -369,25 +369,25 @@
           "name": "Olaf Bykowski"
         },
         "timeStamp": {
-          "timeStamp": 1767481889000,
+          "timeStamp": 1767481987000,
           "offset": 60
         }
       },
-      "date": 1767481889000,
+      "date": 1767481987000,
       "message": {
-        "fullMessage": "feat: enhance text area rendering and auto-resize functionality in GameHelperApp\nfix: update default version return value in get_version function\n",
-        "shortMessage": "feat: enhance text area rendering and auto-resize functionality in GameHelperApp"
+        "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
+        "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
       },
       "parents": [
-        "6f407f0cad1833c0ecca6f65eaa32cbff5c54ddc"
+        "9d36734001967509031d40fe1e354bcb941a41a3"
       ],
       "tags": [
         {
-          "name": "0.4.0",
-          "target": "d67bea454fa7031bbd4ec78307ec592c619bae78"
+          "name": "0.5.0",
+          "target": "2183257fde36f14fea93404f346e616a0ffa308e"
         }
       ],
-      "sha": "d67bea454fa7031bbd4ec78307ec592c619bae78"
+      "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
     },
     "significantCommits": [
       {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481987000,
+            "timeStamp": 1767482153000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767481987000,
+            "timeStamp": 1767482153000,
             "offset": 60
           }
         },
-        "date": 1767481987000,
+        "date": 1767482153000,
         "message": {
-          "fullMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp\n",
-          "shortMessage": "feat: enhance update alert system and improve text area rendering in GameHelperApp"
+          "fullMessage": "feat: improve update check logic and error handling in updater.py\n",
+          "shortMessage": "feat: improve update check logic and error handling in updater.py"
         },
         "parents": [
-          "9d36734001967509031d40fe1e354bcb941a41a3"
+          "7412b14511aa7cdfb6e54540c21711395002fb34"
         ],
-        "sha": "2183257fde36f14fea93404f346e616a0ffa308e"
+        "sha": "34226df082c389d5a56058ac56b239ec82ee70a7"
       }
     ]
   },
@@ -432,9 +432,9 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767481999035,
-  "version": "0.5.0",
+  "timestamp": 1767482166456,
+  "version": "0.6.0",
   "versionMajorNumber": "0",
-  "versionMinorNumber": "5",
+  "versionMinorNumber": "6",
   "versionPatchNumber": "0"
 }

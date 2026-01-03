@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0 (2026-01-03)
+
+### Added
+
+* [34226] feat: improve update check logic and error handling in updater.py (Olaf Bykowski)
+
+# Changelog
+
 ## 0.5.0 (2026-01-03)
 
 ### Added
