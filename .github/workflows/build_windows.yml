@@ -36,13 +36,18 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }} # Use App Token
 
-      - name: Nyx Release
+      - name: Nyx publish
         id: nyx
         uses: mooltiverse/nyx@main
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           command: "publish"
+          changelogPath: "CHANGELOG.md"
+          preset: "extended"
+          releaseLenient: "true"
+          stateFile: ".nyx-state.json"
+          summaryFile: ".nyx-summary.txt"
           verbosity: "INFO"
 
       - name: Commit Changelog
@@ -55,9 +60,9 @@ jobs:
           git add CHANGELOG.md .nyx-state.json
 
           if git diff-index --quiet HEAD; then
-            echo "No changes to commit."
+            echo "No changes. Skipping commit."
           else
-            git commit -m "docs: update changelog for ${{ steps.nyx.outputs.version }} [skip ci]"
+            git commit -m "ci: update ${{ steps.nyx.outputs.version }} changelog and state [skip ci]"
             git push
           fi
 
