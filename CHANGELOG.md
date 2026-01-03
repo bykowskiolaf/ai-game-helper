@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-01-03)
+
+### Added
+
+* [5cbe1] feat: implement background update check and alert system in UI (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0 (2026-01-03)
 
 ### Fixed
