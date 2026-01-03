@@ -85,33 +85,46 @@ def check_for_updates():
         return False, None, None, f"Check Failed: {str(e)}"
 
 def update_app(download_url):
-    """Downloads and restarts the app"""
+    """Downloads the new exe, replaces the current one, and restarts."""
     if platform.system() != "Windows":
         webbrowser.open(download_url)
         return
 
     try:
-        # 1. Download
+        # 1. Download new file
+        print("Downloading update...")
         response = requests.get(download_url, stream=True)
-        new_exe_name = "ESO-Helper-New.exe"
+        new_exe_name = "ESO-Helper-Update.exe"
+        
         with open(new_exe_name, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
-        # 2. Swap Files
+        # 2. Get paths
         current_exe = sys.executable
         old_exe = current_exe + ".old"
         
+        # 3. Rename current running exe to .old 
         if os.path.exists(old_exe):
             try: os.remove(old_exe)
             except: pass 
             
         os.rename(current_exe, old_exe)
+        
+        # 4. Rename downloaded update to the original name
         os.rename(new_exe_name, current_exe)
         
-        # 3. Restart
-        subprocess.Popen([current_exe])
+        # 5. Restart cleanly
+        print("Restarting...")
+        
+        # DETACHED_PROCESS flag ensures the new app isn't killed when this one dies
+        DETACHED_PROCESS = 0x00000008
+        subprocess.Popen([current_exe], creationflags=DETACHED_PROCESS, shell=False)
+        
+        # 6. Kill self immediately
         sys.exit(0)
 
     except Exception as e:
+        print(f"Update failed: {e}")
+        # If auto-update fails, just open the browser
         webbrowser.open(download_url)

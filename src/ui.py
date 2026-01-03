@@ -127,18 +127,19 @@ class GameHelperApp(DraggableWindow):
         self._resize_x = event.x_root
         self._resize_y = event.y_root
         self._start_width = self.winfo_width()
-        # We don't resize height manually because the text auto-fits height!
+        return "break"
 
     def perform_resize(self, event):
         # Calculate new width based on mouse movement
         delta_x = event.x_root - self._resize_x
-        new_width = max(200, self._start_width + delta_x) # Min width 200
+        new_width = max(200, self._start_width + delta_x)
         
-        # Apply new width (Keep current height for now, render_markdown will fix height later)
+        # Apply new width
         self.geometry(f"{new_width}x{self.winfo_height()}")
         
-        # Force text to re-wrap so we can calculate new height
+        # Force text re-wrap
         self.render_markdown(self.text_area.get("1.0", "end-1c"))
+        return "break"
 
     def render_markdown(self, raw_text):
         """Renders text and Auto-Resizes HEIGHT to fit"""
