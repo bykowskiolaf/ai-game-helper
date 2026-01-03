@@ -12,8 +12,8 @@ REPO_NAME = "ai-game-helper"
 def get_version():
     """Reads the version.txt file embedded inside the EXE"""
     try:
-        # If running as compiled exe, look in the temporary MEIPASS folder
         if getattr(sys, 'frozen', False):
+            # If running as compiled exe, look in the temporary MEIPASS folder
             base_path = sys._MEIPASS
         else:
             base_path = os.path.dirname(__file__)
@@ -25,26 +25,30 @@ def get_version():
                 return f.read().strip()
     except Exception:
         pass
-        
-    return "9.9.9"
+    return "0.0.0" # Default for dev mode
 
 CURRENT_VERSION = get_version()
 
 def check_for_updates():
     """
-    Checks GitHub Releases for a newer version.
-    Returns (update_available: bool, download_url: str, new_version: str)
+    Checks GitHub Releases.
+    Returns: (is_available, url, version, status_message)
     """
     try:
-        print(f"Checking updates... Current: {CURRENT_VERSION}")
         url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases/latest"
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=5)
+        
+        if response.status_code == 404:
+            return False, None, None, "❌ Error: Repo not found (Private?)"
+        if response.status_code == 403:
+            return False, None, None, "❌ Error: API Rate Limit Exceeded"
+            
         response.raise_for_status()
         
         data = response.json()
-        latest_tag = data["tag_name"].strip()  # e.g., "1.0.5" or "v1.0.5"
+        latest_tag = data["tag_name"].strip()  # e.g. "v1.0.5"
         
-        # Clean versions for comparison (remove 'v')
+        # Clean versions (remove 'v')
         latest_clean = latest_tag.lstrip("v")
         current_clean = CURRENT_VERSION.lstrip("v")
         
@@ -52,54 +56,42 @@ def check_for_updates():
             # Find the .exe asset
             for asset in data["assets"]:
                 if asset["name"].endswith(".exe"):
-                    return True, asset["browser_download_url"], latest_tag
-                    
+                    return True, asset["browser_download_url"], latest_tag, f"Update found: {latest_tag}"
+            return False, None, None, f"Update found ({latest_tag}) but no .exe asset!"
+            
+        return False, None, None, f"Up to date ({CURRENT_VERSION})"
+
     except Exception as e:
-        print(f"Update check failed: {e}")
-        
-    return False, None, None
+        return False, None, None, f"Check Failed: {str(e)}"
 
 def update_app(download_url):
-    """
-    Downloads the new exe, replaces the current one, and restarts.
-    """
-    # On Mac/Linux, we just open the browser (auto-replace is hard on Mac)
+    """Downloads and restarts the app"""
     if platform.system() != "Windows":
         webbrowser.open(download_url)
         return
 
     try:
-        # 1. Download new file
-        print("Downloading update...")
+        # 1. Download
         response = requests.get(download_url, stream=True)
         new_exe_name = "ESO-Helper-New.exe"
-        
         with open(new_exe_name, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
-        # 2. Rename current running exe to .old 
-        # (Windows allows renaming running executables, but not deleting them)
+        # 2. Swap Files
         current_exe = sys.executable
         old_exe = current_exe + ".old"
         
         if os.path.exists(old_exe):
-            try:
-                os.remove(old_exe) # Try to clean up previous update mess
-            except:
-                pass 
+            try: os.remove(old_exe)
+            except: pass 
             
         os.rename(current_exe, old_exe)
-        
-        # 3. Rename new downloaded file to the original name
         os.rename(new_exe_name, current_exe)
         
-        # 4. Restart the app
-        print("Restarting...")
+        # 3. Restart
         subprocess.Popen([current_exe])
         sys.exit(0)
 
     except Exception as e:
-        print(f"Update failed: {e}")
-        # Fallback: Open browser so user can download manually
         webbrowser.open(download_url)
