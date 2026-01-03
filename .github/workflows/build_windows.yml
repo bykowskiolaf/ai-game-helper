@@ -1,0 +1,36 @@
+name: Build Windows Exe
+
+on:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: windows-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            # Install uv (The Magic Step)
+            - name: Install uv
+              uses: astral-sh/setup-uv@v5
+
+            - name: Set up Python
+              run: uv python install 3.10
+
+            - name: Install Dependencies
+              # uv installs everything instantly
+              run: |
+                  uv pip install mss customtkinter keyboard google-generativeai pillow pyinstaller
+
+            - name: Build EXE
+              run: |
+                  # We use 'uv run' to execute pyinstaller inside the uv environment
+                  uv run pyinstaller --noconsole --onefile --name "ESO-Helper" src/main.py
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ESO-Helper-Windows
+                  path: dist/ESO-Helper.exe
