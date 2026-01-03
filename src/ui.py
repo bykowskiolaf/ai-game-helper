@@ -175,13 +175,25 @@ class GameHelperApp(DraggableWindow):
             pass
 
     def bg_update_check(self):
-        available, url, version = updater.check_for_updates()
+        """Runs on startup and reports status to HUD"""
+        # Wait a moment so the "READY" text renders first
+        import time
+        time.sleep(1)
+        
+        available, url, version, msg = updater.check_for_updates()
+        
+        # If update available, show Alert
         if available:
             self.update_available = True
             self.update_url = url
             self.new_version = version
             if hasattr(self, 'text_area'):
                 self.show_update_alert()
+        else:
+            # OPTIONAL: If you want to see WHY it failed/passed, show this log
+            # Remove this block later if you want it silent
+            current_text = self.text_area.get("1.0", "end-1c")
+            self.render_markdown(current_text + f"\n[Status: {msg}]")
 
     def show_update_alert(self):
         # Append update message to whatever is currently on screen
