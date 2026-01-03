@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.3 (2026-01-03)
+
+### Added
+
+* [67a44] feat: improve update process with clearer logging and enhanced file handling (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.2 (2026-01-03)
 
 ### Added
