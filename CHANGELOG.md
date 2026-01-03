@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.2 (2026-01-03)
+
+### Added
+
+* [a8317] feat: enhance draggable window with resizing capability and improved layout (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.1 (2026-01-03)
 
 ### Added
