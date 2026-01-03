@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.4 (2026-01-03)
+
+### Added
+
+* [1fb04] feat: added icon and changed name (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.3 (2026-01-03)
 
 ### Added

@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-03",
-        "name": "0.8.0-rc.3",
+        "name": "0.8.0-rc.4",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767483424000,
+                    "timeStamp": 1767484409000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767483424000,
+                    "timeStamp": 1767484409000,
                     "offset": 60
                   }
                 },
-                "date": 1767483424000,
+                "date": 1767484409000,
                 "message": {
-                  "fullMessage": "feat: improve update process with clearer logging and enhanced file handling\n",
-                  "shortMessage": "feat: improve update process with clearer logging and enhanced file handling"
+                  "fullMessage": "feat: added icon and changed name\n",
+                  "shortMessage": "feat: added icon and changed name"
                 },
                 "parents": [
-                  "91c10af55206e0bfa1b8e29f6635880d64967a8a"
+                  "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
                 ],
-                "sha": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
+                "sha": "1fb0483d014b0210a7edd06e56800605ed091efc"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "67a44e5eed732c9dc459baa15ef5ff9fd7573853",
-    "infer.output.state.version": "0.8.0-rc.3",
+    "infer.input.repository.last.commit": "1fb0483d014b0210a7edd06e56800605ed091efc",
+    "infer.output.state.version": "0.8.0-rc.4",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "67a44e5eed732c9dc459baa15ef5ff9fd7573853",
-    "make.input.state.initialCommit": "91c10af55206e0bfa1b8e29f6635880d64967a8a",
+    "make.input.repository.last.commit": "1fb0483d014b0210a7edd06e56800605ed091efc",
+    "make.input.state.initialCommit": "a9857883891bb9557d02bc0aa80e0a56c4182d0e",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.3",
+    "make.input.version": "0.8.0-rc.4",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "67a44e5eed732c9dc459baa15ef5ff9fd7573853",
-    "mark.input.state.initialCommit": "91c10af55206e0bfa1b8e29f6635880d64967a8a",
+    "mark.input.repository.last.commit": "1fb0483d014b0210a7edd06e56800605ed091efc",
+    "mark.input.state.initialCommit": "a9857883891bb9557d02bc0aa80e0a56c4182d0e",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.3",
-    "publish.input.state.version": "0.8.0-rc.3",
-    "publish.output.state.version": "0.8.0-rc.3"
+    "mark.input.state.version": "0.8.0-rc.4",
+    "publish.input.state.version": "0.8.0-rc.4",
+    "publish.output.state.version": "0.8.0-rc.4"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767483424000,
+            "timeStamp": 1767484409000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767483424000,
+            "timeStamp": 1767484409000,
             "offset": 60
           }
         },
-        "date": 1767483424000,
+        "date": 1767484409000,
         "message": {
-          "fullMessage": "feat: improve update process with clearer logging and enhanced file handling\n",
-          "shortMessage": "feat: improve update process with clearer logging and enhanced file handling"
+          "fullMessage": "feat: added icon and changed name\n",
+          "shortMessage": "feat: added icon and changed name"
         },
         "parents": [
-          "91c10af55206e0bfa1b8e29f6635880d64967a8a"
+          "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
         ],
-        "sha": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
+        "sha": "1fb0483d014b0210a7edd06e56800605ed091efc"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767483095000,
+            "timeStamp": 1767483435000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767483095000,
+            "timeStamp": 1767483435000,
             "offset": 0
           }
         },
-        "date": 1767483095000,
+        "date": 1767483435000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.2 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.2 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.3 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.3 changelog and state [skip ci]"
         },
         "parents": [
-          "a83177015379535ab0e88d5cc9378a8b6776e906"
+          "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
         ],
-        "sha": "91c10af55206e0bfa1b8e29f6635880d64967a8a"
+        "sha": "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767484409000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767484409000,
+          "offset": 60
+        }
+      },
+      "date": 1767484409000,
+      "message": {
+        "fullMessage": "feat: added icon and changed name\n",
+        "shortMessage": "feat: added icon and changed name"
+      },
+      "parents": [
+        "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
+      ],
+      "sha": "1fb0483d014b0210a7edd06e56800605ed091efc"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767483435000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767483435000,
+          "offset": 0
+        }
+      },
+      "date": 1767483435000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.3 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.3 changelog and state [skip ci]"
+      },
+      "parents": [
+        "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
+      ],
+      "sha": "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
+    },
+    "previousVersion": "0.8.0-rc.3",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "91c10af55206e0bfa1b8e29f6635880d64967a8a"
       ],
-      "sha": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767483095000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767483095000,
-          "offset": 0
-        }
-      },
-      "date": 1767483095000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.2 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.2 changelog and state [skip ci]"
-      },
-      "parents": [
-        "a83177015379535ab0e88d5cc9378a8b6776e906"
-      ],
-      "sha": "91c10af55206e0bfa1b8e29f6635880d64967a8a"
-    },
-    "previousVersion": "0.8.0-rc.2",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767483083000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767483083000,
-          "offset": 60
-        }
-      },
-      "date": 1767483083000,
-      "message": {
-        "fullMessage": "feat: enhance draggable window with resizing capability and improved layout\n",
-        "shortMessage": "feat: enhance draggable window with resizing capability and improved layout"
-      },
-      "parents": [
-        "d6f102dad82e2b0762c5a0a8747697c4d742d06b"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.2",
-          "target": "a83177015379535ab0e88d5cc9378a8b6776e906"
+          "name": "0.8.0-rc.3",
+          "target": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
         }
       ],
-      "sha": "a83177015379535ab0e88d5cc9378a8b6776e906"
+      "sha": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767483424000,
+            "timeStamp": 1767484409000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767483424000,
+            "timeStamp": 1767484409000,
             "offset": 60
           }
         },
-        "date": 1767483424000,
+        "date": 1767484409000,
         "message": {
-          "fullMessage": "feat: improve update process with clearer logging and enhanced file handling\n",
-          "shortMessage": "feat: improve update process with clearer logging and enhanced file handling"
+          "fullMessage": "feat: added icon and changed name\n",
+          "shortMessage": "feat: added icon and changed name"
         },
         "parents": [
-          "91c10af55206e0bfa1b8e29f6635880d64967a8a"
+          "a9857883891bb9557d02bc0aa80e0a56c4182d0e"
         ],
-        "sha": "67a44e5eed732c9dc459baa15ef5ff9fd7573853"
+        "sha": "1fb0483d014b0210a7edd06e56800605ed091efc"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767483434728,
-  "version": "0.8.0-rc.3",
+  "timestamp": 1767484423404,
+  "version": "0.8.0-rc.4",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.3"
+  "versionPreReleaseIdentifier": "rc.4"
 }
