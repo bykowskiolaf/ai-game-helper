@@ -2,7 +2,7 @@ name: Release & Build
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "dev"]
     paths-ignore:
       - "CHANGELOG.md"
       - ".nyx-state.json"
