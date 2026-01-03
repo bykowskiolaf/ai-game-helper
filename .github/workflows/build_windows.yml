@@ -93,7 +93,12 @@ jobs:
       - name: Build EXE
         run: |
           $Version = "${{ needs.release.outputs.version }}"
-          uv run pyinstaller --noconsole --onefile --name "ESO-Helper-$Version" src/main.py
+
+          # 1. Create the version file
+          echo $Version > src/version.txt
+
+          # 2. Build and INCLUDE version.txt inside the .exe
+          uv run pyinstaller --noconsole --onefile --name "ESO-Helper-$Version" --add-data "src/version.txt;." src/main.py
 
       # -----------------------------------------------------------------
       # JOB 3: Upload Asset

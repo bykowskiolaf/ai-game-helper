@@ -4,6 +4,7 @@ import threading
 import config
 import capture
 import ai
+import updater
 
 class DraggableWindow(ctk.CTk):
     """A frameless window that can be dragged"""
@@ -45,6 +46,10 @@ class GameHelperApp(DraggableWindow):
             self.show_login()
         else:
             self.show_hud()
+
+        self.update_available = False
+        self.update_url = None
+        threading.Thread(target=self.bg_update_check, daemon=True).start()
 
     def enforce_topmost(self):
         """Forces the window to the top layer every 2 seconds"""
@@ -146,3 +151,31 @@ class GameHelperApp(DraggableWindow):
             threading.Thread(target=listen, daemon=True).start()
         except ImportError:
             pass
+
+    def bg_update_check(self):
+        """Runs silently on startup"""
+        available, url, version = updater.check_for_updates()
+        if available:
+            self.update_available = True
+            self.update_url = url
+            self.new_version = version
+            # If HUD is already open, show the alert
+            if hasattr(self, 'text_area'):
+                self.show_update_alert()
+
+    def show_update_alert(self):
+        """Injects a link into the Markdown text"""
+        msg = f"\n\n🚨 UPDATE AVAILABLE: {self.new_version}\n[Right-Click to Update Now]"
+        # We append this to the text area
+        self.render_markdown(self.text_area.get("1.0", "end") + msg)
+        # Bind Right-Click to Trigger Update (Override the 'Clear' binding if update exists)
+        self.text_area.bind("<Button-3>", self.trigger_update)
+
+    def trigger_update(self, event):
+        if self.update_available:
+            self.render_markdown(f"⬇ Downloading {self.new_version}...\nPlease wait, app will restart.")
+            # Run download in thread to avoid freezing UI
+            threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
+        else:
+            # Standard Clear behavior
+            self.render_markdown("")
