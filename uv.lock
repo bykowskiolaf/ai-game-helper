@@ -16,6 +16,7 @@ dependencies = [
     { name = "google-genai" },
     { name = "keyboard" },
     { name = "mss" },
+    { name = "packaging" },
     { name = "pillow" },
     { name = "python-dotenv" },
 ]
@@ -26,6 +27,7 @@ requires-dist = [
     { name = "google-genai", specifier = ">=1.56.0" },
     { name = "keyboard", specifier = ">=0.13.5" },
     { name = "mss", specifier = ">=10.1.0" },
+    { name = "packaging", specifier = ">=25.0" },
     { name = "pillow", specifier = ">=12.1.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
 ]

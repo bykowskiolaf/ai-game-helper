@@ -9,6 +9,7 @@ dependencies = [
     "google-genai>=1.56.0",
     "keyboard>=0.13.5",
     "mss>=10.1.0",
+    "packaging>=25.0",
     "pillow>=12.1.0",
     "python-dotenv>=1.2.1",
 ]

@@ -4,6 +4,7 @@ import requests
 import webbrowser
 import subprocess
 import platform
+from packaging.version import parse as parse_version
 
 # --- CONFIGURATION ---
 REPO_OWNER = "bykowskiolaf"
@@ -13,7 +14,6 @@ def get_version():
     """Reads the version.txt file embedded inside the EXE"""
     try:
         if getattr(sys, 'frozen', False):
-            # If running as compiled exe, look in the temporary MEIPASS folder
             base_path = sys._MEIPASS
         else:
             base_path = os.path.dirname(__file__)
@@ -25,40 +25,60 @@ def get_version():
                 return f.read().strip()
     except Exception:
         pass
-    return "0.0.0" # Default for dev mode
+    return "0.0.0"
 
 CURRENT_VERSION = get_version()
 
 def check_for_updates():
     """
-    Checks GitHub Releases.
-    Returns: (is_available, url, version, status_message)
+    Smart Update Check:
+    - If User is Stable: Look for newer Stable.
+    - If User is Pre-release (RC/Alpha): Look for ANY newer version.
     """
     try:
-        url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases/latest"
+        print(f"Checking updates... Current: {CURRENT_VERSION}")
+        
+        # We need the list of releases, not just 'latest' (which ignores pre-releases)
+        url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases"
         response = requests.get(url, timeout=5)
         
-        if response.status_code == 404:
-            return False, None, None, "❌ Error: Repo not found (Private?)"
-        if response.status_code == 403:
-            return False, None, None, "❌ Error: API Rate Limit Exceeded"
+        if response.status_code != 200:
+            return False, None, None, f"API Error: {response.status_code}"
+
+        releases = response.json()
+        if not releases:
+            return False, None, None, "No releases found."
+
+        current_ver = parse_version(CURRENT_VERSION)
+        
+        # Check if we are currently on a pre-release (e.g., 1.2.0rc1)
+        am_i_nightly = current_ver.is_prerelease
+
+        best_release = None
+        best_ver = parse_version("0.0.0")
+
+        for release in releases:
+            tag_name = release["tag_name"]
+            release_ver = parse_version(tag_name)
+
+            # RULE 1: If I am Stable, ignore Pre-releases
+            if not am_i_nightly and release_ver.is_prerelease:
+                continue
             
-        response.raise_for_status()
-        
-        data = response.json()
-        latest_tag = data["tag_name"].strip()  # e.g. "v1.0.5"
-        
-        # Clean versions (remove 'v')
-        latest_clean = latest_tag.lstrip("v")
-        current_clean = CURRENT_VERSION.lstrip("v")
-        
-        if latest_clean != current_clean:
-            # Find the .exe asset
-            for asset in data["assets"]:
+            # RULE 2: Find the highest version number
+            if release_ver > best_ver:
+                best_ver = release_ver
+                best_release = release
+
+        # Compare found version vs current
+        if best_release and best_ver > current_ver:
+             # Find .exe
+            for asset in best_release["assets"]:
                 if asset["name"].endswith(".exe"):
-                    return True, asset["browser_download_url"], latest_tag, f"Update found: {latest_tag}"
-            return False, None, None, f"Update found ({latest_tag}) but no .exe asset!"
+                    return True, asset["browser_download_url"], best_release["tag_name"], f"New {best_release['tag_name']} available!"
             
+            return False, None, None, f"Version {best_release['tag_name']} exists but has no EXE."
+
         return False, None, None, f"Up to date ({CURRENT_VERSION})"
 
     except Exception as e:
