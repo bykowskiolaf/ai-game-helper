@@ -7,12 +7,14 @@ import ai
 import updater
 
 class DraggableWindow(ctk.CTk):
-    """A frameless window that can be dragged"""
+    """A frameless window that can be dragged and resized"""
     def __init__(self):
         super().__init__()
-        self.overrideredirect(True) # Removes Title Bar & Borders
+        self.overrideredirect(True) 
         self._offsetx = 0
         self._offsety = 0
+
+        # Bind moving logic to the background
         self.bind('<Button-1>', self.clickwin)
         self.bind('<B1-Motion>', self.dragwin)
 
@@ -29,16 +31,14 @@ class GameHelperApp(DraggableWindow):
     def __init__(self):
         super().__init__()
         
-        # Window Setup
-        self.geometry("400x150+50+50") 
-        self.configure(fg_color="#1a1a1a") # Dark background
+        # Initial Size (Wider by default)
+        self.geometry("500x150+50+50") 
+        self.configure(fg_color="#1a1a1a")
         
         # --- FORCE ON TOP SETTINGS ---
         self.attributes("-topmost", True)
         self.attributes("-alpha", 0.80) 
         self.lift() 
-        
-        # Start the "Watchdog" to keep it on top
         self.enforce_topmost()
 
         # Check API Key
@@ -53,7 +53,6 @@ class GameHelperApp(DraggableWindow):
         threading.Thread(target=self.bg_update_check, daemon=True).start()
 
     def enforce_topmost(self):
-        """Forces the window to the top layer every 2 seconds"""
         self.lift()
         self.attributes("-topmost", True)
         self.after(2000, self.enforce_topmost)
@@ -75,9 +74,13 @@ class GameHelperApp(DraggableWindow):
     def show_hud(self):
         self.overrideredirect(True) 
         
-        # Text Area (HUD Style)
+        # Main Layout Frame
+        self.frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.frame.pack(fill="both", expand=True)
+
+        # Text Area
         self.text_area = tk.Text(
-            self, 
+            self.frame, 
             bg="#1a1a1a", 
             fg="#e0e0e0", 
             font=("Consolas", 11), 
@@ -88,16 +91,30 @@ class GameHelperApp(DraggableWindow):
         )
         self.text_area.pack(fill="both", expand=True)
         
+        # --- RESIZE GRIP (Bottom Right) ---
+        self.resize_grip = ctk.CTkLabel(
+            self.frame, 
+            text="↘", 
+            font=("Arial", 12), 
+            text_color="gray", 
+            cursor="sizing"
+        )
+        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2)
+        
+        # Bind Resize Logic
+        self.resize_grip.bind("<Button-1>", self.start_resize)
+        self.resize_grip.bind("<B1-Motion>", self.perform_resize)
+
         # Markdown Styles
         self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#4cc9f0")
         self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#f72585")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        # --- SHOW VERSION HERE ---
+        # Initial Text
         ver = updater.CURRENT_VERSION
-        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit")
+        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit\n(Drag ↘ to resize)")
 
-        # Bindings
+        # Bindings (Pass drag through text area)
         self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
@@ -105,12 +122,29 @@ class GameHelperApp(DraggableWindow):
         if capture.is_windows():
             self.start_hotkeys()
 
+    # --- RESIZE LOGIC ---
+    def start_resize(self, event):
+        self._resize_x = event.x_root
+        self._resize_y = event.y_root
+        self._start_width = self.winfo_width()
+        # We don't resize height manually because the text auto-fits height!
+
+    def perform_resize(self, event):
+        # Calculate new width based on mouse movement
+        delta_x = event.x_root - self._resize_x
+        new_width = max(200, self._start_width + delta_x) # Min width 200
+        
+        # Apply new width (Keep current height for now, render_markdown will fix height later)
+        self.geometry(f"{new_width}x{self.winfo_height()}")
+        
+        # Force text to re-wrap so we can calculate new height
+        self.render_markdown(self.text_area.get("1.0", "end-1c"))
+
     def render_markdown(self, raw_text):
-        """Renders text and Auto-Resizes window to fit"""
+        """Renders text and Auto-Resizes HEIGHT to fit"""
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
-        # 1. Insert Text
         lines = raw_text.split("\n")
         for line in lines:
             if line.startswith("#"):
@@ -124,36 +158,27 @@ class GameHelperApp(DraggableWindow):
                     self.text_area.insert("end", part, tag)
                 self.text_area.insert("end", "\n")
 
-        self.text_area.delete("end-1c", "end") # Remove trailing newline
+        self.text_area.delete("end-1c", "end")
         self.text_area.config(state="disabled") 
         
-        # 2. Calculate Exact Height (Robust Method)
-        self.text_area.update_idletasks()
+        # --- AUTO-FIT HEIGHT ---
+        self.text_area.update_idletasks() 
         
-        # Count how many visual lines the text takes up (handles wrapping!)
+        # Count display lines (handling wrapping)
         count = self.text_area.count("1.0", "end", "displaylines")
-        if count:
-            num_display_lines = count[0]
-        else:
-            num_display_lines = 1
+        num_display_lines = count[0] if count else 1
 
-        # Get the height of one line of text in pixels
-        # We assume the 'Consolas 11' font defined in init
         import tkinter.font as tkfont
         font = tkfont.Font(family="Consolas", size=11)
         line_height = font.metrics("linespace")
 
-        # Calculate total pixels needed
-        # (lines * height) + (padding_top + padding_bottom) + (header_bonus)
-        # We add a buffer of 30px for padding
-        required_height = (num_display_lines * line_height) + 30
-        
-        # Clamp size (Min: 80, Max: 800)
+        # Buffer for padding + header spacing
+        required_height = (num_display_lines * line_height) + 40
         final_height = max(80, min(800, required_height))
         
-        # 3. Apply Geometry
+        # Preserve CURRENT Width (allow user to resize width, we auto-fit height)
         current_width = self.winfo_width()
-        if current_width < 100: current_width = 400
+        if current_width < 100: current_width = 500 # Default wider
             
         x = self.winfo_x()
         y = self.winfo_y()
@@ -186,34 +211,23 @@ class GameHelperApp(DraggableWindow):
             pass
 
     def bg_update_check(self):
-        """Runs on startup and reports status to HUD"""
-        # Wait a moment so the "READY" text renders first
+        # Small delay to ensure HUD is rendered
         import time
         time.sleep(1)
-        
         available, url, version, msg = updater.check_for_updates()
-        
-        # If update available, show Alert
         if available:
             self.update_available = True
             self.update_url = url
             self.new_version = version
             if hasattr(self, 'text_area'):
                 self.show_update_alert()
-        else:
-            # OPTIONAL: If you want to see WHY it failed/passed, show this log
-            # Remove this block later if you want it silent
-            current_text = self.text_area.get("1.0", "end-1c")
-            self.render_markdown(current_text + f"\n[Status: {msg}]")
 
     def show_update_alert(self):
-        # Append update message to whatever is currently on screen
         current_text = self.text_area.get("1.0", "end-1c")
         msg = f"\n\n🚨 UPDATE AVAILABLE: {self.new_version}\n[Right-Click to Update Now]"
         self.render_markdown(current_text + msg)
 
     def trigger_update_or_clear(self, event):
-        """Right click: Updates app OR clears text"""
         if self.update_available:
             self.render_markdown(f"⬇ Downloading {self.new_version}...\nPlease wait, app will restart.")
             threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
