@@ -10,6 +10,19 @@ class DraggableWindow(ctk.CTk):
     """A frameless window that can be dragged and resized"""
     def __init__(self):
         super().__init__()
+        
+        # Set the Title (even though borders are hidden, it's good practice)
+        self.title(config.APP_NAME)
+
+        # Set App Icon
+        try:
+            icon_path = config.resource_path("icon.ico")
+            self.iconbitmap(icon_path)
+        except Exception:
+            print("Warning: Could not find icon.ico")
+
+        # Window Setup
+        self.geometry("500x150+50+50")
         self.overrideredirect(True) 
         self._offsetx = 0
         self._offsety = 0

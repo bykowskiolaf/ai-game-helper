@@ -5,10 +5,7 @@ import webbrowser
 import subprocess
 import platform
 from packaging.version import parse as parse_version
-
-# --- CONFIGURATION ---
-REPO_OWNER = "bykowskiolaf"
-REPO_NAME = "ai-game-helper"
+from config import REPO_OWNER, REPO_NAME
 
 def get_version():
     """Reads the version.txt file embedded inside the EXE"""

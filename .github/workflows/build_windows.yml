@@ -97,8 +97,13 @@ jobs:
           # 1. Create the version file
           echo $Version > src/version.txt
 
-          # 2. Build and INCLUDE version.txt inside the .exe
-          uv run pyinstaller --noconsole --onefile --name "ESO-Helper-$Version" --add-data "src/version.txt;." src/main.py
+          # 2. Define the new app name (Change 'ProxiHUD' to whatever you want)
+          $AppName = "ProxiHUD"
+
+          # 3. Build Command
+          # --icon sets the .exe file icon in Windows Explorer
+          # --add-data includes the icon inside the app so the UI can use it
+          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --icon "src/icon.ico" --add-data "src/version.txt;." --add-data "src/icon.ico;." src/main.py
 
       # -----------------------------------------------------------------
       # JOB 3: Upload Asset
