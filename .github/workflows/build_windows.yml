@@ -112,7 +112,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.release.outputs.version }}
-          files: dist/ESO-Helper-*.exe
+          files: dist/ProxiHUD-${{ needs.release.outputs.version }}.exe
         env:
           # We can use the default token here as the release already exists
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
