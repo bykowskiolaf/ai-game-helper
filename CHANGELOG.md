@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2026-01-03)
+
+### Added
+
+* [b7dfb] feat: enhance update check logic with status reporting and delay (Olaf Bykowski)
+
+# Changelog
+
 ## 0.6.0 (2026-01-03)
 
 ### Added
