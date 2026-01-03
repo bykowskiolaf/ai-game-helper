@@ -110,6 +110,7 @@ class GameHelperApp(DraggableWindow):
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
+        # 1. Insert Text
         lines = raw_text.split("\n")
         for line in lines:
             if line.startswith("#"):
@@ -123,25 +124,35 @@ class GameHelperApp(DraggableWindow):
                     self.text_area.insert("end", part, tag)
                 self.text_area.insert("end", "\n")
 
-        # Remove trailing newline to avoid empty space
-        self.text_area.delete("end-1c", "end")
+        self.text_area.delete("end-1c", "end") # Remove trailing newline
         self.text_area.config(state="disabled") 
         
-        # --- AUTO-FIT HEIGHT ---
-        self.text_area.update_idletasks() 
-        dline = self.text_area.dlineinfo("end-1c")
+        # 2. Calculate Exact Height (Robust Method)
+        self.text_area.update_idletasks()
         
-        if dline:
-            text_height_px = dline[1] + dline[3]
+        # Count how many visual lines the text takes up (handles wrapping!)
+        count = self.text_area.count("1.0", "end", "displaylines")
+        if count:
+            num_display_lines = count[0]
         else:
-            text_height_px = 50
+            num_display_lines = 1
 
-        # Add Padding & Clamp size
-        final_height = max(80, min(800, text_height_px + 30))
+        # Get the height of one line of text in pixels
+        # We assume the 'Consolas 11' font defined in init
+        import tkinter.font as tkfont
+        font = tkfont.Font(family="Consolas", size=11)
+        line_height = font.metrics("linespace")
+
+        # Calculate total pixels needed
+        # (lines * height) + (padding_top + padding_bottom) + (header_bonus)
+        # We add a buffer of 30px for padding
+        required_height = (num_display_lines * line_height) + 30
         
-        # Apply Geometry (Keep Width/X/Y, only change Height)
+        # Clamp size (Min: 80, Max: 800)
+        final_height = max(80, min(800, required_height))
+        
+        # 3. Apply Geometry
         current_width = self.winfo_width()
-        # If width is 1 (app just started), default to 400
         if current_width < 100: current_width = 400
             
         x = self.winfo_x()
