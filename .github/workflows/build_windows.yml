@@ -1,36 +1,37 @@
 name: Build Windows Exe
 
 on:
-    push:
-        branches: ["main"]
-    workflow_dispatch:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: windows-latest
+  build:
+    runs-on: windows-latest
 
-        steps:
-            - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-            # Install uv (The Magic Step)
-            - name: Install uv
-              uses: astral-sh/setup-uv@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
-            - name: Set up Python
-              run: uv python install 3.10
+      - name: Set up Python
+        run: uv python install 3.10
 
-            - name: Install Dependencies
-              # uv installs everything instantly
-              run: |
-                  uv pip install mss customtkinter keyboard google-generativeai pillow pyinstaller
+      - name: Install Dependencies
+        # 1. Create the environment (uv venv)
+        # 2. Install specific libraries (including the NEW google-genai)
+        run: |
+          uv venv
+          uv pip install mss customtkinter keyboard google-genai pillow pyinstaller python-dotenv
 
-            - name: Build EXE
-              run: |
-                  # We use 'uv run' to execute pyinstaller inside the uv environment
-                  uv run pyinstaller --noconsole --onefile --name "ESO-Helper" src/main.py
+      - name: Build EXE
+        # We use 'uv run' to ensure it uses the libraries we just installed
+        run: |
+          uv run pyinstaller --noconsole --onefile --name "ESO-Helper" src/main.py
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: ESO-Helper-Windows
-                  path: dist/ESO-Helper.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ESO-Helper-Windows
+          path: dist/ESO-Helper.exe
