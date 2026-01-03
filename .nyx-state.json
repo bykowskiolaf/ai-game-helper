@@ -1,0 +1,979 @@
+{
+  "branch": "main",
+  "bump": "minor",
+  "changelog": {
+    "releases": [
+      {
+        "date": "2026-01-03",
+        "name": "0.2.0",
+        "sections": [
+          {
+            "name": "Fixed",
+            "commits": [
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481211000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481211000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767481211000,
+                "message": {
+                  "fullMessage": "fix: ensure newline at end of main.py file\n",
+                  "shortMessage": "fix: ensure newline at end of main.py file"
+                },
+                "parents": [
+                  "47583a5aedb3405e457027094172c7f985e8d13d"
+                ],
+                "sha": "6f8106458ee13f49faa9a0cb010f2137f3cd242a"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480859000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480859000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767480859000,
+                "message": {
+                  "fullMessage": "fix: include .nyx-state.json in changelog commit\n",
+                  "shortMessage": "fix: include .nyx-state.json in changelog commit"
+                },
+                "parents": [
+                  "94064c582d30dc220560794a2b569f701880c361"
+                ],
+                "sha": "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767479707000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767479707000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767479707000,
+                "message": {
+                  "fullMessage": "fix: format YAML workflow for building Windows executable\n",
+                  "shortMessage": "fix: format YAML workflow for building Windows executable"
+                },
+                "parents": [
+                  "0344b34eed516a67fa98d7053f29746a6a99bb33"
+                ],
+                "sha": "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+              }
+            ]
+          },
+          {
+            "name": "Added",
+            "commits": [
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481160000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481160000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767481160000,
+                "message": {
+                  "fullMessage": "feat: add initial CHANGELOG.md file\n",
+                  "shortMessage": "feat: add initial CHANGELOG.md file"
+                },
+                "parents": [
+                  "3fa859c32a5c6984f386d72f884563e2073e74cf"
+                ],
+                "sha": "47583a5aedb3405e457027094172c7f985e8d13d"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481127000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767481127000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767481127000,
+                "message": {
+                  "fullMessage": "feat: enhance Nyx publish step with changelog and state file handling\n",
+                  "shortMessage": "feat: enhance Nyx publish step with changelog and state file handling"
+                },
+                "parents": [
+                  "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+                ],
+                "sha": "3fa859c32a5c6984f386d72f884563e2073e74cf"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480824000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480824000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767480824000,
+                "message": {
+                  "fullMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process\n",
+                  "shortMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process"
+                },
+                "parents": [
+                  "066a0b901cd6574fef23392636bbac27caef226a"
+                ],
+                "sha": "94064c582d30dc220560794a2b569f701880c361"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480489000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767480489000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767480489000,
+                "message": {
+                  "fullMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling\n",
+                  "shortMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling"
+                },
+                "parents": [
+                  "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+                ],
+                "sha": "066a0b901cd6574fef23392636bbac27caef226a"
+              },
+              {
+                "authorAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767479610000,
+                    "offset": 60
+                  }
+                },
+                "commitAction": {
+                  "identity": {
+                    "email": "olafbykowski1@gmail.com",
+                    "name": "Olaf Bykowski"
+                  },
+                  "timeStamp": {
+                    "timeStamp": 1767479610000,
+                    "offset": 60
+                  }
+                },
+                "date": 1767479610000,
+                "message": {
+                  "fullMessage": "feat: initial poc test\n",
+                  "shortMessage": "feat: initial poc test"
+                },
+                "sha": "0344b34eed516a67fa98d7053f29746a6a99bb33"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "configuration": {
+    "changelog": {
+      "append": "head",
+      "path": "CHANGELOG.md",
+      "sections": {
+        "Added": "^(feat|:boom:|:sparkles:)$",
+        "Fixed": "^(fix|:bug:|:ambulance:)$",
+        "Removed": "^:fire:$",
+        "Security": "^:lock:$"
+      },
+      "substitutions": {}
+    },
+    "commitMessageConventions": {
+      "enabled": [
+        "conventionalCommits",
+        "gitmoji"
+      ],
+      "items": {
+        "conventionalCommits": {
+          "expression": "(?m)^(?\u003ctype\u003e[a-zA-Z0-9_]+)(\\((?\u003cscope\u003e[a-zA-Z0-9 \\-_]+)\\))?(!)?:( (?\u003ctitle\u003e.+))$(?s).*",
+          "bumpExpressions": {
+            "major": "(?s)(?m)^[a-zA-Z0-9_]+(\\([a-zA-Z0-9 \\-_]+\\))?(!: .*|.*^(BREAKING( |-)CHANGE: )).*",
+            "minor": "(?s)(?m)^feat(!{0})(\\([a-zA-Z0-9 \\-_]+\\))?: (?!.*^(BREAKING( |-)CHANGE: )).*",
+            "patch": "(?s)(?m)^fix(!{0})(\\([a-zA-Z0-9 \\-_]+\\))?: (?!.*^(BREAKING( |-)CHANGE: )).*"
+          }
+        },
+        "gitmoji": {
+          "expression": "(?m)^(?\u003ctype\u003e:[a-zA-Z0-9_]+:)( (?\u003ctitle\u003e.+))?$(?s).*",
+          "bumpExpressions": {
+            "major": "(?m)^:boom:(?s).*",
+            "minor": "(?m)^:sparkles:(?s).*",
+            "patch": "(?m)^:(zap|bug|ambulance|lipstick|lock|arrow_down|arrow_up|pushpin|chart_with_upwards_trend|heavy_plus_sign|heavy_minus_sign|wrench|globe_with_meridians|pencil2|rewind|package|alien|bento|wheelchair|speech_balloon|card_file_box|children_crossing|iphone|egg|alembic|mag|label|triangular_flag_on_post|goal_net|dizzy|wastebasket|passport_control|adhesive_bandage):(?s).*"
+          }
+        }
+      }
+    },
+    "directory": "/github/workspace",
+    "dryRun": false,
+    "git": {
+      "remotes": {
+        "origin": {
+          "user": "x-access-token",
+          "password": "{{#environmentVariable}}GH_TOKEN{{/environmentVariable}}"
+        }
+      }
+    },
+    "initialVersion": "0.1.0",
+    "preset": "extended",
+    "releaseAssets": {},
+    "releaseLenient": true,
+    "releaseTypes": {
+      "enabled": [
+        "mainline",
+        "integration"
+      ],
+      "publicationServices": [
+        "github"
+      ],
+      "remoteRepositories": [],
+      "items": {
+        "integration": {
+          "assets": [],
+          "collapseVersions": true,
+          "collapsedVersionQualifier": "rc",
+          "gitPush": "true",
+          "gitTag": "true",
+          "matchBranches": "^dev$",
+          "publish": "true"
+        },
+        "mainline": {
+          "assets": [],
+          "collapseVersions": false,
+          "gitPush": "true",
+          "gitTag": "true",
+          "matchBranches": "^(master|main)$",
+          "publish": "true"
+        }
+      }
+    },
+    "resume": false,
+    "scheme": "SEMVER",
+    "services": {
+      "github": {
+        "options": {
+          "AUTHENTICATION_TOKEN": "{{#environmentVariable}}GH_TOKEN{{/environmentVariable}}",
+          "REPOSITORY_NAME": "ai-game-helper",
+          "REPOSITORY_OWNER": "bykowskiolaf"
+        },
+        "type": "GITHUB"
+      },
+      "gitlab": {
+        "options": {
+          "AUTHENTICATION_TOKEN": "{{#environmentVariable}}GITLAB_TOKEN{{/environmentVariable}}"
+        },
+        "type": "GITLAB"
+      }
+    },
+    "stateFile": ".nyx-state.json",
+    "substitutions": {
+      "enabled": [],
+      "items": {}
+    },
+    "summary": true,
+    "summaryFile": ".nyx-summary.txt",
+    "verbosity": "INFO"
+  },
+  "coreVersion": true,
+  "directory": "/github/workspace",
+  "internals": {
+    "infer.input.configured.bump": "null",
+    "infer.input.configured.initialVersion": "0.1.0",
+    "infer.input.configured.releaseLenient": "true",
+    "infer.input.configured.releasePrefix": "null",
+    "infer.input.configured.scheme": "SEMVER",
+    "infer.input.configured.version": "null",
+    "infer.input.repository.current.branch": "main",
+    "infer.input.repository.last.commit": "6f8106458ee13f49faa9a0cb010f2137f3cd242a",
+    "infer.output.state.version": "0.2.0",
+    "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
+    "make.input.repository.current.branch": "main",
+    "make.input.repository.last.commit": "6f8106458ee13f49faa9a0cb010f2137f3cd242a",
+    "make.input.state.initialCommit": "0344b34eed516a67fa98d7053f29746a6a99bb33",
+    "make.input.state.newVersion": "true",
+    "make.input.version": "0.2.0",
+    "mark.input.configured.git.commit": "null",
+    "mark.input.configured.git.push": "true",
+    "mark.input.configured.git.tag": "true",
+    "mark.input.repository.current.branch": "main",
+    "mark.input.repository.last.commit": "6f8106458ee13f49faa9a0cb010f2137f3cd242a",
+    "mark.input.state.initialCommit": "0344b34eed516a67fa98d7053f29746a6a99bb33",
+    "mark.input.state.newVersion": "true",
+    "mark.input.state.version": "0.2.0",
+    "publish.input.state.version": "0.2.0",
+    "publish.output.state.version": "0.2.0"
+  },
+  "latestVersion": true,
+  "newVersion": true,
+  "newRelease": true,
+  "releaseAssets": [],
+  "releaseScope": {
+    "commits": [
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481211000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481211000,
+            "offset": 60
+          }
+        },
+        "date": 1767481211000,
+        "message": {
+          "fullMessage": "fix: ensure newline at end of main.py file\n",
+          "shortMessage": "fix: ensure newline at end of main.py file"
+        },
+        "parents": [
+          "47583a5aedb3405e457027094172c7f985e8d13d"
+        ],
+        "sha": "6f8106458ee13f49faa9a0cb010f2137f3cd242a"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481160000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481160000,
+            "offset": 60
+          }
+        },
+        "date": 1767481160000,
+        "message": {
+          "fullMessage": "feat: add initial CHANGELOG.md file\n",
+          "shortMessage": "feat: add initial CHANGELOG.md file"
+        },
+        "parents": [
+          "3fa859c32a5c6984f386d72f884563e2073e74cf"
+        ],
+        "sha": "47583a5aedb3405e457027094172c7f985e8d13d"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481127000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481127000,
+            "offset": 60
+          }
+        },
+        "date": 1767481127000,
+        "message": {
+          "fullMessage": "feat: enhance Nyx publish step with changelog and state file handling\n",
+          "shortMessage": "feat: enhance Nyx publish step with changelog and state file handling"
+        },
+        "parents": [
+          "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+        ],
+        "sha": "3fa859c32a5c6984f386d72f884563e2073e74cf"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480859000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480859000,
+            "offset": 60
+          }
+        },
+        "date": 1767480859000,
+        "message": {
+          "fullMessage": "fix: include .nyx-state.json in changelog commit\n",
+          "shortMessage": "fix: include .nyx-state.json in changelog commit"
+        },
+        "parents": [
+          "94064c582d30dc220560794a2b569f701880c361"
+        ],
+        "sha": "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480824000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480824000,
+            "offset": 60
+          }
+        },
+        "date": 1767480824000,
+        "message": {
+          "fullMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process\n",
+          "shortMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process"
+        },
+        "parents": [
+          "066a0b901cd6574fef23392636bbac27caef226a"
+        ],
+        "sha": "94064c582d30dc220560794a2b569f701880c361"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480489000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480489000,
+            "offset": 60
+          }
+        },
+        "date": 1767480489000,
+        "message": {
+          "fullMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling\n",
+          "shortMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling"
+        },
+        "parents": [
+          "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+        ],
+        "sha": "066a0b901cd6574fef23392636bbac27caef226a"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479707000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479707000,
+            "offset": 60
+          }
+        },
+        "date": 1767479707000,
+        "message": {
+          "fullMessage": "fix: format YAML workflow for building Windows executable\n",
+          "shortMessage": "fix: format YAML workflow for building Windows executable"
+        },
+        "parents": [
+          "0344b34eed516a67fa98d7053f29746a6a99bb33"
+        ],
+        "sha": "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479610000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479610000,
+            "offset": 60
+          }
+        },
+        "date": 1767479610000,
+        "message": {
+          "fullMessage": "feat: initial poc test\n",
+          "shortMessage": "feat: initial poc test"
+        },
+        "sha": "0344b34eed516a67fa98d7053f29746a6a99bb33"
+      }
+    ],
+    "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767481211000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767481211000,
+          "offset": 60
+        }
+      },
+      "date": 1767481211000,
+      "message": {
+        "fullMessage": "fix: ensure newline at end of main.py file\n",
+        "shortMessage": "fix: ensure newline at end of main.py file"
+      },
+      "parents": [
+        "47583a5aedb3405e457027094172c7f985e8d13d"
+      ],
+      "sha": "6f8106458ee13f49faa9a0cb010f2137f3cd242a"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767479610000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767479610000,
+          "offset": 60
+        }
+      },
+      "date": 1767479610000,
+      "message": {
+        "fullMessage": "feat: initial poc test\n",
+        "shortMessage": "feat: initial poc test"
+      },
+      "sha": "0344b34eed516a67fa98d7053f29746a6a99bb33"
+    },
+    "previousVersion": "0.1.0",
+    "primeVersion": "0.1.0",
+    "significantCommits": [
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481211000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481211000,
+            "offset": 60
+          }
+        },
+        "date": 1767481211000,
+        "message": {
+          "fullMessage": "fix: ensure newline at end of main.py file\n",
+          "shortMessage": "fix: ensure newline at end of main.py file"
+        },
+        "parents": [
+          "47583a5aedb3405e457027094172c7f985e8d13d"
+        ],
+        "sha": "6f8106458ee13f49faa9a0cb010f2137f3cd242a"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481160000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481160000,
+            "offset": 60
+          }
+        },
+        "date": 1767481160000,
+        "message": {
+          "fullMessage": "feat: add initial CHANGELOG.md file\n",
+          "shortMessage": "feat: add initial CHANGELOG.md file"
+        },
+        "parents": [
+          "3fa859c32a5c6984f386d72f884563e2073e74cf"
+        ],
+        "sha": "47583a5aedb3405e457027094172c7f985e8d13d"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481127000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767481127000,
+            "offset": 60
+          }
+        },
+        "date": 1767481127000,
+        "message": {
+          "fullMessage": "feat: enhance Nyx publish step with changelog and state file handling\n",
+          "shortMessage": "feat: enhance Nyx publish step with changelog and state file handling"
+        },
+        "parents": [
+          "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+        ],
+        "sha": "3fa859c32a5c6984f386d72f884563e2073e74cf"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480859000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480859000,
+            "offset": 60
+          }
+        },
+        "date": 1767480859000,
+        "message": {
+          "fullMessage": "fix: include .nyx-state.json in changelog commit\n",
+          "shortMessage": "fix: include .nyx-state.json in changelog commit"
+        },
+        "parents": [
+          "94064c582d30dc220560794a2b569f701880c361"
+        ],
+        "sha": "12edffb2f7249b46a261f09d0c3c5d8a219c0310"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480824000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480824000,
+            "offset": 60
+          }
+        },
+        "date": 1767480824000,
+        "message": {
+          "fullMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process\n",
+          "shortMessage": "feat: update GitHub Actions workflow and Nyx configuration for improved release process"
+        },
+        "parents": [
+          "066a0b901cd6574fef23392636bbac27caef226a"
+        ],
+        "sha": "94064c582d30dc220560794a2b569f701880c361"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480489000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767480489000,
+            "offset": 60
+          }
+        },
+        "date": 1767480489000,
+        "message": {
+          "fullMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling\n",
+          "shortMessage": "feat: enhance Windows build workflow and UI with draggable window and API key handling"
+        },
+        "parents": [
+          "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+        ],
+        "sha": "066a0b901cd6574fef23392636bbac27caef226a"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479707000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479707000,
+            "offset": 60
+          }
+        },
+        "date": 1767479707000,
+        "message": {
+          "fullMessage": "fix: format YAML workflow for building Windows executable\n",
+          "shortMessage": "fix: format YAML workflow for building Windows executable"
+        },
+        "parents": [
+          "0344b34eed516a67fa98d7053f29746a6a99bb33"
+        ],
+        "sha": "53ecc628787ee83dcacf9f831c0ea2a881089ee2"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479610000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767479610000,
+            "offset": 60
+          }
+        },
+        "date": 1767479610000,
+        "message": {
+          "fullMessage": "feat: initial poc test\n",
+          "shortMessage": "feat: initial poc test"
+        },
+        "sha": "0344b34eed516a67fa98d7053f29746a6a99bb33"
+      }
+    ]
+  },
+  "releaseType": {
+    "assets": [],
+    "collapseVersions": false,
+    "gitPush": "true",
+    "gitTag": "true",
+    "matchBranches": "^(master|main)$",
+    "publish": "true"
+  },
+  "scheme": "SEMVER",
+  "timestamp": 1767481224016,
+  "version": "0.2.0",
+  "versionMajorNumber": "0",
+  "versionMinorNumber": "2",
+  "versionPatchNumber": "0"
+}
