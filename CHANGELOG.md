@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.5 (2026-01-03)
+
+### Fixed
+
+* [ec5d8] fix: update asset filename in Windows build workflow (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.4 (2026-01-03)
 
 ### Added
