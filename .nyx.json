@@ -1,39 +1,48 @@
 {
-    "preset": "simple",
-    "initialVersion": "0.1.0",
+    "preset": "extended",
     "changelog": {
         "path": "CHANGELOG.md",
-        "sections": {
-            "feat": "🚀 Features",
-            "fix": "🐛 Bug Fixes",
-            "perf": "⚡ Performance",
-            "refactor": "♻️ Refactoring",
-            "build": "📦 Build",
-            "ci": "🤖 CI",
-            "docs": "📚 Documentation"
+        "append": "head"
+    },
+    "git": {
+        "remotes": {
+            "origin": {
+                "user": "x-access-token",
+                "password": "{{#environmentVariable}}GH_TOKEN{{/environmentVariable}}"
+            }
         }
     },
     "services": {
         "github": {
             "type": "GITHUB",
             "options": {
-                "AUTHENTICATION_TOKEN": "{{#environmentVariable}}GITHUB_TOKEN{{/environmentVariable}}",
+                "AUTHENTICATION_TOKEN": "{{#environmentVariable}}GH_TOKEN{{/environmentVariable}}",
                 "REPOSITORY_NAME": "ai-game-helper",
                 "REPOSITORY_OWNER": "bykowskiolaf"
             }
         }
     },
     "releaseTypes": {
-        "enabled": [
-            "mainline"
-        ],
         "publicationServices": [
             "github"
         ],
+        "enabled": [
+            "mainline",
+            "integration"
+        ],
         "items": {
             "mainline": {
-                "matchBranches": "^(main|master)$",
+                "matchBranches": "^(master|main)$",
                 "collapseVersions": false,
+                "gitPush": "true",
+                "gitTag": "true",
+                "publish": "true",
+                "assets": []
+            },
+            "integration": {
+                "matchBranches": "^dev$",
+                "collapseVersions": true,
+                "collapsedVersionQualifier": "rc",
                 "gitPush": "true",
                 "gitTag": "true",
                 "publish": "true",
