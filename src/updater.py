@@ -26,7 +26,7 @@ def get_version():
     except Exception:
         pass
         
-    return "0.0.0" # Default if running from source/dev
+    return "9.9.9"
 
 CURRENT_VERSION = get_version()
 

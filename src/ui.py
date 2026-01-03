@@ -106,6 +106,7 @@ class GameHelperApp(DraggableWindow):
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
+        # --- 1. Parse and Insert Text ---
         lines = raw_text.split("\n")
         for line in lines:
             if line.startswith("#"):
@@ -119,12 +120,36 @@ class GameHelperApp(DraggableWindow):
                     self.text_area.insert("end", part, tag)
                 self.text_area.insert("end", "\n")
 
+        # remove the extra newline at the very end to prevent a dangling empty line
+        self.text_area.delete("end-1c", "end") 
         self.text_area.config(state="disabled") 
         
-        # Auto-Resize Window Height
-        num_lines = int(self.text_area.index('end-1c').split('.')[0])
-        new_height = min(600, max(100, num_lines * 20 + 30))
-        self.geometry(f"400x{new_height}")
+        # --- 2. Calculate Exact Height ---
+        # We force an update so tkinter knows the new pixel heights
+        self.text_area.update_idletasks() 
+        
+        # Get the bounding box of the text (lines, pixels)
+        # 'end-1c' gets the position of the last character
+        dline = self.text_area.dlineinfo("end-1c")
+        
+        if dline:
+            # y + height of the last line gives total text height
+            text_height_px = dline[1] + dline[3]
+        else:
+            # Fallback if empty
+            text_height_px = 50
+
+        # Add padding (20px top + 20px bottom)
+        final_height = text_height_px + 40
+        
+        # Clamp it (Min: 80px, Max: 800px)
+        final_height = max(80, min(800, final_height))
+        
+        # Apply the new geometry (Keep the current Width and X/Y position)
+        current_width = self.winfo_width()
+        x = self.winfo_x()
+        y = self.winfo_y()
+        self.geometry(f"{current_width}x{final_height}+{x}+{y}")
 
     def run_analysis_thread(self):
         t = threading.Thread(target=self.run_logic, daemon=True)
