@@ -200,14 +200,28 @@ class GameHelperApp(DraggableWindow):
         self.quit()
         sys.exit()
 
+
     def _bg_update_check(self):
         import time; time.sleep(2)
         avail, url, ver, msg = updater.check_for_updates()
         if avail:
             self.update_available = True
             self.update_url = url
-            self.text_area.bind("<Button-3>", lambda e: updater.update_app(url))
+            self.text_area.bind("<Button-3>", lambda e: self.perform_update(url))
             self.append_to_chat("System", f"Update {ver} available! Right-click here to install.")
+
+    def perform_update(self, url):
+        """
+        Gives immediate feedback to the user and starts the update in a thread.
+        """
+        # 1. Prevent double-clicks by removing the bind
+        self.text_area.unbind("<Button-3>")
+
+        # 2. Tell the user what's happening
+        self.append_to_chat("System", "⏳ Downloading update... The app will restart automatically.")
+
+        # 3. Run the heavy lifting in a thread so the UI doesn't freeze
+        threading.Thread(target=updater.update_app, args=(url,), daemon=True).start()
 
     # --- Dev Tools (FIXED INDENTATION & COMMANDS) ---
     def add_debug_controls(self):

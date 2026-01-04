@@ -2,7 +2,6 @@ import os
 import sys
 import requests
 import webbrowser
-import subprocess
 import platform
 import logging
 import time
@@ -43,7 +42,6 @@ def check_for_updates():
 
         releases = response.json()
         current_ver = parse_version(CURRENT_VERSION)
-
         allow_pre = current_ver.is_prerelease
 
         best_release = None
@@ -81,13 +79,18 @@ def update_app(download_url):
         logging.info(f"Downloading update from: {download_url}")
 
         # 1. Download to temp file
-        response = requests.get(download_url, stream=True)
+        # Use a session or context manager to ensure the connection closes
         new_exe = "Update.tmp.exe"
-        with open(new_exe, "wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
+        with requests.get(download_url, stream=True) as response:
+            response.raise_for_status()
+            with open(new_exe, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
 
-        logging.info("Download finished. preparing to swap.")
+        logging.info("Download finished. Waiting for AV scan to release lock...")
+
+        # FIX: Sleep to let Windows Defender finish scanning the new .exe
+        time.sleep(2.0)
 
         # 2. Rename Logic
         current_exe = sys.executable
@@ -98,26 +101,44 @@ def update_app(download_url):
             try: os.remove(old_exe)
             except: pass
 
-            # 3. The Swap
-        os.rename(current_exe, old_exe)
-        os.rename(new_exe, current_exe)
+        # 3. The Swap (With Retries)
+        logging.info("Swapping files...")
+        _safe_rename(current_exe, old_exe) # Move active out
+        _safe_rename(new_exe, current_exe) # Move new in
 
         logging.info("Files swapped. Launching new process...")
+        time.sleep(1.0) # Give filesystem a moment to sync
 
-        # Give the filesystem a moment to unlock the file handle
-        time.sleep(1.0)
-
-        # 4. Launch using Windows Shell
-        # os.startfile is "Fire and Forget" - exactly like double-clicking the EXE.
+        # 4. Launch new exe
         os.startfile(current_exe)
 
-        # 5. HARD KILL SELF
+        # 5. Exit
         logging.info("Exiting...")
         os._exit(0)
 
     except Exception as e:
         logging.error(f"Update failed: {e}")
-        # If it failed, try to restore
+        # Try to clean up
+        if os.path.exists("Update.tmp.exe"):
+            try: os.remove("Update.tmp.exe")
+            except: pass
+
+def _safe_rename(src, dst, retries=5):
+    """
+    Attempts to rename a file with retries to handle
+    Windows antivirus file locking race conditions.
+    """
+    for i in range(retries):
         try:
-            if os.path.exists("Update.tmp.exe"): os.remove("Update.tmp.exe")
-        except: pass
+            if os.path.exists(dst):
+                os.remove(dst)
+            os.rename(src, dst)
+            return True
+        except PermissionError:
+            logging.warning(f"File locked, retrying rename ({i+1}/{retries})...")
+            time.sleep(1.0)
+        except Exception as e:
+            logging.error(f"Rename error: {e}")
+            raise e
+
+    raise PermissionError(f"Could not rename {src} to {dst} after {retries} attempts.")
