@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.8 (2026-01-04)
+
+### Added
+
+* [76ca3] feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.7 (2026-01-04)
 
 ### Added
