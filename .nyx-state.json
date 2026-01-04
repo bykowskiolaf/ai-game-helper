@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.16",
+        "name": "0.8.0-rc.17",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767526015000,
+                    "timeStamp": 1767526081000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767526022000,
+                    "timeStamp": 1767526091000,
                     "offset": 60
                   }
                 },
-                "date": 1767526022000,
+                "date": 1767526091000,
                 "message": {
-                  "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
-                  "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
+                  "fullMessage": "feat: Add settings.json to .gitignore\n",
+                  "shortMessage": "feat: Add settings.json to .gitignore"
                 },
                 "parents": [
-                  "908397191c82401f5708a66f35e5273622d5873a"
+                  "56332f3413c4102ee94b992d022c434cb2380f08"
                 ],
-                "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
+                "sha": "92c471c94919ed3adbb22469765af566d9a41156"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
-    "infer.output.state.version": "0.8.0-rc.16",
+    "infer.input.repository.last.commit": "92c471c94919ed3adbb22469765af566d9a41156",
+    "infer.output.state.version": "0.8.0-rc.17",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
-    "make.input.state.initialCommit": "908397191c82401f5708a66f35e5273622d5873a",
+    "make.input.repository.last.commit": "92c471c94919ed3adbb22469765af566d9a41156",
+    "make.input.state.initialCommit": "56332f3413c4102ee94b992d022c434cb2380f08",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.16",
+    "make.input.version": "0.8.0-rc.17",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
-    "mark.input.state.initialCommit": "908397191c82401f5708a66f35e5273622d5873a",
+    "mark.input.repository.last.commit": "92c471c94919ed3adbb22469765af566d9a41156",
+    "mark.input.state.initialCommit": "56332f3413c4102ee94b992d022c434cb2380f08",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.16",
-    "publish.input.state.version": "0.8.0-rc.16",
-    "publish.output.state.version": "0.8.0-rc.16"
+    "mark.input.state.version": "0.8.0-rc.17",
+    "publish.input.state.version": "0.8.0-rc.17",
+    "publish.output.state.version": "0.8.0-rc.17"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767526015000,
+            "timeStamp": 1767526081000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767526022000,
+            "timeStamp": 1767526091000,
             "offset": 60
           }
         },
-        "date": 1767526022000,
+        "date": 1767526091000,
         "message": {
-          "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
-          "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
+          "fullMessage": "feat: Add settings.json to .gitignore\n",
+          "shortMessage": "feat: Add settings.json to .gitignore"
         },
         "parents": [
-          "908397191c82401f5708a66f35e5273622d5873a"
+          "56332f3413c4102ee94b992d022c434cb2380f08"
         ],
-        "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
+        "sha": "92c471c94919ed3adbb22469765af566d9a41156"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767525356000,
+            "timeStamp": 1767526045000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767525356000,
+            "timeStamp": 1767526045000,
             "offset": 0
           }
         },
-        "date": 1767525356000,
+        "date": 1767526045000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.16 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.16 changelog and state [skip ci]"
         },
         "parents": [
-          "199fb3594f03eaa9a13e937c9282427c770bb103"
+          "b67ab110d2962601b6799e08828248ec18a77ce8"
         ],
-        "sha": "908397191c82401f5708a66f35e5273622d5873a"
+        "sha": "56332f3413c4102ee94b992d022c434cb2380f08"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526081000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526091000,
+          "offset": 60
+        }
+      },
+      "date": 1767526091000,
+      "message": {
+        "fullMessage": "feat: Add settings.json to .gitignore\n",
+        "shortMessage": "feat: Add settings.json to .gitignore"
+      },
+      "parents": [
+        "56332f3413c4102ee94b992d022c434cb2380f08"
+      ],
+      "sha": "92c471c94919ed3adbb22469765af566d9a41156"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526045000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526045000,
+          "offset": 0
+        }
+      },
+      "date": 1767526045000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.16 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.16 changelog and state [skip ci]"
+      },
+      "parents": [
+        "b67ab110d2962601b6799e08828248ec18a77ce8"
+      ],
+      "sha": "56332f3413c4102ee94b992d022c434cb2380f08"
+    },
+    "previousVersion": "0.8.0-rc.16",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "908397191c82401f5708a66f35e5273622d5873a"
       ],
-      "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767525356000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767525356000,
-          "offset": 0
-        }
-      },
-      "date": 1767525356000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]"
-      },
-      "parents": [
-        "199fb3594f03eaa9a13e937c9282427c770bb103"
-      ],
-      "sha": "908397191c82401f5708a66f35e5273622d5873a"
-    },
-    "previousVersion": "0.8.0-rc.15",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767525338000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767525338000,
-          "offset": 60
-        }
-      },
-      "date": 1767525338000,
-      "message": {
-        "fullMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization\n",
-        "shortMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization"
-      },
-      "parents": [
-        "646e1226d1753efdf2cbb958b2ea924a8953f688"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.15",
-          "target": "199fb3594f03eaa9a13e937c9282427c770bb103"
+          "name": "0.8.0-rc.16",
+          "target": "b67ab110d2962601b6799e08828248ec18a77ce8"
         }
       ],
-      "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
+      "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767526015000,
+            "timeStamp": 1767526081000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767526022000,
+            "timeStamp": 1767526091000,
             "offset": 60
           }
         },
-        "date": 1767526022000,
+        "date": 1767526091000,
         "message": {
-          "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
-          "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
+          "fullMessage": "feat: Add settings.json to .gitignore\n",
+          "shortMessage": "feat: Add settings.json to .gitignore"
         },
         "parents": [
-          "908397191c82401f5708a66f35e5273622d5873a"
+          "56332f3413c4102ee94b992d022c434cb2380f08"
         ],
-        "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
+        "sha": "92c471c94919ed3adbb22469765af566d9a41156"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767526044317,
-  "version": "0.8.0-rc.16",
+  "timestamp": 1767526111214,
+  "version": "0.8.0-rc.17",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.16"
+  "versionPreReleaseIdentifier": "rc.17"
 }

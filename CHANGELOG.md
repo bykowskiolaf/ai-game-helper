@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.17 (2026-01-04)
+
+### Added
+
+* [92c47] feat: Add settings.json to .gitignore (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.16 (2026-01-04)
 
 ### Added
