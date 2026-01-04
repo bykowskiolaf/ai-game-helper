@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.14 (2026-01-04)
+
+### Added
+
+* [0f338] feat: Update AI model version and enhance logging format; improve UI layout and resize functionality (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.13 (2026-01-04)
 
 ### Added
