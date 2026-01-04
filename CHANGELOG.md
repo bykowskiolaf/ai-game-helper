@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.7 (2026-01-04)
+
+### Added
+
+* [2edbb] feat: Add logging functionality to the project (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.6 (2026-01-04)
 
 ### Added

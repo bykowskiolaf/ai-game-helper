@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.6",
+        "name": "0.8.0-rc.7",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767485712000,
+                    "timeStamp": 1767487207000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767485712000,
+                    "timeStamp": 1767487207000,
                     "offset": 60
                   }
                 },
-                "date": 1767485712000,
+                "date": 1767487207000,
                 "message": {
-                  "fullMessage": "feat: update icon file for improved visual representation\n",
-                  "shortMessage": "feat: update icon file for improved visual representation"
+                  "fullMessage": "feat: Add logging functionality to the project\n\n- Implemented a logging system in logger.py that writes logs to a file (proxi_debug.log) and outputs to the console.\n- Configured the logging format to include timestamps, log levels, and module names.\n- Set up the log file path to adapt based on whether the application is running as an executable or in a development environment.\n- Added initial log entries to indicate the start of the application and the log file path.\n",
+                  "shortMessage": "feat: Add logging functionality to the project"
                 },
                 "parents": [
-                  "d8cac7d504e6ef832b1abf35885bab489fd18d94"
+                  "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
                 ],
-                "sha": "448e55eb5341bd3fe08c296866279bf5ee37862b"
+                "sha": "2edbb75846965fda83238e3d3211cc9c0e962af7"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "448e55eb5341bd3fe08c296866279bf5ee37862b",
-    "infer.output.state.version": "0.8.0-rc.6",
+    "infer.input.repository.last.commit": "2edbb75846965fda83238e3d3211cc9c0e962af7",
+    "infer.output.state.version": "0.8.0-rc.7",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "448e55eb5341bd3fe08c296866279bf5ee37862b",
-    "make.input.state.initialCommit": "d8cac7d504e6ef832b1abf35885bab489fd18d94",
+    "make.input.repository.last.commit": "2edbb75846965fda83238e3d3211cc9c0e962af7",
+    "make.input.state.initialCommit": "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.6",
+    "make.input.version": "0.8.0-rc.7",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "448e55eb5341bd3fe08c296866279bf5ee37862b",
-    "mark.input.state.initialCommit": "d8cac7d504e6ef832b1abf35885bab489fd18d94",
+    "mark.input.repository.last.commit": "2edbb75846965fda83238e3d3211cc9c0e962af7",
+    "mark.input.state.initialCommit": "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.6",
-    "publish.input.state.version": "0.8.0-rc.6",
-    "publish.output.state.version": "0.8.0-rc.6"
+    "mark.input.state.version": "0.8.0-rc.7",
+    "publish.input.state.version": "0.8.0-rc.7",
+    "publish.output.state.version": "0.8.0-rc.7"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767485712000,
+            "timeStamp": 1767487207000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767485712000,
+            "timeStamp": 1767487207000,
             "offset": 60
           }
         },
-        "date": 1767485712000,
+        "date": 1767487207000,
         "message": {
-          "fullMessage": "feat: update icon file for improved visual representation\n",
-          "shortMessage": "feat: update icon file for improved visual representation"
+          "fullMessage": "feat: Add logging functionality to the project\n\n- Implemented a logging system in logger.py that writes logs to a file (proxi_debug.log) and outputs to the console.\n- Configured the logging format to include timestamps, log levels, and module names.\n- Set up the log file path to adapt based on whether the application is running as an executable or in a development environment.\n- Added initial log entries to indicate the start of the application and the log file path.\n",
+          "shortMessage": "feat: Add logging functionality to the project"
         },
         "parents": [
-          "d8cac7d504e6ef832b1abf35885bab489fd18d94"
+          "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
         ],
-        "sha": "448e55eb5341bd3fe08c296866279bf5ee37862b"
+        "sha": "2edbb75846965fda83238e3d3211cc9c0e962af7"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767484640000,
+            "timeStamp": 1767485724000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767484640000,
+            "timeStamp": 1767485724000,
             "offset": 0
           }
         },
-        "date": 1767484640000,
+        "date": 1767485724000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.5 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.5 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.6 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.6 changelog and state [skip ci]"
         },
         "parents": [
-          "ec5d861e1138923dd774a63838e10bb306407d7f"
+          "448e55eb5341bd3fe08c296866279bf5ee37862b"
         ],
-        "sha": "d8cac7d504e6ef832b1abf35885bab489fd18d94"
+        "sha": "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767487207000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767487207000,
+          "offset": 60
+        }
+      },
+      "date": 1767487207000,
+      "message": {
+        "fullMessage": "feat: Add logging functionality to the project\n\n- Implemented a logging system in logger.py that writes logs to a file (proxi_debug.log) and outputs to the console.\n- Configured the logging format to include timestamps, log levels, and module names.\n- Set up the log file path to adapt based on whether the application is running as an executable or in a development environment.\n- Added initial log entries to indicate the start of the application and the log file path.\n",
+        "shortMessage": "feat: Add logging functionality to the project"
+      },
+      "parents": [
+        "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
+      ],
+      "sha": "2edbb75846965fda83238e3d3211cc9c0e962af7"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767485724000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767485724000,
+          "offset": 0
+        }
+      },
+      "date": 1767485724000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.6 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.6 changelog and state [skip ci]"
+      },
+      "parents": [
+        "448e55eb5341bd3fe08c296866279bf5ee37862b"
+      ],
+      "sha": "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
+    },
+    "previousVersion": "0.8.0-rc.6",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "d8cac7d504e6ef832b1abf35885bab489fd18d94"
       ],
-      "sha": "448e55eb5341bd3fe08c296866279bf5ee37862b"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767484640000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767484640000,
-          "offset": 0
-        }
-      },
-      "date": 1767484640000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.5 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.5 changelog and state [skip ci]"
-      },
-      "parents": [
-        "ec5d861e1138923dd774a63838e10bb306407d7f"
-      ],
-      "sha": "d8cac7d504e6ef832b1abf35885bab489fd18d94"
-    },
-    "previousVersion": "0.8.0-rc.5",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767484627000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767484627000,
-          "offset": 60
-        }
-      },
-      "date": 1767484627000,
-      "message": {
-        "fullMessage": "fix: update asset filename in Windows build workflow\n",
-        "shortMessage": "fix: update asset filename in Windows build workflow"
-      },
-      "parents": [
-        "8ef7bcb500a586bea4d9151a21db960c8c9a74cc"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.5",
-          "target": "ec5d861e1138923dd774a63838e10bb306407d7f"
+          "name": "0.8.0-rc.6",
+          "target": "448e55eb5341bd3fe08c296866279bf5ee37862b"
         }
       ],
-      "sha": "ec5d861e1138923dd774a63838e10bb306407d7f"
+      "sha": "448e55eb5341bd3fe08c296866279bf5ee37862b"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767485712000,
+            "timeStamp": 1767487207000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767485712000,
+            "timeStamp": 1767487207000,
             "offset": 60
           }
         },
-        "date": 1767485712000,
+        "date": 1767487207000,
         "message": {
-          "fullMessage": "feat: update icon file for improved visual representation\n",
-          "shortMessage": "feat: update icon file for improved visual representation"
+          "fullMessage": "feat: Add logging functionality to the project\n\n- Implemented a logging system in logger.py that writes logs to a file (proxi_debug.log) and outputs to the console.\n- Configured the logging format to include timestamps, log levels, and module names.\n- Set up the log file path to adapt based on whether the application is running as an executable or in a development environment.\n- Added initial log entries to indicate the start of the application and the log file path.\n",
+          "shortMessage": "feat: Add logging functionality to the project"
         },
         "parents": [
-          "d8cac7d504e6ef832b1abf35885bab489fd18d94"
+          "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
         ],
-        "sha": "448e55eb5341bd3fe08c296866279bf5ee37862b"
+        "sha": "2edbb75846965fda83238e3d3211cc9c0e962af7"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767485723051,
-  "version": "0.8.0-rc.6",
+  "timestamp": 1767487219440,
+  "version": "0.8.0-rc.7",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.6"
+  "versionPreReleaseIdentifier": "rc.7"
 }
