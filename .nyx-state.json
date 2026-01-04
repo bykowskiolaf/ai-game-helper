@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.2.0-rc.8",
+        "name": "0.2.0-rc.9",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767570080000,
+                    "timeStamp": 1767570565000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767570080000,
+                    "timeStamp": 1767570572000,
                     "offset": 60
                   }
                 },
-                "date": 1767570080000,
+                "date": 1767570572000,
                 "message": {
-                  "fullMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis\n",
-                  "shortMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis"
+                  "fullMessage": "feat: Improve update process with user feedback and enhanced file handling\n",
+                  "shortMessage": "feat: Improve update process with user feedback and enhanced file handling"
                 },
                 "parents": [
-                  "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
+                  "d4d28ea35f559625dadb3e3043f554d8017cdac4"
                 ],
-                "sha": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
+                "sha": "7f57e7de390646f44fd65234ae5391a1e55516d1"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "76ca3a475c413acec31e164ef253c293a0ba9fc1",
-    "infer.output.state.version": "0.2.0-rc.8",
+    "infer.input.repository.last.commit": "7f57e7de390646f44fd65234ae5391a1e55516d1",
+    "infer.output.state.version": "0.2.0-rc.9",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "76ca3a475c413acec31e164ef253c293a0ba9fc1",
-    "make.input.state.initialCommit": "b3a9fdf449d6085996eb7ad5c4ce6510b303703e",
+    "make.input.repository.last.commit": "7f57e7de390646f44fd65234ae5391a1e55516d1",
+    "make.input.state.initialCommit": "d4d28ea35f559625dadb3e3043f554d8017cdac4",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.8",
+    "make.input.version": "0.2.0-rc.9",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "76ca3a475c413acec31e164ef253c293a0ba9fc1",
-    "mark.input.state.initialCommit": "b3a9fdf449d6085996eb7ad5c4ce6510b303703e",
+    "mark.input.repository.last.commit": "7f57e7de390646f44fd65234ae5391a1e55516d1",
+    "mark.input.state.initialCommit": "d4d28ea35f559625dadb3e3043f554d8017cdac4",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.8",
-    "publish.input.state.version": "0.2.0-rc.8",
-    "publish.output.state.version": "0.2.0-rc.8"
+    "mark.input.state.version": "0.2.0-rc.9",
+    "publish.input.state.version": "0.2.0-rc.9",
+    "publish.output.state.version": "0.2.0-rc.9"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767570080000,
+            "timeStamp": 1767570565000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767570080000,
+            "timeStamp": 1767570572000,
             "offset": 60
           }
         },
-        "date": 1767570080000,
+        "date": 1767570572000,
         "message": {
-          "fullMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis\n",
-          "shortMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis"
+          "fullMessage": "feat: Improve update process with user feedback and enhanced file handling\n",
+          "shortMessage": "feat: Improve update process with user feedback and enhanced file handling"
         },
         "parents": [
-          "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
+          "d4d28ea35f559625dadb3e3043f554d8017cdac4"
         ],
-        "sha": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
+        "sha": "7f57e7de390646f44fd65234ae5391a1e55516d1"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767568292000,
+            "timeStamp": 1767570095000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767568292000,
+            "timeStamp": 1767570095000,
             "offset": 0
           }
         },
-        "date": 1767568292000,
+        "date": 1767570095000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.7 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.7 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.8 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.8 changelog and state [skip ci]"
         },
         "parents": [
-          "06761c8fdb570be24b0b725daa9b464a7f4e3ceb"
+          "76ca3a475c413acec31e164ef253c293a0ba9fc1"
         ],
-        "sha": "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
+        "sha": "d4d28ea35f559625dadb3e3043f554d8017cdac4"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767570565000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767570572000,
+          "offset": 60
+        }
+      },
+      "date": 1767570572000,
+      "message": {
+        "fullMessage": "feat: Improve update process with user feedback and enhanced file handling\n",
+        "shortMessage": "feat: Improve update process with user feedback and enhanced file handling"
+      },
+      "parents": [
+        "d4d28ea35f559625dadb3e3043f554d8017cdac4"
+      ],
+      "sha": "7f57e7de390646f44fd65234ae5391a1e55516d1"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767570095000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767570095000,
+          "offset": 0
+        }
+      },
+      "date": 1767570095000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.8 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.8 changelog and state [skip ci]"
+      },
+      "parents": [
+        "76ca3a475c413acec31e164ef253c293a0ba9fc1"
+      ],
+      "sha": "d4d28ea35f559625dadb3e3043f554d8017cdac4"
+    },
+    "previousVersion": "0.2.0-rc.8",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
       ],
-      "sha": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767568292000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767568292000,
-          "offset": 0
-        }
-      },
-      "date": 1767568292000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.7 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.7 changelog and state [skip ci]"
-      },
-      "parents": [
-        "06761c8fdb570be24b0b725daa9b464a7f4e3ceb"
-      ],
-      "sha": "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
-    },
-    "previousVersion": "0.2.0-rc.7",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767568261000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767568279000,
-          "offset": 60
-        }
-      },
-      "date": 1767568279000,
-      "message": {
-        "fullMessage": "feat: Improve updater logic with detailed steps for file handling and process launch\n",
-        "shortMessage": "feat: Improve updater logic with detailed steps for file handling and process launch"
-      },
-      "parents": [
-        "f397dbf3b82c32bf7929e0a3d58f3c5876d8ea5b"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.7",
-          "target": "06761c8fdb570be24b0b725daa9b464a7f4e3ceb"
+          "name": "0.2.0-rc.8",
+          "target": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
         }
       ],
-      "sha": "06761c8fdb570be24b0b725daa9b464a7f4e3ceb"
+      "sha": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767570080000,
+            "timeStamp": 1767570565000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767570080000,
+            "timeStamp": 1767570572000,
             "offset": 60
           }
         },
-        "date": 1767570080000,
+        "date": 1767570572000,
         "message": {
-          "fullMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis\n",
-          "shortMessage": "feat: Enhance ProxiHUD Bridge with live player data extraction and improved HUD analysis"
+          "fullMessage": "feat: Improve update process with user feedback and enhanced file handling\n",
+          "shortMessage": "feat: Improve update process with user feedback and enhanced file handling"
         },
         "parents": [
-          "b3a9fdf449d6085996eb7ad5c4ce6510b303703e"
+          "d4d28ea35f559625dadb3e3043f554d8017cdac4"
         ],
-        "sha": "76ca3a475c413acec31e164ef253c293a0ba9fc1"
+        "sha": "7f57e7de390646f44fd65234ae5391a1e55516d1"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767570094510,
-  "version": "0.2.0-rc.8",
+  "timestamp": 1767570586051,
+  "version": "0.2.0-rc.9",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.8"
+  "versionPreReleaseIdentifier": "rc.9"
 }

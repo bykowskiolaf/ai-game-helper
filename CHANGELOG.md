@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.9 (2026-01-04)
+
+### Added
+
+* [7f57e] feat: Improve update process with user feedback and enhanced file handling (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.8 (2026-01-04)
 
 ### Added
