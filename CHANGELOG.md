@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.8 (2026-01-04)
+
+### Added
+
+* [e8861] feat: Implement logging system and application structure for ProxiHUD (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.7 (2026-01-04)
 
 ### Added
