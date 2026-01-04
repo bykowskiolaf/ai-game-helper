@@ -13,8 +13,6 @@ While originally designed for *The Elder Scrolls Online (ESO)*, the architecture
     * **Inventory:** Appraises loot value and suggests what to keep/sell.
     * **Death Recap:** Explains why you died and how to avoid it next time.
 * **💬 Contextual Chat:** Don't just get a report—ask follow-up questions! (e.g., *"How do I beat this boss?"* or *"Is this sword good for a tank?"*).
-* **🎭 AI Personas:** Choose your companion's personality:
-    * *Default, Sarcastic, Brief, Pirate, or Overly Helpful.*
 * **⚙️ Unobtrusive Overlay:**
     * Runs as a transparent, "Always on Top" window.
     * **F11** to trigger a quick scan.

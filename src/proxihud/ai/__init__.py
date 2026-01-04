@@ -1,73 +1,65 @@
 import logging
-from .. import config, utils, bridge # <--- Import Bridge
-from . import combat, inventory, death, skills, exploration
+from .. import config, utils, bridge
 
 def analyze_image(img, user_prompt=None, history=[], settings={}):
+    """
+    Single-Shot Analysis:
+    Combines Game Data (Lua) + Visuals (Screen) into one fast query.
+    """
     if not config.get_api_keys():
         return "❌ API Key missing. Please add in settings."
 
-    # --- 1. BUILD CONTEXT ---
-    persona = settings.get("persona", "Default")
-
-    # FETCH GAME DATA
+    # 1. FETCH LIVE GAME DATA (The "Ground Truth")
     game_data = bridge.load_game_data()
 
-    context_str = ""
+    player_context = ""
     if game_data:
-        context_str = f"""
-        **PLAYER CONTEXT (LIVE DATA):**
-        - Character: {game_data.get('name')} (Level {game_data.get('level')} {game_data.get('race')} {game_data.get('class')})
-        - Role: {game_data.get('role')}
-        - Equipped Gear: {', '.join(game_data.get('equipment', [])[:10])}... (list truncated)
+        player_context = f"""
+        **LIVE PLAYER DATA:**
+        - Identity: {game_data.get('name')} (Level {game_data.get('level')} {game_data.get('race')} {game_data.get('class')})
+        - Location: {game_data.get('subzone')} (Zone: {game_data.get('zone')})
+        - Build: {game_data.get('stats_hp')} HP / {game_data.get('stats_mag')} Mag / {game_data.get('stats_stam')} Stam
+        - Active Skills: {', '.join(game_data.get('skills', []))}
+        - Current Quests: {', '.join(game_data.get('quests', [])[:5])} (Top 5)
+        - Equipment: {', '.join(game_data.get('equipment', [])[:10])}
         """
     else:
-        context_str = "**PLAYER CONTEXT:** No live data found. (Addon not synced? Type /reloadui in game)"
+        player_context = "**PLAYER DATA:** Unknown (Addon not synced). Rely strictly on the visual HUD."
 
-    system_instruction = ""
-    if persona == "Sarcastic": system_instruction = "STYLE: You are a sarcastic, witty companion."
-    elif persona == "Brief": system_instruction = "STYLE: Be extremely concise. Bullet points only."
-    elif persona == "Pirate": system_instruction = "STYLE: You be a pirate! Yarr!"
-    elif persona == "Helpful": system_instruction = "STYLE: You are overly supportive."
+    # 2. CONSTRUCT HISTORY
+    # We keep it short to save tokens and reduce latency
+    chat_history = ""
+    if history:
+        chat_history = "PREVIOUS CHAT:\n" + "\n".join(
+            [f"{'User' if msg['role'] == 'user' else 'AI'}: {msg['text']}" for msg in history[-4:]]
+        )
 
-    # --- 2. HANDLE USER CHAT ---
-    if user_prompt:
-        history_context = ""
-        if history:
-            history_context = "PREVIOUS CONVERSATION:\n"
-            for msg in history:
-                role = "User" if msg['role'] == "user" else "AI"
-                history_context += f"{role}: {msg['text']}\n"
-            history_context += "\nEND HISTORY.\n"
+    # 3. THE "MASTER PROMPT"
+    # This instructs Gemini to self-categorize and respond in one go.
+    system_prompt = f"""
+    You are ProxiHUD, an expert gaming companion for ESO (Elder Scrolls Online).
+    
+    {player_context}
 
-        prompt = f"""
-        {system_instruction}
-        {context_str}
-        
-        {history_context}
-        **CURRENT TASK:** Answer User Question about the image: "{user_prompt}"
-        """
-        return utils.query_gemini(prompt, img)
+    {chat_history}
 
-    # --- 3. AUTO-ROUTER ---
-    logging.info("Auto-Routing...")
+    **USER QUESTION:** "{user_prompt if user_prompt else 'Analyze the screen'}"
 
-    # We inject the context into the router too, so it knows if we are looking at inventory
-    router_prompt = f"""
-    {context_str}
-    Classify ESO screenshot: COMBAT, INVENTORY, SKILLS, DEATH, OTHER.
-    Return JSON: {{"category": "COMBAT"}}
+    **INSTRUCTIONS:**
+    1. **READ THE HUD:** Prioritize reading text on screen (Quest Tracker, Death Recap, Item Tooltips, Boss Health Bars).
+    2. **DETECT CONTEXT:** Instantly decide if this is Combat, Inventory, Death, or Questing.
+    3. **BE DIRECT:** No fluff. No personas. Give tactical, actionable advice based on what you see.
+    
+    **SCENARIOS:**
+    - **IF DEATH RECAP:** Read the "Killing Blow" and "Hints" text. Explain exactly how to counter that specific mechanic.
+    - **IF INVENTORY/ITEM:** Identify the item trait/set. Is it valuable? Is it meta for the player's class ({game_data.get('class') if game_data else 'Unknown'})?
+    - **IF COMBAT:** Identify the enemy. Are there red AOE circles? Is Magicka/Stamina low?
+    - **IF QUESTING:** Read the quest tracker text. Give a 1-sentence tip on that specific objective.
+
+    **OUTPUT FORMAT:**
+    Use Markdown. Use bolding for key terms. Keep it under 100 words unless asked for details.
     """
 
-    raw_response = utils.query_gemini(router_prompt, img)
-    data = utils.clean_json_response(raw_response)
-    category = data.get("category", "OTHER") if data else "OTHER"
-
-    logging.info(f"Context: {category}")
-
-    # Pass game_data to specific agents if they support it (optional refactor)
-    # For now, we rely on the specific agent files or just general query if you merge them.
-    if category == "COMBAT": return combat.analyze(img)
-    elif category == "INVENTORY": return inventory.analyze(img)
-    elif category == "DEATH": return death.analyze(img)
-    elif category == "SKILLS": return skills.analyze(img)
-    else: return exploration.analyze(img)
+    # 4. EXECUTE
+    logging.info("Sending Single-Shot Request to Gemini...")
+    return utils.query_gemini(system_prompt, img)

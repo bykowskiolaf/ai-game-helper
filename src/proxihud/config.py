@@ -18,7 +18,6 @@ DEFAULT_SETTINGS = {
     "opacity": 0.90,
     "hotkey_trigger": "f11",
     "hotkey_exit": "f12",
-    "persona": "Default",
     "geometry": "500x300+100+100"
 }
 

@@ -6,7 +6,7 @@ class SettingsDialog(ctk.CTkToplevel):
     def __init__(self, parent, current_settings, apply_callback):
         super().__init__(parent)
         self.title("Settings")
-        self.geometry("340x550")
+        self.geometry("340x400")
         self.attributes("-topmost", True)
         self.apply_callback = apply_callback
         self.settings = current_settings.copy()
@@ -25,17 +25,6 @@ class SettingsDialog(ctk.CTkToplevel):
         self.opacity_slider = ctk.CTkSlider(self.scroll, from_=0.2, to=1.0, command=self.update_opacity)
         self.opacity_slider.set(self.settings["opacity"])
         self.opacity_slider.pack(fill="x", padx=10, pady=5)
-
-        # 2. Persona
-        self.add_header("🧠 AI Persona")
-        self.persona_var = ctk.StringVar(value=self.settings["persona"])
-        self.persona_combo = ctk.CTkComboBox(
-            self.scroll, 
-            values=["Default", "Sarcastic", "Brief", "Pirate", "Helpful"],
-            variable=self.persona_var,
-            command=self.update_persona
-        )
-        self.persona_combo.pack(fill="x", padx=10, pady=5)
 
         # 3. API Keys
         self.add_header("🔑 API Keys")
@@ -79,10 +68,6 @@ class SettingsDialog(ctk.CTkToplevel):
 
     def update_opacity(self, value):
         self.settings["opacity"] = value
-        self.apply_callback(self.settings)
-
-    def update_persona(self, value):
-        self.settings["persona"] = value
         self.apply_callback(self.settings)
 
     def save_and_close(self):

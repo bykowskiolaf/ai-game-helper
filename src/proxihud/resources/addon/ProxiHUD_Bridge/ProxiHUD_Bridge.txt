@@ -1,7 +1,7 @@
 ## Title: ProxiHUD Bridge
-## APIVersion: 101041
-## Author: ProxiHUD
-## Version: 1.0
+## APIVersion: 101048
+## Author: Olaf Bykowski
+## Version: 1.1
 ## SavedVariables: ProxiHUD_Data
 
 ProxiHUD_Bridge.lua
