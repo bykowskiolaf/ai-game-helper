@@ -101,7 +101,12 @@ jobs:
 
           # 2. Build with CLEAN Name (No Version in filename)
           # This ensures the output is always 'dist/ProxiHUD.exe'
-          uv run pyinstaller --noconsole --onefile --name "ProxiHUD" --paths "src" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/run.py
+          uv run pyinstaller --noconsole --onefile --name "ProxiHUD" \
+            --add-data "src/proxihud/resources;src/proxihud/resources" \
+            --icon "src/proxihud/icon.ico" \
+            --paths "src" \
+            --hidden-import "proxihud" \
+            src/run.py
 
       # 3. Upload Step
       - name: Upload to Release

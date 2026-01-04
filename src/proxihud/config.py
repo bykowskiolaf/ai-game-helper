@@ -3,6 +3,7 @@ import sys
 import json
 import logging
 from dotenv import load_dotenv
+import ctypes.wintypes # Needed for documents folder detection
 
 # --- APP INFO ---
 APP_NAME = "ProxiHUD"
@@ -10,15 +11,18 @@ REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
-AI_MODEL = "gemini-2.5-flash-lite" 
+AI_MODEL = "gemini-1.5-flash"
 
 # --- DEFAULTS ---
 DEFAULT_SETTINGS = {
     "opacity": 0.90,
     "hotkey_trigger": "f11",
     "hotkey_exit": "f12",
-    "persona": "Default", 
-    "geometry": "500x300+100+100"
+    "persona": "Default",
+    "geometry": "500x300+100+100",
+    "player_class": "Generic",
+    "player_role": "Damage Dealer",
+    "game_mode": "PvE"
 }
 
 # --- ENVIRONMENT STATE ---
@@ -39,10 +43,34 @@ def get_app_data_dir():
             base = os.getenv('LOCALAPPDATA') or os.path.expanduser("~\\AppData\\Local")
         else:
             base = os.path.expanduser("~/.config")
-        
+
         path = os.path.join(base, APP_NAME)
         os.makedirs(path, exist_ok=True)
         return path
+
+# --- ESO PATH DETECTION ---
+def get_docs_folder():
+    """Helper to find the standard Windows Documents folder"""
+    try:
+        CSIDL_PERSONAL = 5
+        SHGFP_TYPE_CURRENT = 0
+        buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+        ctypes.windll.shell32.SHGetFolderPathW(None, CSIDL_PERSONAL, None, SHGFP_TYPE_CURRENT, buf)
+        return buf.value
+    except:
+        return os.path.expanduser("~\\Documents")
+
+def get_eso_addon_path():
+    """Returns the path to the ESO AddOns folder"""
+    docs = get_docs_folder()
+    path = os.path.join(docs, "Elder Scrolls Online", "live", "AddOns")
+    # Even if it doesn't exist yet, return the path so we can show it to the user
+    return path
+
+def get_eso_saved_vars_path():
+    """Returns the path to the SavedVariables file"""
+    docs = get_docs_folder()
+    return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Bridge.lua")
 
 # --- API KEY MANAGEMENT ---
 _active_key_index = 0
@@ -53,34 +81,26 @@ def get_env_path():
 load_dotenv(get_env_path())
 
 def get_api_keys():
-    """Returns a list of keys found in the environment"""
     raw = os.getenv("GOOGLE_API_KEY", "")
-    # Split by comma and strip whitespace
     return [k.strip() for k in raw.split(',') if k.strip()]
 
 def get_active_key():
-    """Returns the currently selected key"""
     keys = get_api_keys()
     if not keys: return None
-    # Ensure index is within bounds (in case keys changed)
     global _active_key_index
     if _active_key_index >= len(keys): _active_key_index = 0
     return keys[_active_key_index]
 
 def rotate_key():
-    """Switches to the next available key"""
     global _active_key_index
     keys = get_api_keys()
     if not keys: return False
-    
     prev = _active_key_index
     _active_key_index = (_active_key_index + 1) % len(keys)
-    
     logging.info(f"Rotating API Key: {prev} -> {_active_key_index}")
     return True
 
 def save_api_key(key_string):
-    """Saves the raw string (can be comma separated)"""
     env_path = get_env_path()
     with open(env_path, "w") as f:
         f.write(f"GOOGLE_API_KEY={key_string}")
@@ -96,7 +116,7 @@ def load_settings():
     try:
         with open(path, "r") as f:
             data = json.load(f)
-            return {**DEFAULT_SETTINGS, **data} 
+            return {**DEFAULT_SETTINGS, **data}
     except: return DEFAULT_SETTINGS.copy()
 
 def save_settings(settings):

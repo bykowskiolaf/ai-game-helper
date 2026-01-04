@@ -11,7 +11,7 @@ from .config import REPO_OWNER, REPO_NAME, is_dev
 
 def get_version():
     try:
-        if getattr(sys, 'frozen', False):
+        if is_dev():
             base_path = sys._MEIPASS
         else:
             # Look in the package folder

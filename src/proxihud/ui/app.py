@@ -6,7 +6,7 @@ import os
 import logging
 from PIL import Image
 
-from .. import config, capture, ai, updater, utils
+from .. import config, capture, ai, updater, utils, installer
 from .window import DraggableWindow
 from .settings import SettingsDialog
 
@@ -19,32 +19,29 @@ class GameHelperApp(DraggableWindow):
 
         self.settings = config.load_settings()
 
-        try: self.geometry(self.settings.get("geometry", "500x300+50+50")) 
+        try: self.geometry(self.settings.get("geometry", "500x300+50+50"))
         except: self.geometry("500x300+50+50")
 
         self.configure(fg_color="#1a1a1a")
         self.attributes("-topmost", True)
-        self.attributes("-alpha", self.settings["opacity"]) 
-        self.lift() 
+        self.attributes("-alpha", self.settings["opacity"])
+        self.lift()
         self.enforce_topmost()
 
-        self.history = [] 
-        
-        # --- VIEW MANAGER ---
+        self.history = []
+
+        # Main Container for swapping views
         self.main_container = ctk.CTkFrame(self, fg_color="transparent")
         self.main_container.pack(fill="both", expand=True)
-
-        if not config.get_api_keys():
-            self.show_login()
-        else:
-            self.show_hud()
 
         self.bind('<ButtonRelease-1>', self.save_geometry)
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
 
         self.update_available = False
         self.update_url = None
-        threading.Thread(target=self.bg_update_check, daemon=True).start()
+
+        # START THE SETUP SEQUENCE
+        self.run_startup_sequence()
 
     def enforce_topmost(self):
         self.lift()
@@ -56,48 +53,110 @@ class GameHelperApp(DraggableWindow):
         for widget in self.main_container.winfo_children():
             widget.destroy()
 
-    # --- LOGIN VIEW ---
-    # --- LOGIN VIEW ---
-    def show_login(self):
-        self.overrideredirect(False) 
+    # --- STARTUP LOGIC ---
+    def run_startup_sequence(self):
+        """Decides which screen to show based on what is missing."""
+        self.overrideredirect(False) # Show window chrome during setup for easier moving
+
+        # Step 1: API Keys
+        if not config.get_api_keys():
+            self.show_step_1_apikey()
+            return
+
+        # Step 2: Addon Installation
+        # (We check if it's installed. If not, show the installer step)
+        if not installer.is_installed():
+            self.show_step_2_addon()
+            return
+
+        # Step 3: All Good -> HUD
+        self.show_hud()
+
+    # --- VIEW: STEP 1 (API KEY) ---
+    def show_step_1_apikey(self):
         self.clear_view()
-        
-        # Center the Login Content
+        self.geometry("400x300")
+
         content = ctk.CTkFrame(self.main_container, fg_color="transparent")
         content.place(relx=0.5, rely=0.5, anchor="center")
 
-        ctk.CTkLabel(content, text="🔑 ProxiHUD Setup", font=("Segoe UI", 16, "bold")).pack(pady=(0, 5))
-        ctk.CTkLabel(content, text="Enter your Gemini API Key", font=("Segoe UI", 12), text_color="gray").pack(pady=(0, 15))
-        
-        self.login_entry = ctk.CTkEntry(content, width=280, placeholder_text="Paste Key here...")
+        ctk.CTkLabel(content, text="Step 1 of 2", text_color="#f72585", font=("Segoe UI", 12, "bold")).pack()
+        ctk.CTkLabel(content, text="Connect Intelligence", font=("Segoe UI", 18, "bold")).pack(pady=(0, 10))
+
+        msg = "ProxiHUD needs a Google Gemini API Key to see\nand analyze your game."
+        ctk.CTkLabel(content, text=msg, font=("Segoe UI", 12), text_color="gray").pack(pady=(0, 15))
+
+        self.login_entry = ctk.CTkEntry(content, width=300, placeholder_text="Paste API Key here...")
         self.login_entry.pack(pady=5)
-        self.login_entry.bind("<Return>", self.save_key_from_login)
-        
-        def on_login_click(event):
-            self.login_entry.focus_force()
-            self.login_entry.focus_set()
-            return "break"
-        
-        self.login_entry.bind("<Button-1>", on_login_click)
-        # ------------------------------------------
 
-        ctk.CTkButton(content, text="Save & Start", command=lambda: self.save_key_from_login(None)).pack(pady=10)
+        def on_entry_click(event):
+            return "break" # Prevent drag
+        self.login_entry.bind("<Button-1>", on_entry_click)
+        self.login_entry.bind("<Return>", self.step_1_submit)
 
-    def save_key_from_login(self, event):
+        ctk.CTkButton(content, text="Next ➜", width=300, command=lambda: self.step_1_submit(None)).pack(pady=10)
+
+        # Link helper
+        link = ctk.CTkLabel(content, text="(Get a free key here)", text_color="#4cc9f0", cursor="hand2")
+        link.pack()
+        link.bind("<Button-1>", lambda e: os.system("start https://aistudio.google.com/app/apikey"))
+
+    def step_1_submit(self, event):
         key = self.login_entry.get().strip()
         if len(key) > 5:
             config.save_api_key(key)
-            self.show_hud()
+            self.run_startup_sequence() # Check next step
 
-    # --- HUD VIEW ---
+    def show_step_2_addon(self):
+        self.clear_view()
+        self.geometry("400x350")
+
+        content = ctk.CTkFrame(self.main_container, fg_color="transparent")
+        content.place(relx=0.5, rely=0.5, anchor="center")
+
+        ctk.CTkLabel(content, text="Step 2 of 2", text_color="#f72585", font=("Segoe UI", 12, "bold")).pack()
+        ctk.CTkLabel(content, text="Connect Game Data", font=("Segoe UI", 18, "bold")).pack(pady=(0, 10))
+
+        # --- FIX IS HERE ---
+        # We use config.get_eso_addon_path() because we want to show where it installs TO.
+        msg = ("To give accurate advice, ProxiHUD needs to read your\n"
+               "character stats and inventory.\n\n"
+               "We will install a small bridge AddOn to:\n"
+               f"{config.get_eso_addon_path()}")
+        # -------------------
+
+        ctk.CTkLabel(content, text=msg, font=("Segoe UI", 12), text_color="gray").pack(pady=(0, 20))
+
+        self.install_btn = ctk.CTkButton(content, text="Install Bridge AddOn", width=300, fg_color="#2ecc71", hover_color="#27ae60", command=self.step_2_install)
+        self.install_btn.pack(pady=5)
+
+        ctk.CTkButton(content, text="Skip (Reduced Functionality)", width=300, fg_color="transparent", border_width=1, command=self.show_hud).pack(pady=5)
+
+    def step_2_install(self):
+        self.install_btn.configure(text="Installing...", state="disabled")
+
+        # Run install in thread so UI doesn't freeze
+        def _install():
+            success = installer.install_addon()
+            if success:
+                self.after(0, self.show_hud)
+            else:
+                self.after(0, lambda: self.install_btn.configure(text="Error. Try Manually?", fg_color="#e74c3c"))
+
+        threading.Thread(target=_install, daemon=True).start()
+
+    # --- VIEW: HUD (MAIN) ---
     def show_hud(self):
-        self.overrideredirect(True) 
+        self.overrideredirect(True) # Back to borderless
         self.clear_view()
 
-        # Debug Bar (Dev Only)
+        # Update Checker start
+        if not self.update_url:
+            threading.Thread(target=self.bg_update_check, daemon=True).start()
+
         if config.is_dev(): self.add_debug_controls()
 
-        # Input Bar (Bottom)
+        # Input Bar
         self.prompt_frame = ctk.CTkFrame(self.main_container, height=36, fg_color="#202020", corner_radius=8)
         self.prompt_frame.pack(side="bottom", fill="x", padx=10, pady=(0, 10))
         self.prompt_frame.bind('<Button-1>', self.clickwin)
@@ -112,46 +171,41 @@ class GameHelperApp(DraggableWindow):
 
         # Chat Entry
         self.prompt_entry = ctk.CTkEntry(
-            self.prompt_frame, placeholder_text="Ask...", font=("Segoe UI", 12), 
+            self.prompt_frame, placeholder_text="Ask...", font=("Segoe UI", 12),
             border_width=0, fg_color="transparent", text_color="#eee", height=30
         )
         self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(5, 60), pady=2)
         self.prompt_entry.bind("<Return>", self.trigger_chat)
-        
-        # Entry Focus Logic
+
         def on_entry_click(event):
             self.prompt_entry.focus_force()
             self.prompt_entry.focus_set()
             return "break"
         self.prompt_entry.bind("<Button-1>", on_entry_click)
 
-        # Separator
+        # Separator & Grip
         ctk.CTkFrame(self.prompt_frame, width=2, height=18, fg_color="#333", corner_radius=1).place(relx=1.0, rely=0.5, anchor="e", x=-35, y=0)
-        
-        # Resize Grip
+
         self.resize_grip = ctk.CTkLabel(self.prompt_frame, text="↘", font=("Arial", 16), text_color="#555", cursor="sizing", width=30, height=30)
-        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2) 
+        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2)
         self.resize_grip.bind("<Button-1>", self.start_resize)
         self.resize_grip.bind("<B1-Motion>", self.perform_resize)
         self.resize_grip.bind("<ButtonRelease-1>", self.save_geometry)
 
-        # Text Area (Top)
+        # Text Area
         self.text_area = tk.Text(self.main_container, bg="#1a1a1a", fg="#e0e0e0", font=("Consolas", 11), wrap="word", bd=0, highlightthickness=0, padx=15, pady=15)
         self.text_area.pack(side="top", fill="both", expand=True)
 
-        # Text Styles
         self.text_area.tag_config("user_tag", foreground="#4cc9f0", font=("Segoe UI", 11, "bold"))
         self.text_area.tag_config("ai_tag", foreground="#f72585", font=("Segoe UI", 11, "bold"))
         self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#ffffff")
         self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#ffd60a")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        # Ready Message
         ver = "Dev Mode" if config.is_dev() else updater.CURRENT_VERSION
         self.append_to_chat("System", f"ProxiHUD Ready ({ver})\n[F11] New Scan | [Type] Chat")
 
-        # Bindings
-        self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
+        self.text_area.bind("<Button-3>", self.trigger_update_or_clear)
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
 
@@ -163,25 +217,24 @@ class GameHelperApp(DraggableWindow):
         ctk.CTkButton(debug_frame, text="Dump", width=60, height=20, fg_color="#444", command=self.debug_save).pack(side="left", padx=5)
         ctk.CTkButton(debug_frame, text="Mock", width=60, height=20, fg_color="#444", command=self.debug_load).pack(side="left", padx=5)
 
-    # --- LOGIC ---
     def append_to_chat(self, sender, text, clear=False):
         self.text_area.config(state="normal")
         if clear: self.text_area.delete("1.0", "end")
         if sender: self.text_area.insert("end", f"\n{sender}: ", "user_tag" if sender == "You" else "ai_tag")
-        
+
         clean_text = text.replace("```markdown", "").replace("```", "").strip()
         for line in clean_text.split("\n"):
             line = line.strip()
             if not line: continue
             if line.startswith("#"): self.text_area.insert("end", line.lstrip("#").strip() + "\n", "header")
-            elif line.startswith(("* ", "- ")): 
+            elif line.startswith(("* ", "- ")):
                 self.text_area.insert("end", " • ", "bullet")
                 self._insert_bold(line[2:])
                 self.text_area.insert("end", "\n")
-            else: 
+            else:
                 self._insert_bold(line)
                 self.text_area.insert("end", "\n")
-        
+
         self.text_area.see("end")
         self.text_area.config(state="disabled")
 
@@ -213,10 +266,10 @@ class GameHelperApp(DraggableWindow):
         except Exception as e:
             self.append_to_chat("Error", str(e))
 
-    def start_resize(self, e): 
+    def start_resize(self, e):
         self._rx, self._ry, self._rw = e.x_root, e.y_root, self.winfo_width()
         return "break"
-    def perform_resize(self, e): 
+    def perform_resize(self, e):
         self.geometry(f"{max(350, self._rw + (e.x_root - self._rx))}x{self.winfo_height()}")
         self.render_markdown(self.text_area.get("1.0", "end-1c"))
         return "break"
@@ -230,18 +283,18 @@ class GameHelperApp(DraggableWindow):
         try:
             import keyboard
             keyboard.add_hotkey(self.settings.get("hotkey_trigger", "f11"), self.trigger_scan)
-            keyboard.add_hotkey(self.settings.get("hotkey_exit", "f12"), self.quit_app) 
+            keyboard.add_hotkey(self.settings.get("hotkey_exit", "f12"), self.quit_app)
         except: pass
 
     def quit_app(self):
         logging.info("Exiting app...")
-        self.save_geometry() 
+        self.save_geometry()
         self.quit()
         sys.exit()
 
     def open_settings(self):
         SettingsDialog(self, self.settings, self.apply_settings)
-    
+
     def apply_settings(self, new_settings):
         self.settings = new_settings
         self.attributes("-alpha", self.settings["opacity"])
@@ -249,11 +302,11 @@ class GameHelperApp(DraggableWindow):
 
     def debug_save(self): capture.capture_screen().save("debug.png"); os.system("start debug.png")
     def debug_load(self): threading.Thread(target=lambda: self.run_logic(self.prompt_entry.get() or None), daemon=True).start()
-    
+
     def bg_update_check(self):
         import time; time.sleep(1)
         avail, url, ver, msg = updater.check_for_updates()
-        if avail: 
+        if avail:
             self.update_url = url; self.new_ver = ver
             self.append_to_chat("System", f"Update {ver} available. Right-click to install.")
             self.update_available = True
@@ -262,5 +315,5 @@ class GameHelperApp(DraggableWindow):
         if self.update_available:
             self.append_to_chat("System", "Updating...")
             threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
-    
+
     def render_markdown(self, raw): self.append_to_chat(None, raw, clear=True)
