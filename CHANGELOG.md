@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.12 (2026-01-04)
+
+### Added
+
+* [36638] feat: Refactor AI analysis functions and enhance chat history management (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.11 (2026-01-04)
 
 ### Added

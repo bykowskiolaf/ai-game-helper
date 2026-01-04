@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.11",
+        "name": "0.8.0-rc.12",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767489517000,
+                    "timeStamp": 1767490133000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767489543000,
+                    "timeStamp": 1767490158000,
                     "offset": 60
                   }
                 },
-                "date": 1767489543000,
+                "date": 1767490158000,
                 "message": {
-                  "fullMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts\n",
-                  "shortMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts"
+                  "fullMessage": "feat: Refactor AI analysis functions and enhance chat history management\n",
+                  "shortMessage": "feat: Refactor AI analysis functions and enhance chat history management"
                 },
                 "parents": [
-                  "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
+                  "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
                 ],
-                "sha": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
+                "sha": "3663878d2d40230339fa40bd3a5308cc01be810d"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "1e17dc322d6bc774f84fa43d2f0f50f815523c15",
-    "infer.output.state.version": "0.8.0-rc.11",
+    "infer.input.repository.last.commit": "3663878d2d40230339fa40bd3a5308cc01be810d",
+    "infer.output.state.version": "0.8.0-rc.12",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "1e17dc322d6bc774f84fa43d2f0f50f815523c15",
-    "make.input.state.initialCommit": "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b",
+    "make.input.repository.last.commit": "3663878d2d40230339fa40bd3a5308cc01be810d",
+    "make.input.state.initialCommit": "534f0eccc7fec7c083c9538ca59fe1de1f86535d",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.11",
+    "make.input.version": "0.8.0-rc.12",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "1e17dc322d6bc774f84fa43d2f0f50f815523c15",
-    "mark.input.state.initialCommit": "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b",
+    "mark.input.repository.last.commit": "3663878d2d40230339fa40bd3a5308cc01be810d",
+    "mark.input.state.initialCommit": "534f0eccc7fec7c083c9538ca59fe1de1f86535d",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.11",
-    "publish.input.state.version": "0.8.0-rc.11",
-    "publish.output.state.version": "0.8.0-rc.11"
+    "mark.input.state.version": "0.8.0-rc.12",
+    "publish.input.state.version": "0.8.0-rc.12",
+    "publish.output.state.version": "0.8.0-rc.12"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767489517000,
+            "timeStamp": 1767490133000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767489543000,
+            "timeStamp": 1767490158000,
             "offset": 60
           }
         },
-        "date": 1767489543000,
+        "date": 1767490158000,
         "message": {
-          "fullMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts\n",
-          "shortMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts"
+          "fullMessage": "feat: Refactor AI analysis functions and enhance chat history management\n",
+          "shortMessage": "feat: Refactor AI analysis functions and enhance chat history management"
         },
         "parents": [
-          "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
+          "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
         ],
-        "sha": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
+        "sha": "3663878d2d40230339fa40bd3a5308cc01be810d"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767488872000,
+            "timeStamp": 1767489561000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767488872000,
+            "timeStamp": 1767489561000,
             "offset": 0
           }
         },
-        "date": 1767488872000,
+        "date": 1767489561000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.10 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.10 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.11 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.11 changelog and state [skip ci]"
         },
         "parents": [
-          "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
+          "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
         ],
-        "sha": "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
+        "sha": "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767490133000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767490158000,
+          "offset": 60
+        }
+      },
+      "date": 1767490158000,
+      "message": {
+        "fullMessage": "feat: Refactor AI analysis functions and enhance chat history management\n",
+        "shortMessage": "feat: Refactor AI analysis functions and enhance chat history management"
+      },
+      "parents": [
+        "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
+      ],
+      "sha": "3663878d2d40230339fa40bd3a5308cc01be810d"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767489561000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767489561000,
+          "offset": 0
+        }
+      },
+      "date": 1767489561000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.11 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.11 changelog and state [skip ci]"
+      },
+      "parents": [
+        "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
+      ],
+      "sha": "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
+    },
+    "previousVersion": "0.8.0-rc.11",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
       ],
-      "sha": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488872000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488872000,
-          "offset": 0
-        }
-      },
-      "date": 1767488872000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.10 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.10 changelog and state [skip ci]"
-      },
-      "parents": [
-        "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
-      ],
-      "sha": "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
-    },
-    "previousVersion": "0.8.0-rc.10",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488855000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488855000,
-          "offset": 60
-        }
-      },
-      "date": 1767488855000,
-      "message": {
-        "fullMessage": "feat: Update build process and restructure package imports\n",
-        "shortMessage": "feat: Update build process and restructure package imports"
-      },
-      "parents": [
-        "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.10",
-          "target": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
+          "name": "0.8.0-rc.11",
+          "target": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
         }
       ],
-      "sha": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
+      "sha": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767489517000,
+            "timeStamp": 1767490133000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767489543000,
+            "timeStamp": 1767490158000,
             "offset": 60
           }
         },
-        "date": 1767489543000,
+        "date": 1767490158000,
         "message": {
-          "fullMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts\n",
-          "shortMessage": "feat: Enhance text rendering with improved formatting and cleanup for AI artifacts"
+          "fullMessage": "feat: Refactor AI analysis functions and enhance chat history management\n",
+          "shortMessage": "feat: Refactor AI analysis functions and enhance chat history management"
         },
         "parents": [
-          "9c991fdbeeaf7eed4e243578cd0b6b03e8f45e9b"
+          "534f0eccc7fec7c083c9538ca59fe1de1f86535d"
         ],
-        "sha": "1e17dc322d6bc774f84fa43d2f0f50f815523c15"
+        "sha": "3663878d2d40230339fa40bd3a5308cc01be810d"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767489560522,
-  "version": "0.8.0-rc.11",
+  "timestamp": 1767490177743,
+  "version": "0.8.0-rc.12",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.11"
+  "versionPreReleaseIdentifier": "rc.12"
 }
