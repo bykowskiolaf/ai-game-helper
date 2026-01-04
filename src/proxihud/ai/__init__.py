@@ -2,16 +2,13 @@ from google import genai
 import logging
 import json
 from .. import config
-
-# Import our new agents
+# Import the specialist modules (ensure these exist in src/proxihud/ai/)
 from . import combat, inventory, death, skills, exploration
 
-def analyze_image(img):
+def analyze_image(img, user_prompt=None):
     """
-    Main Entry Point.
-    1. Authenticates.
-    2. Identifies Context (Router).
-    3. Dispatches to the correct Agent.
+    If user_prompt is provided, answers that specific question.
+    Otherwise, auto-detects the context and uses a specialist agent.
     """
     api_key = config.get_api_key()
     if not api_key:
@@ -20,8 +17,26 @@ def analyze_image(img):
     try:
         client = genai.Client(api_key=api_key)
         
-        # --- STEP 1: ROUTER ---
-        logging.info("Step 1: Identifying Context...")
+        # --- PATH A: CUSTOM USER QUESTION ---
+        if user_prompt:
+            logging.info(f"Handling custom prompt: {user_prompt}")
+            
+            prompt = f"""
+            **ROLE:** Expert Elder Scrolls Online Assistant.
+            **USER QUESTION:** "{user_prompt}"
+            **CONTEXT:** Analyze the screenshot to answer the user's question specifically.
+            **OUTPUT:** Keep it short, direct, and helpful. Use Markdown for clarity.
+            """
+            
+            # Using the main model for custom queries
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=[prompt, img]
+            )
+            return response.text
+
+        # --- PATH B: AUTO-ROUTER (Existing Logic) ---
+        logging.info("Step 1: Identifying Context (Auto)...")
         
         router_prompt = """
         Analyze this Elder Scrolls Online screenshot. 
@@ -31,7 +46,7 @@ def analyze_image(img):
         - "SKILLS": Looking at the skill tree or champion points.
         - "DEATH": Death recap screen (gray screen, "You Died").
         - "QUEST": Talking to an NPC or reading a quest journal.
-        - "OTHER": Anything else.
+        - "OTHER": Anything else (map, loading screen, etc).
         
         Return ONLY a raw JSON string like: {"category": "COMBAT"}
         """
@@ -41,28 +56,27 @@ def analyze_image(img):
             contents=[router_prompt, img]
         )
         
-        # Parse JSON safely
+        # Safe JSON parsing
         raw_text = router_response.text.replace("```json", "").replace("```", "").strip()
         try:
             data = json.loads(raw_text)
             category = data.get("category", "OTHER")
         except:
             category = "OTHER"
-            logging.warning(f"Router parsing failed, defaulting to OTHER. Raw: {raw_text}")
+            logging.warning(f"Router JSON parse failed. Raw: {raw_text}")
 
         logging.info(f"Context Detected: {category}")
 
-        # --- STEP 2: DISPATCH TO AGENT ---
-        # We pass the 'client' to the agent so it doesn't need to re-authenticate
-        if category == "COMBAT":
+        # Dispatch to Specialist Agent
+        if category == "COMBAT": 
             return combat.analyze(client, img)
-        elif category == "INVENTORY":
+        elif category == "INVENTORY": 
             return inventory.analyze(client, img)
-        elif category == "DEATH":
+        elif category == "DEATH": 
             return death.analyze(client, img)
-        elif category == "SKILLS":
+        elif category == "SKILLS": 
             return skills.analyze(client, img)
-        else:
+        else: 
             return exploration.analyze(client, img)
 
     except Exception as e:

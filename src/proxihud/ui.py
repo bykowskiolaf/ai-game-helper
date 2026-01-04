@@ -23,6 +23,8 @@ class DraggableWindow(ctk.CTk):
     def clickwin(self, event):
         self._offsetx = event.x
         self._offsety = event.y
+        # FIX: Force focus to main window on click too
+        self.focus_force()
 
     def dragwin(self, event):
         x = self.winfo_pointerx() - self._offsetx
@@ -40,11 +42,11 @@ class GameHelperApp(DraggableWindow):
         except: pass
 
         # 2. Window Setup
-        self.geometry("500x200+50+50") 
+        self.geometry("500x250+50+50") 
         self.configure(fg_color="#1a1a1a")
         
         self.attributes("-topmost", True)
-        self.attributes("-alpha", 0.85) 
+        self.attributes("-alpha", 0.90) 
         self.lift() 
         self.enforce_topmost()
 
@@ -85,10 +87,45 @@ class GameHelperApp(DraggableWindow):
         self.frame = ctk.CTkFrame(self, fg_color="transparent")
         self.frame.pack(fill="both", expand=True)
 
+        # --- LAYOUT STACKING (Bottom Up) ---
+        
+        # 1. Debug Controls (Bottom Priority)
         if not getattr(sys, 'frozen', False):
             self.add_debug_controls()
 
-        # Text Area
+        # 2. PROMPT ENTRY (New Feature - Stacks above Debug)
+        self.prompt_frame = ctk.CTkFrame(self.frame, height=30, fg_color="#2b2b2b")
+        self.prompt_frame.pack(side="bottom", fill="x", padx=2, pady=2)
+        
+        self.prompt_entry = ctk.CTkEntry(
+            self.prompt_frame, 
+            placeholder_text="Type question... (e.g. 'How much is this worth?')",
+            font=("Consolas", 11),
+            border_width=0,
+            fg_color="#333",
+            text_color="#eee"
+        )
+        self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(2, 0))
+        self.prompt_entry.bind("<Return>", self.trigger_custom_analysis)
+
+        # --- [FIX] FORCE FOCUS ON CLICK ---
+        # Frameless windows don't get focus automatically. We force it.
+        def on_entry_click(event):
+            self.prompt_entry.focus_force()
+            self.prompt_entry.focus_set()
+            return "break" # Stop the click from triggering window drag
+            
+        self.prompt_entry.bind("<Button-1>", on_entry_click)
+
+
+        # Send Button
+        self.send_btn = ctk.CTkButton(
+            self.prompt_frame, text="➤", width=30, fg_color="#444", hover_color="#555",
+            command=lambda: self.trigger_custom_analysis(None)
+        )
+        self.send_btn.pack(side="right", padx=2)
+
+        # 3. TEXT AREA (Takes remaining space at Top)
         self.text_area = tk.Text(
             self.frame, 
             bg="#1a1a1a", fg="#e0e0e0", 
@@ -97,9 +134,9 @@ class GameHelperApp(DraggableWindow):
         )
         self.text_area.pack(side="top", fill="both", expand=True)
         
-        # Resize Grip
+        # Resize Grip (Overlay on bottom right)
         self.resize_grip = ctk.CTkLabel(self.frame, text="↘", font=("Arial", 12), text_color="gray", cursor="sizing")
-        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2)
+        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=0) 
         self.resize_grip.bind("<Button-1>", self.start_resize)
         self.resize_grip.bind("<B1-Motion>", self.perform_resize)
 
@@ -110,9 +147,8 @@ class GameHelperApp(DraggableWindow):
 
         # Initial Text
         ver = updater.CURRENT_VERSION
-        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit")
-
-        # Bindings
+        self.render_markdown(f"READY ({ver})\n[F11] Auto-Analyze\n[Type] Custom Question")
+        
         self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
@@ -134,6 +170,47 @@ class GameHelperApp(DraggableWindow):
             font=("Arial", 10), fg_color="#444", command=self.debug_load_mock
         ).pack(side="left", padx=5, pady=2)
 
+    def trigger_custom_analysis(self, event):
+        user_text = self.prompt_entry.get().strip()
+        if not user_text:
+            return 
+            
+        self.prompt_entry.delete(0, 'end') 
+        self.render_markdown(f"💬 Asking: '{user_text}'...")
+        # Unfocus the entry so hotkeys work immediately again
+        self.focus() 
+        
+        # Run custom query in thread
+        threading.Thread(target=self.run_logic, args=(user_text,), daemon=True).start()
+
+    def run_analysis_thread(self):
+        """Called by F11 (Auto Mode)"""
+        logging.info("Analysis triggered (Auto)")
+        self.render_markdown("... 👀 Looking ...")
+        t = threading.Thread(target=self.run_logic, args=(None,), daemon=True) 
+        t.start()
+
+    def run_logic(self, user_text=None):
+        try:
+            img = capture.capture_screen()
+            img.thumbnail((1024, 1024))
+            
+            if user_text:
+                logging.info(f"Running custom query: {user_text}")
+            
+            self.finish_analysis(img, user_text)
+        except Exception as e:
+            logging.error(f"Capture error: {e}")
+            self.render_markdown(f"Error: {e}")
+
+    def finish_analysis(self, img, user_text=None):
+        try:
+            result = ai.analyze_image(img, user_prompt=user_text)
+            self.render_markdown(result)
+        except Exception as e:
+            self.render_markdown(f"AI Error: {e}")
+
+    # --- DEBUG TOOLS ---
     def debug_save_screenshot(self):
         try:
             logging.info("Debug: Saving screenshot dump")
@@ -153,17 +230,14 @@ class GameHelperApp(DraggableWindow):
             
             logging.info("Debug: Loading mock image")
             img = Image.open("mock.png")
-            threading.Thread(target=lambda: self.finish_analysis(img), daemon=True).start()
+            user_text = self.prompt_entry.get().strip()
+            if not user_text: user_text = None
+            
+            threading.Thread(target=lambda: self.finish_analysis(img, user_text), daemon=True).start()
         except Exception as e:
             logging.error(f"Debug load mock failed: {e}")
 
-    def finish_analysis(self, img):
-        try:
-            result = ai.analyze_image(img)
-            self.render_markdown(result)
-        except Exception as e:
-            self.render_markdown(f"AI Error: {e}")
-
+    # --- RESIZE LOGIC ---
     def start_resize(self, event):
         self._resize_x = event.x_root
         self._resize_y = event.y_root
@@ -172,7 +246,7 @@ class GameHelperApp(DraggableWindow):
 
     def perform_resize(self, event):
         delta_x = event.x_root - self._resize_x
-        new_width = max(250, self._start_width + delta_x)
+        new_width = max(350, self._start_width + delta_x)
         self.geometry(f"{new_width}x{self.winfo_height()}")
         self.render_markdown(self.text_area.get("1.0", "end-1c"))
         return "break"
@@ -205,11 +279,12 @@ class GameHelperApp(DraggableWindow):
         font = tkfont.Font(family="Consolas", size=11)
         line_height = font.metrics("linespace")
 
-        extra = 40
-        if not getattr(sys, 'frozen', False): extra += 40
+        extra_padding = 40 
+        if not getattr(sys, 'frozen', False): extra_padding += 30 
+        extra_padding += 40 
 
-        required_height = (num_lines * line_height) + extra
-        final_height = max(100, min(800, required_height))
+        required_height = (num_lines * line_height) + extra_padding
+        final_height = max(150, min(800, required_height))
         
         current_width = self.winfo_width()
         if current_width < 100: current_width = 500
@@ -217,21 +292,6 @@ class GameHelperApp(DraggableWindow):
         x = self.winfo_x()
         y = self.winfo_y()
         self.geometry(f"{current_width}x{final_height}+{x}+{y}")
-
-    def run_analysis_thread(self):
-        logging.info("Analysis triggered")
-        self.render_markdown("... 👀 Looking ...")
-        t = threading.Thread(target=self.run_logic, daemon=True)
-        t.start()
-
-    def run_logic(self):
-        try:
-            img = capture.capture_screen()
-            img.thumbnail((1024, 1024))
-            self.finish_analysis(img)
-        except Exception as e:
-            logging.error(f"Capture error: {e}")
-            self.render_markdown(f"Error: {e}")
 
     def start_hotkeys(self):
         try:
@@ -253,8 +313,6 @@ class GameHelperApp(DraggableWindow):
             self.new_version = version
             if hasattr(self, 'text_area'):
                 self.show_update_alert()
-        # else:
-            # logging.info(f"Update check result: {msg}")
 
     def show_update_alert(self):
         current = self.text_area.get("1.0", "end-1c")
