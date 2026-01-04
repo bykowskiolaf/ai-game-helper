@@ -80,6 +80,7 @@ def update_app(download_url):
     try:
         logging.info(f"Downloading update from: {download_url}")
 
+        # 1. Download to temp file
         response = requests.get(download_url, stream=True)
         new_exe = "Update.tmp.exe"
         with open(new_exe, "wb") as f:
@@ -88,28 +89,35 @@ def update_app(download_url):
 
         logging.info("Download finished. preparing to swap.")
 
+        # 2. Rename Logic
         current_exe = sys.executable
         old_exe = current_exe + ".old"
 
+        # Clean up previous update mess if it exists
         if os.path.exists(old_exe):
             try: os.remove(old_exe)
             except: pass
 
+            # 3. The Swap
         os.rename(current_exe, old_exe)
         os.rename(new_exe, current_exe)
 
         logging.info("Files swapped. Launching new process...")
 
-        time.sleep(2.0)
+        # Give the filesystem a moment to unlock the file handle
+        time.sleep(1.0)
 
-        DETACHED_PROCESS = 0x00000008
-        subprocess.Popen([current_exe], creationflags=DETACHED_PROCESS, shell=False)
+        # 4. Launch using Windows Shell
+        # os.startfile is "Fire and Forget" - exactly like double-clicking the EXE.
+        os.startfile(current_exe)
 
+        # 5. HARD KILL SELF
         logging.info("Exiting...")
         os._exit(0)
 
     except Exception as e:
         logging.error(f"Update failed: {e}")
+        # If it failed, try to restore
         try:
             if os.path.exists("Update.tmp.exe"): os.remove("Update.tmp.exe")
         except: pass
