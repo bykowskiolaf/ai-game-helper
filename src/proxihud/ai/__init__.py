@@ -1,87 +1,69 @@
 from google import genai
 import logging
-import json
-from .. import config
-# Import the specialist modules (ensure these exist in src/proxihud/ai/)
+from .. import config, utils
 from . import combat, inventory, death, skills, exploration
 
-def analyze_image(img, user_prompt=None):
+def analyze_image(img, user_prompt=None, history=[]):
     """
-    If user_prompt is provided, answers that specific question.
-    Otherwise, auto-detects the context and uses a specialist agent.
+    Handles AI analysis with conversation history.
     """
     api_key = config.get_api_key()
-    if not api_key:
-        return "❌ Error: API Key is missing."
+    if not api_key: return "❌ API Key missing."
 
     try:
         client = genai.Client(api_key=api_key)
-        
-        # --- PATH A: CUSTOM USER QUESTION ---
-        if user_prompt:
-            logging.info(f"Handling custom prompt: {user_prompt}")
-            
-            prompt = f"""
-            **ROLE:** Expert Elder Scrolls Online Assistant.
-            **USER QUESTION:** "{user_prompt}"
-            **CONTEXT:** Analyze the screenshot to answer the user's question specifically.
-            **OUTPUT:** Keep it short, direct, and helpful. Use Markdown for clarity.
-            """
-            
-            # Using the main model for custom queries
-            response = client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=[prompt, img]
-            )
-            return response.text
 
-        # --- PATH B: AUTO-ROUTER (Existing Logic) ---
-        logging.info("Step 1: Identifying Context (Auto)...")
-        
+        # --- 1. CONSTRUCT HISTORY CONTEXT ---
+        history_context = ""
+        if history:
+            history_context = "PREVIOUS CONVERSATION:\n"
+            for msg in history:
+                role = "User" if msg['role'] == "user" else "AI"
+                history_context += f"{role}: {msg['text']}\n"
+            history_context += "\nEND HISTORY.\n"
+
+        # --- 2. HANDLE USER CHAT ---
+        if user_prompt:
+            prompt = f"""
+            {history_context}
+            
+            **CURRENT TASK:**
+            The user is asking a follow-up question about the CURRENT screen (image provided).
+            User Question: "{user_prompt}"
+            
+            Answer efficiently based on the image and the previous context.
+            """
+            return utils.query_gemini(client, prompt, img)
+
+        # --- 3. AUTO-ROUTER (If no text, just F11 scan) ---
         router_prompt = """
-        Analyze this Elder Scrolls Online screenshot. 
-        Classify the screen into exactly ONE of these categories:
-        - "COMBAT": Active fighting, health bars visible, boss mechanics.
-        - "INVENTORY": Looking at items, bank, or merchant.
-        - "SKILLS": Looking at the skill tree or champion points.
-        - "DEATH": Death recap screen (gray screen, "You Died").
-        - "QUEST": Talking to an NPC or reading a quest journal.
-        - "OTHER": Anything else (map, loading screen, etc).
-        
-        Return ONLY a raw JSON string like: {"category": "COMBAT"}
+        Classify this ESO screen into ONE category:
+        COMBAT, INVENTORY, SKILLS, DEATH, QUEST, OTHER.
+        Return JSON: {"category": "COMBAT"}
         """
         
-        router_response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=[router_prompt, img]
-        )
+        # Use util to query
+        raw_response = utils.query_gemini(client, router_prompt, img)
         
-        # Safe JSON parsing
-        raw_text = router_response.text.replace("```json", "").replace("```", "").strip()
-        try:
-            data = json.loads(raw_text)
-            category = data.get("category", "OTHER")
-        except:
-            category = "OTHER"
-            logging.warning(f"Router JSON parse failed. Raw: {raw_text}")
+        # Use util to parse JSON
+        data = utils.clean_json_response(raw_response)
+        cat = data.get("category", "OTHER") if data else "OTHER"
 
-        logging.info(f"Context Detected: {category}")
+        logging.info(f"Context Detected: {cat}")
 
-        # Dispatch to Specialist Agent
-        if category == "COMBAT": 
-            return combat.analyze(client, img)
-        elif category == "INVENTORY": 
-            return inventory.analyze(client, img)
-        elif category == "DEATH": 
-            return death.analyze(client, img)
-        elif category == "SKILLS": 
-            return skills.analyze(client, img)
-        else: 
-            return exploration.analyze(client, img)
+        # Dispatch
+        agents = {
+            "COMBAT": combat,
+            "INVENTORY": inventory,
+            "DEATH": death,
+            "SKILLS": skills,
+            "OTHER": exploration,
+            "QUEST": exploration
+        }
+        
+        agent = agents.get(cat, exploration)
+        return agent.analyze(client, img)
 
     except Exception as e:
-        error_msg = str(e)
-        if "429" in error_msg:
-            return "⏳ Rate Limit. Please wait."
-        logging.error(f"Analysis failed: {e}")
-        return f"❌ AI Error: {e}"
+        if "429" in str(e): return "⏳ Rate Limit."
+        return f"Error: {e}"

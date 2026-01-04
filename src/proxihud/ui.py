@@ -11,7 +11,6 @@ from . import ai
 from . import updater
 
 class DraggableWindow(ctk.CTk):
-    """A frameless window that can be dragged and resized"""
     def __init__(self):
         super().__init__()
         self.overrideredirect(True) 
@@ -23,7 +22,6 @@ class DraggableWindow(ctk.CTk):
     def clickwin(self, event):
         self._offsetx = event.x
         self._offsety = event.y
-        # FIX: Force focus to main window on click too
         self.focus_force()
 
     def dragwin(self, event):
@@ -34,28 +32,25 @@ class DraggableWindow(ctk.CTk):
 class GameHelperApp(DraggableWindow):
     def __init__(self):
         super().__init__()
-        
-        # 1. Setup Title & Icon
         self.title(config.APP_NAME)
-        try:
-            self.iconbitmap(config.resource_path("icon.ico"))
+        try: self.iconbitmap(config.resource_path("icon.ico"))
         except: pass
 
-        # 2. Window Setup
-        self.geometry("500x250+50+50") 
+        self.geometry("500x300+50+50") 
         self.configure(fg_color="#1a1a1a")
-        
         self.attributes("-topmost", True)
         self.attributes("-alpha", 0.90) 
         self.lift() 
         self.enforce_topmost()
+
+        # --- CHAT HISTORY STATE ---
+        self.history = [] 
 
         if not config.get_api_key():
             self.show_login()
         else:
             self.show_hud()
 
-        # Background Update Check
         self.update_available = False
         self.update_url = None
         threading.Thread(target=self.bg_update_check, daemon=True).start()
@@ -75,80 +70,62 @@ class GameHelperApp(DraggableWindow):
     def save_key(self, event):
         key = self.entry.get().strip()
         if len(key) > 5:
-            logging.info("User saved a new API Key")
             config.save_api_key(key)
             for widget in self.winfo_children(): widget.destroy()
             self.show_hud()
 
     def show_hud(self):
         self.overrideredirect(True) 
-        
-        # Main Container
         self.frame = ctk.CTkFrame(self, fg_color="transparent")
         self.frame.pack(fill="both", expand=True)
 
-        # --- LAYOUT STACKING (Bottom Up) ---
-        
-        # 1. Debug Controls (Bottom Priority)
+        # 1. Debug (Bottom)
         if not getattr(sys, 'frozen', False):
             self.add_debug_controls()
 
-        # 2. PROMPT ENTRY (New Feature - Stacks above Debug)
+        # 2. Input Bar (Above Debug)
         self.prompt_frame = ctk.CTkFrame(self.frame, height=30, fg_color="#2b2b2b")
         self.prompt_frame.pack(side="bottom", fill="x", padx=2, pady=2)
         
         self.prompt_entry = ctk.CTkEntry(
-            self.prompt_frame, 
-            placeholder_text="Type question... (e.g. 'How much is this worth?')",
-            font=("Consolas", 11),
-            border_width=0,
-            fg_color="#333",
-            text_color="#eee"
+            self.prompt_frame, placeholder_text="Ask a follow-up question...",
+            font=("Consolas", 11), border_width=0, fg_color="#333", text_color="#eee"
         )
-        self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(2, 0))
-        self.prompt_entry.bind("<Return>", self.trigger_custom_analysis)
-
-        # --- [FIX] FORCE FOCUS ON CLICK ---
-        # Frameless windows don't get focus automatically. We force it.
+        
+        self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(2, 25))
+        self.prompt_entry.bind("<Return>", self.trigger_chat)
+        
+        # Focus Fix
         def on_entry_click(event):
             self.prompt_entry.focus_force()
             self.prompt_entry.focus_set()
-            return "break" # Stop the click from triggering window drag
-            
+            return "break"
         self.prompt_entry.bind("<Button-1>", on_entry_click)
 
-
-        # Send Button
-        self.send_btn = ctk.CTkButton(
-            self.prompt_frame, text="➤", width=30, fg_color="#444", hover_color="#555",
-            command=lambda: self.trigger_custom_analysis(None)
-        )
-        self.send_btn.pack(side="right", padx=2)
-
-        # 3. TEXT AREA (Takes remaining space at Top)
+        # 3. Text Area (Top)
         self.text_area = tk.Text(
-            self.frame, 
-            bg="#1a1a1a", fg="#e0e0e0", 
-            font=("Consolas", 11), wrap="word", 
-            bd=0, highlightthickness=0, padx=10, pady=10
+            self.frame, bg="#1a1a1a", fg="#e0e0e0", 
+            font=("Consolas", 11), wrap="word", bd=0, highlightthickness=0, padx=10, pady=10
         )
         self.text_area.pack(side="top", fill="both", expand=True)
         
-        # Resize Grip (Overlay on bottom right)
+        # Resize Grip
         self.resize_grip = ctk.CTkLabel(self.frame, text="↘", font=("Arial", 12), text_color="gray", cursor="sizing")
         self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=0) 
         self.resize_grip.bind("<Button-1>", self.start_resize)
         self.resize_grip.bind("<B1-Motion>", self.perform_resize)
 
-        # Config Styles
-        self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#4cc9f0")
-        self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#f72585")
+        # Styles
+        self.text_area.tag_config("user_tag", foreground="#4cc9f0", font=("Consolas", 11, "bold"))
+        self.text_area.tag_config("ai_tag", foreground="#f72585", font=("Consolas", 11, "bold"))
+        self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#ffffff")
+        self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#ffd60a")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        # Initial Text
         ver = updater.CURRENT_VERSION
-        self.render_markdown(f"READY ({ver})\n[F11] Auto-Analyze\n[Type] Custom Question")
-        
+        self.append_to_chat("System", f"ProxiHUD Ready ({ver})\n[F11] New Scan | [Type] Chat")
+
+        # Bindings
         self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
@@ -159,199 +136,109 @@ class GameHelperApp(DraggableWindow):
     def add_debug_controls(self):
         debug_frame = ctk.CTkFrame(self.frame, height=30, fg_color="#333333")
         debug_frame.pack(side="bottom", fill="x")
+        ctk.CTkButton(debug_frame, text="Save Dump", width=80, height=20, fg_color="#444", command=self.debug_save).pack(side="left", padx=5)
+        ctk.CTkButton(debug_frame, text="Load Mock", width=80, height=20, fg_color="#444", command=self.debug_load).pack(side="left", padx=5)
 
-        ctk.CTkButton(
-            debug_frame, text="💾 Save Dump", width=80, height=20, 
-            font=("Arial", 10), fg_color="#444", command=self.debug_save_screenshot
-        ).pack(side="left", padx=5, pady=2)
+    # --- CHAT LOGIC ---
 
-        ctk.CTkButton(
-            debug_frame, text="📂 Load Mock", width=80, height=20, 
-            font=("Arial", 10), fg_color="#444", command=self.debug_load_mock
-        ).pack(side="left", padx=5, pady=2)
-
-    def trigger_custom_analysis(self, event):
-        user_text = self.prompt_entry.get().strip()
-        if not user_text:
-            return 
-            
-        self.prompt_entry.delete(0, 'end') 
-        self.render_markdown(f"💬 Asking: '{user_text}'...")
-        # Unfocus the entry so hotkeys work immediately again
-        self.focus() 
+    def append_to_chat(self, sender, text, clear=False):
+        """Adds a message to the UI log"""
+        self.text_area.config(state="normal")
+        if clear:
+            self.text_area.delete("1.0", "end")
         
-        # Run custom query in thread
-        threading.Thread(target=self.run_logic, args=(user_text,), daemon=True).start()
+        if sender:
+            tag = "user_tag" if sender == "You" else "ai_tag"
+            self.text_area.insert("end", f"\n{sender}: ", tag)
 
-    def run_analysis_thread(self):
-        """Called by F11 (Auto Mode)"""
-        logging.info("Analysis triggered (Auto)")
-        self.render_markdown("... 👀 Looking ...")
-        t = threading.Thread(target=self.run_logic, args=(None,), daemon=True) 
-        t.start()
+        # Render Markdown logic
+        clean_text = text.replace("```markdown", "").replace("```", "").strip()
+        lines = clean_text.split("\n")
+        
+        for line in lines:
+            line = line.strip()
+            if not line: continue
+            
+            if line.startswith("#"):
+                self.text_area.insert("end", line.lstrip("#").strip() + "\n", "header")
+            elif line.startswith("* ") or line.startswith("- "):
+                self.text_area.insert("end", " • ", "bullet")
+                self._insert_bold(line[2:])
+                self.text_area.insert("end", "\n")
+            else:
+                self._insert_bold(line)
+                self.text_area.insert("end", "\n")
+
+        self.text_area.see("end") 
+        self.text_area.config(state="disabled")
+
+    def _insert_bold(self, text):
+        parts = text.split("**")
+        for i, part in enumerate(parts):
+            tag = "bold" if i % 2 == 1 else "normal"
+            self.text_area.insert("end", part, tag)
+
+    def trigger_scan(self):
+        """F11: Starts a FRESH context (clears history)"""
+        self.history = [] 
+        self.append_to_chat("System", "Scanning...", clear=True)
+        threading.Thread(target=self.run_logic, args=(None,), daemon=True).start()
+
+    def trigger_chat(self, event):
+        """Enter: Appends to CURRENT context"""
+        text = self.prompt_entry.get().strip()
+        if not text: return
+        self.prompt_entry.delete(0, 'end')
+        self.focus()
+        
+        self.append_to_chat("You", text)
+        self.history.append({"role": "user", "text": text})
+        
+        threading.Thread(target=self.run_logic, args=(text,), daemon=True).start()
 
     def run_logic(self, user_text=None):
         try:
             img = capture.capture_screen()
             img.thumbnail((1024, 1024))
             
-            if user_text:
-                logging.info(f"Running custom query: {user_text}")
+            # Call AI with History
+            response = ai.analyze_image(img, user_text, self.history)
             
-            self.finish_analysis(img, user_text)
-        except Exception as e:
-            logging.error(f"Capture error: {e}")
-            self.render_markdown(f"Error: {e}")
-
-    def finish_analysis(self, img, user_text=None):
-        try:
-            result = ai.analyze_image(img, user_prompt=user_text)
-            self.render_markdown(result)
-        except Exception as e:
-            self.render_markdown(f"AI Error: {e}")
-
-    # --- DEBUG TOOLS ---
-    def debug_save_screenshot(self):
-        try:
-            logging.info("Debug: Saving screenshot dump")
-            img = capture.capture_screen()
-            img.save("debug.png")
-            self.render_markdown(f"✅ Saved 'debug.png'.")
-            if os.name == 'nt': os.startfile("debug.png")
-            else: os.system("open debug.png")
-        except Exception as e:
-            logging.error(f"Debug screenshot failed: {e}")
-
-    def debug_load_mock(self):
-        try:
-            if not os.path.exists("mock.png"):
-                self.render_markdown("❌ ERROR: 'mock.png' not found.")
-                return
+            self.history.append({"role": "model", "text": response})
+            self.append_to_chat("Proxi", response)
             
-            logging.info("Debug: Loading mock image")
-            img = Image.open("mock.png")
-            user_text = self.prompt_entry.get().strip()
-            if not user_text: user_text = None
-            
-            threading.Thread(target=lambda: self.finish_analysis(img, user_text), daemon=True).start()
         except Exception as e:
-            logging.error(f"Debug load mock failed: {e}")
+            self.append_to_chat("Error", str(e))
 
-    # --- RESIZE LOGIC ---
-    def start_resize(self, event):
-        self._resize_x = event.x_root
-        self._resize_y = event.y_root
-        self._start_width = self.winfo_width()
-        return "break"
-
-    def perform_resize(self, event):
-        delta_x = event.x_root - self._resize_x
-        new_width = max(350, self._start_width + delta_x)
-        self.geometry(f"{new_width}x{self.winfo_height()}")
-        self.render_markdown(self.text_area.get("1.0", "end-1c"))
-        return "break"
-
-    def render_markdown(self, raw_text):
-        self.text_area.config(state="normal")
-        self.text_area.delete("1.0", "end")
-        
-        # 1. Clean up AI artifacts (e.g. ```json or ```markdown wrappers)
-        clean_text = raw_text.replace("```markdown", "").replace("```", "").strip()
-        
-        lines = clean_text.split("\n")
-        
-        for line in lines:
-            line = line.strip()
-            if not line:
-                self.text_area.insert("end", "\n")
-                continue
-
-            # --- CASE 1: HEADERS (# or ##) ---
-            if line.startswith("#"):
-                # Remove all # chars and whitespace
-                content = line.lstrip("#").strip()
-                self.text_area.insert("end", content + "\n", "header")
-
-            # --- CASE 2: BULLETS (* or -) ---
-            elif line.startswith("* ") or line.startswith("- "):
-                # Insert the bullet symbol first
-                self.text_area.insert("end", " • ", "bullet")
-                # Then parse the rest of the line for bolding
-                content = line[2:] 
-                self._insert_with_bold(content)
-                self.text_area.insert("end", "\n")
-
-            # --- CASE 3: STANDARD TEXT ---
-            else:
-                self._insert_with_bold(line)
-                self.text_area.insert("end", "\n")
-
-        self.text_area.delete("end-1c", "end") # Remove trailing newline
-        self.text_area.config(state="disabled") 
-        
-        # --- AUTO-FIT HEIGHT ---
-        self.text_area.update_idletasks() 
-        count = self.text_area.count("1.0", "end", "displaylines")
-        num_lines = count[0] if count else 1
-
-        import tkinter.font as tkfont
-        font = tkfont.Font(family="Consolas", size=11)
-        line_height = font.metrics("linespace")
-
-        # Dynamic padding calculation
-        extra_padding = 40 
-        if not getattr(sys, 'frozen', False): extra_padding += 30 
-        extra_padding += 40 
-
-        required_height = (num_lines * line_height) + extra_padding
-        final_height = max(150, min(800, required_height))
-        
-        current_width = self.winfo_width()
-        if current_width < 100: current_width = 500
-            
-        x = self.winfo_x()
-        y = self.winfo_y()
-        self.geometry(f"{current_width}x{final_height}+{x}+{y}")
-
-    def _insert_with_bold(self, text):
-        """Helper to handle **bold** parsing within a line"""
-        parts = text.split("**")
-        for i, part in enumerate(parts):
-            # Even indices (0, 2, 4) are normal, Odd (1, 3) are bold
-            tag = "bold" if i % 2 == 1 else "normal"
-            if part:
-                self.text_area.insert("end", part, tag)
-
+    # --- BOILERPLATE & DEBUG ---
     def start_hotkeys(self):
         try:
             import keyboard
-            def listen():
-                keyboard.add_hotkey(config.TRIGGER_KEY, self.run_analysis_thread)
-                keyboard.add_hotkey(config.EXIT_KEY, self.quit)
-                keyboard.wait()
-            threading.Thread(target=listen, daemon=True).start()
-        except ImportError: pass
+            keyboard.add_hotkey(config.TRIGGER_KEY, self.trigger_scan)
+            keyboard.add_hotkey(config.EXIT_KEY, self.quit)
+        except: pass
+
+    def start_resize(self, e): self._rx, self._ry, self._rw = e.x_root, e.y_root, self.winfo_width()
+    def perform_resize(self, e): 
+        self.geometry(f"{max(350, self._rw + (e.x_root - self._rx))}x{self.winfo_height()}")
+    
+    def debug_save(self): 
+        capture.capture_screen().save("debug.png"); os.system("start debug.png")
+    def debug_load(self):
+        if os.path.exists("mock.png"):
+            user_text = self.prompt_entry.get().strip() or None
+            self.append_to_chat("System", "Loaded Mock")
+            threading.Thread(target=lambda: self.run_logic(user_text), daemon=True).start()
 
     def bg_update_check(self):
-        import time
-        time.sleep(1)
-        available, url, version, msg = updater.check_for_updates()
-        if available:
+        import time; time.sleep(1)
+        avail, url, ver, msg = updater.check_for_updates()
+        if avail: 
+            self.update_url = url; self.new_ver = ver
+            self.append_to_chat("System", f"Update {ver} available. Right-click to install.")
             self.update_available = True
-            self.update_url = url
-            self.new_version = version
-            if hasattr(self, 'text_area'):
-                self.show_update_alert()
 
-    def show_update_alert(self):
-        current = self.text_area.get("1.0", "end-1c")
-        msg = f"\n\n🚨 UPDATE: {self.new_version}\n[Right-Click to Update]"
-        self.render_markdown(current + msg)
-
-    def trigger_update_or_clear(self, event):
+    def trigger_update_or_clear(self, e):
         if self.update_available:
-            logging.info("User triggered update download")
-            self.render_markdown(f"⬇ Downloading {self.new_version}...")
+            self.append_to_chat("System", "Updating...")
             threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
-        else:
-            self.render_markdown(f"READY ({updater.CURRENT_VERSION})")

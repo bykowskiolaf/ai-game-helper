@@ -1,3 +1,5 @@
+from .. import utils
+
 def analyze(client, img):
     prompt = """
     **ROLE:** ESO Market Expert & Build Crafter.
@@ -9,9 +11,4 @@ def analyze(client, img):
     * **Action:** (Keep, Sell, or Deconstruct?)
     * **Note:** (Why is it good? e.g., "Good trait for tanks")
     """
-    
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[prompt, img]
-    )
-    return response.text
+    return utils.query_gemini(client, prompt, img)

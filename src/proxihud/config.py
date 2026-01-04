@@ -4,12 +4,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# --- CONFIGURATION ---
-APP_NAME = "ProxiHUD"  # <--- CHANGE YOUR APP NAME HERE
-TRIGGER_KEY = "f11"
-EXIT_KEY = "f12"
+# --- APP INFO ---
+APP_NAME = "ProxiHUD"
 REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
+
+# --- AI CONFIG ---
+AI_MODEL = "gemini-2.5-flash" 
+
+# --- HOTKEYS ---
+TRIGGER_KEY = "f11"
+EXIT_KEY = "f12"
 
 # --- HELPER FUNCTIONS ---
 def resource_path(relative_path):

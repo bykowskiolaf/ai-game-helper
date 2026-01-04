@@ -1,3 +1,5 @@
+from .. import utils
+
 def analyze(client, img):
     prompt = """
     **ROLE:** Veteran ESO Raid Leader.
@@ -9,9 +11,4 @@ def analyze(client, img):
     * **Threat:** (Identify the most dangerous enemy or mechanic visible)
     * **Advice:** (One specific tactical instruction: e.g., "Block now", "Roll dodge", "Heal")
     """
-    
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[prompt, img]
-    )
-    return response.text
+    return utils.query_gemini(client, prompt, img)

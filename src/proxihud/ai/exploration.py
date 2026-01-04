@@ -1,3 +1,5 @@
+from .. import utils
+
 def analyze(client, img):
     prompt = """
     **ROLE:** Loremaster & Guide.
@@ -8,9 +10,4 @@ def analyze(client, img):
     * **Location:** (Where are we?)
     * **Tip:** (Look for skyshards, chests, or quest objectives here)
     """
-    
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[prompt, img]
-    )
-    return response.text
+    return utils.query_gemini(client, prompt, img)

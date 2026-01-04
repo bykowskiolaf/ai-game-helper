@@ -1,3 +1,5 @@
+from .. import utils
+
 def analyze(client, img):
     prompt = """
     **ROLE:** Gentle Combat Coach.
@@ -9,9 +11,4 @@ def analyze(client, img):
     * **Mistake:** (Did they stand in AOE? Miss a block?)
     * **Tip:** (How to survive this next time)
     """
-    
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[prompt, img]
-    )
-    return response.text
+    return utils.query_gemini(client, prompt, img)
