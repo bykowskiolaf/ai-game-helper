@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.3 (2026-01-04)
+
+### Added
+
+* [16c35] feat: Add initial ProxiHUD Bridge integration (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.2 (2026-01-04)
 
 ### Added

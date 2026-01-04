@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.2.0-rc.2",
+        "name": "0.2.0-rc.3",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767565801000,
+                    "timeStamp": 1767565884000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767565801000,
+                    "timeStamp": 1767565896000,
                     "offset": 60
                   }
                 },
-                "date": 1767565801000,
+                "date": 1767565896000,
                 "message": {
-                  "fullMessage": "feat: Implement startup sequence with API key and addon installation steps\n",
-                  "shortMessage": "feat: Implement startup sequence with API key and addon installation steps"
+                  "fullMessage": "feat: Add initial ProxiHUD Bridge integration\n",
+                  "shortMessage": "feat: Add initial ProxiHUD Bridge integration"
                 },
                 "parents": [
-                  "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
+                  "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
                 ],
-                "sha": "dbae401cb1a92214dc475d555a0f06a2828d8036"
+                "sha": "16c35eb8144b42200db2b047eccc721cca847879"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "dbae401cb1a92214dc475d555a0f06a2828d8036",
-    "infer.output.state.version": "0.2.0-rc.2",
+    "infer.input.repository.last.commit": "16c35eb8144b42200db2b047eccc721cca847879",
+    "infer.output.state.version": "0.2.0-rc.3",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "dbae401cb1a92214dc475d555a0f06a2828d8036",
-    "make.input.state.initialCommit": "5115549d00cf179d4cf16f6abefc1b36c1d667b3",
+    "make.input.repository.last.commit": "16c35eb8144b42200db2b047eccc721cca847879",
+    "make.input.state.initialCommit": "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.2",
+    "make.input.version": "0.2.0-rc.3",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "dbae401cb1a92214dc475d555a0f06a2828d8036",
-    "mark.input.state.initialCommit": "5115549d00cf179d4cf16f6abefc1b36c1d667b3",
+    "mark.input.repository.last.commit": "16c35eb8144b42200db2b047eccc721cca847879",
+    "mark.input.state.initialCommit": "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.2",
-    "publish.input.state.version": "0.2.0-rc.2",
-    "publish.output.state.version": "0.2.0-rc.2"
+    "mark.input.state.version": "0.2.0-rc.3",
+    "publish.input.state.version": "0.2.0-rc.3",
+    "publish.output.state.version": "0.2.0-rc.3"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767565801000,
+            "timeStamp": 1767565884000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767565801000,
+            "timeStamp": 1767565896000,
             "offset": 60
           }
         },
-        "date": 1767565801000,
+        "date": 1767565896000,
         "message": {
-          "fullMessage": "feat: Implement startup sequence with API key and addon installation steps\n",
-          "shortMessage": "feat: Implement startup sequence with API key and addon installation steps"
+          "fullMessage": "feat: Add initial ProxiHUD Bridge integration\n",
+          "shortMessage": "feat: Add initial ProxiHUD Bridge integration"
         },
         "parents": [
-          "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
+          "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
         ],
-        "sha": "dbae401cb1a92214dc475d555a0f06a2828d8036"
+        "sha": "16c35eb8144b42200db2b047eccc721cca847879"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767527284000,
+            "timeStamp": 1767565817000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767527284000,
+            "timeStamp": 1767565817000,
             "offset": 0
           }
         },
-        "date": 1767527284000,
+        "date": 1767565817000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.1 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.1 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.2 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.2 changelog and state [skip ci]"
         },
         "parents": [
-          "f6343ccaa193363bd1179a5c36a19547125c0563"
+          "dbae401cb1a92214dc475d555a0f06a2828d8036"
         ],
-        "sha": "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
+        "sha": "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767565884000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767565896000,
+          "offset": 60
+        }
+      },
+      "date": 1767565896000,
+      "message": {
+        "fullMessage": "feat: Add initial ProxiHUD Bridge integration\n",
+        "shortMessage": "feat: Add initial ProxiHUD Bridge integration"
+      },
+      "parents": [
+        "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
+      ],
+      "sha": "16c35eb8144b42200db2b047eccc721cca847879"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767565817000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767565817000,
+          "offset": 0
+        }
+      },
+      "date": 1767565817000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.2 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.2 changelog and state [skip ci]"
+      },
+      "parents": [
+        "dbae401cb1a92214dc475d555a0f06a2828d8036"
+      ],
+      "sha": "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
+    },
+    "previousVersion": "0.2.0-rc.2",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
       ],
-      "sha": "dbae401cb1a92214dc475d555a0f06a2828d8036"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767527284000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767527284000,
-          "offset": 0
-        }
-      },
-      "date": 1767527284000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.1 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.1 changelog and state [skip ci]"
-      },
-      "parents": [
-        "f6343ccaa193363bd1179a5c36a19547125c0563"
-      ],
-      "sha": "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
-    },
-    "previousVersion": "0.2.0-rc.1",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767527247000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767527247000,
-          "offset": 60
-        }
-      },
-      "date": 1767527247000,
-      "message": {
-        "fullMessage": "chore: Remove .nyx-state.json and clear CHANGELOG.md\n",
-        "shortMessage": "chore: Remove .nyx-state.json and clear CHANGELOG.md"
-      },
-      "parents": [
-        "da3210d41a1e1d6c6077b061c36a7b61ed2f1182"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.1",
-          "target": "f6343ccaa193363bd1179a5c36a19547125c0563"
+          "name": "0.2.0-rc.2",
+          "target": "dbae401cb1a92214dc475d555a0f06a2828d8036"
         }
       ],
-      "sha": "f6343ccaa193363bd1179a5c36a19547125c0563"
+      "sha": "dbae401cb1a92214dc475d555a0f06a2828d8036"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767565801000,
+            "timeStamp": 1767565884000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767565801000,
+            "timeStamp": 1767565896000,
             "offset": 60
           }
         },
-        "date": 1767565801000,
+        "date": 1767565896000,
         "message": {
-          "fullMessage": "feat: Implement startup sequence with API key and addon installation steps\n",
-          "shortMessage": "feat: Implement startup sequence with API key and addon installation steps"
+          "fullMessage": "feat: Add initial ProxiHUD Bridge integration\n",
+          "shortMessage": "feat: Add initial ProxiHUD Bridge integration"
         },
         "parents": [
-          "5115549d00cf179d4cf16f6abefc1b36c1d667b3"
+          "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
         ],
-        "sha": "dbae401cb1a92214dc475d555a0f06a2828d8036"
+        "sha": "16c35eb8144b42200db2b047eccc721cca847879"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767565816866,
-  "version": "0.2.0-rc.2",
+  "timestamp": 1767565907423,
+  "version": "0.2.0-rc.3",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.2"
+  "versionPreReleaseIdentifier": "rc.3"
 }
