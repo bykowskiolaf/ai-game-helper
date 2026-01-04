@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.11 (2026-01-04)
+
+### Added
+
+* [1e17d] feat: Enhance text rendering with improved formatting and cleanup for AI artifacts (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.10 (2026-01-04)
 
 ### Added
