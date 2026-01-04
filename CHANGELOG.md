@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.7 (2026-01-04)
+
+### Added
+
+* [06761] feat: Improve updater logic with detailed steps for file handling and process launch (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.6 (2026-01-04)
 
 ### Added
