@@ -1,14 +1,17 @@
 from google import genai
 import config
+import logging
 
 def analyze_image(img):
     """Sends the image to Gemini and returns the advice text."""
     api_key = config.get_api_key()
     
     if not api_key:
+        logging.warning("Analysis attempted without API Key")
         return "❌ Error: API Key is missing."
 
     try:
+        logging.info("Sending image to Gemini...")
         client = genai.Client(api_key=api_key)
         
         prompt = """
@@ -25,10 +28,18 @@ def analyze_image(img):
         """
         
         response = client.models.generate_content(
-            model="gemini-3-flash-preview",
+            model="gemini-2.5-flash",
             contents=[prompt, img]
         )
+        
+        logging.info("Gemini response received successfully.")
         return response.text
 
     except Exception as e:
+        error_msg = str(e)
+        if "429" in error_msg:
+            logging.warning("Gemini Rate Limit Exceeded (429)")
+            return "⏳ Too fast! Please wait a moment (Rate Limit)."
+            
+        logging.error(f"AI Analysis Failed: {e}")
         return f"❌ AI Error: {e}"

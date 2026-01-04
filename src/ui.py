@@ -1,6 +1,10 @@
 import customtkinter as ctk
 import tkinter as tk
 import threading
+import sys
+import os
+import logging
+from PIL import Image
 import config
 import capture
 import ai
@@ -10,24 +14,9 @@ class DraggableWindow(ctk.CTk):
     """A frameless window that can be dragged and resized"""
     def __init__(self):
         super().__init__()
-        
-        # Set the Title (even though borders are hidden, it's good practice)
-        self.title(config.APP_NAME)
-
-        # Set App Icon
-        try:
-            icon_path = config.resource_path("icon.ico")
-            self.iconbitmap(icon_path)
-        except Exception:
-            print("Warning: Could not find icon.ico")
-
-        # Window Setup
-        self.geometry("500x150+50+50")
         self.overrideredirect(True) 
         self._offsetx = 0
         self._offsety = 0
-
-        # Bind moving logic to the background
         self.bind('<Button-1>', self.clickwin)
         self.bind('<B1-Motion>', self.dragwin)
 
@@ -44,23 +33,27 @@ class GameHelperApp(DraggableWindow):
     def __init__(self):
         super().__init__()
         
-        # Initial Size (Wider by default)
-        self.geometry("500x150+50+50") 
+        # 1. Setup Title & Icon
+        self.title(config.APP_NAME)
+        try:
+            self.iconbitmap(config.resource_path("icon.ico"))
+        except: pass
+
+        # 2. Window Setup
+        self.geometry("500x200+50+50") 
         self.configure(fg_color="#1a1a1a")
         
-        # --- FORCE ON TOP SETTINGS ---
         self.attributes("-topmost", True)
-        self.attributes("-alpha", 0.80) 
+        self.attributes("-alpha", 0.85) 
         self.lift() 
         self.enforce_topmost()
 
-        # Check API Key
         if not config.get_api_key():
             self.show_login()
         else:
             self.show_hud()
 
-        # Update Check
+        # Background Update Check
         self.update_available = False
         self.update_url = None
         threading.Thread(target=self.bg_update_check, daemon=True).start()
@@ -80,6 +73,7 @@ class GameHelperApp(DraggableWindow):
     def save_key(self, event):
         key = self.entry.get().strip()
         if len(key) > 5:
+            logging.info("User saved a new API Key")
             config.save_api_key(key)
             for widget in self.winfo_children(): widget.destroy()
             self.show_hud()
@@ -87,47 +81,38 @@ class GameHelperApp(DraggableWindow):
     def show_hud(self):
         self.overrideredirect(True) 
         
-        # Main Layout Frame
+        # Main Container
         self.frame = ctk.CTkFrame(self, fg_color="transparent")
         self.frame.pack(fill="both", expand=True)
+
+        if not getattr(sys, 'frozen', False):
+            self.add_debug_controls()
 
         # Text Area
         self.text_area = tk.Text(
             self.frame, 
-            bg="#1a1a1a", 
-            fg="#e0e0e0", 
-            font=("Consolas", 11), 
-            wrap="word", 
-            bd=0, 
-            highlightthickness=0,
-            padx=10, pady=10
+            bg="#1a1a1a", fg="#e0e0e0", 
+            font=("Consolas", 11), wrap="word", 
+            bd=0, highlightthickness=0, padx=10, pady=10
         )
-        self.text_area.pack(fill="both", expand=True)
+        self.text_area.pack(side="top", fill="both", expand=True)
         
-        # --- RESIZE GRIP (Bottom Right) ---
-        self.resize_grip = ctk.CTkLabel(
-            self.frame, 
-            text="↘", 
-            font=("Arial", 12), 
-            text_color="gray", 
-            cursor="sizing"
-        )
+        # Resize Grip
+        self.resize_grip = ctk.CTkLabel(self.frame, text="↘", font=("Arial", 12), text_color="gray", cursor="sizing")
         self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2)
-        
-        # Bind Resize Logic
         self.resize_grip.bind("<Button-1>", self.start_resize)
         self.resize_grip.bind("<B1-Motion>", self.perform_resize)
 
-        # Markdown Styles
+        # Config Styles
         self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#4cc9f0")
         self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#f72585")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
         # Initial Text
         ver = updater.CURRENT_VERSION
-        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit\n(Drag ↘ to resize)")
+        self.render_markdown(f"READY ({ver})\n[F11] Analyze\n[F12] Quit")
 
-        # Bindings (Pass drag through text area)
+        # Bindings
         self.text_area.bind("<Button-3>", self.trigger_update_or_clear) 
         self.text_area.bind('<Button-1>', self.clickwin)
         self.text_area.bind('<B1-Motion>', self.dragwin)
@@ -135,7 +120,50 @@ class GameHelperApp(DraggableWindow):
         if capture.is_windows():
             self.start_hotkeys()
 
-    # --- RESIZE LOGIC ---
+    def add_debug_controls(self):
+        debug_frame = ctk.CTkFrame(self.frame, height=30, fg_color="#333333")
+        debug_frame.pack(side="bottom", fill="x")
+
+        ctk.CTkButton(
+            debug_frame, text="💾 Save Dump", width=80, height=20, 
+            font=("Arial", 10), fg_color="#444", command=self.debug_save_screenshot
+        ).pack(side="left", padx=5, pady=2)
+
+        ctk.CTkButton(
+            debug_frame, text="📂 Load Mock", width=80, height=20, 
+            font=("Arial", 10), fg_color="#444", command=self.debug_load_mock
+        ).pack(side="left", padx=5, pady=2)
+
+    def debug_save_screenshot(self):
+        try:
+            logging.info("Debug: Saving screenshot dump")
+            img = capture.capture_screen()
+            img.save("debug.png")
+            self.render_markdown(f"✅ Saved 'debug.png'.")
+            if os.name == 'nt': os.startfile("debug.png")
+            else: os.system("open debug.png")
+        except Exception as e:
+            logging.error(f"Debug screenshot failed: {e}")
+
+    def debug_load_mock(self):
+        try:
+            if not os.path.exists("mock.png"):
+                self.render_markdown("❌ ERROR: 'mock.png' not found.")
+                return
+            
+            logging.info("Debug: Loading mock image")
+            img = Image.open("mock.png")
+            threading.Thread(target=lambda: self.finish_analysis(img), daemon=True).start()
+        except Exception as e:
+            logging.error(f"Debug load mock failed: {e}")
+
+    def finish_analysis(self, img):
+        try:
+            result = ai.analyze_image(img)
+            self.render_markdown(result)
+        except Exception as e:
+            self.render_markdown(f"AI Error: {e}")
+
     def start_resize(self, event):
         self._resize_x = event.x_root
         self._resize_y = event.y_root
@@ -143,19 +171,13 @@ class GameHelperApp(DraggableWindow):
         return "break"
 
     def perform_resize(self, event):
-        # Calculate new width based on mouse movement
         delta_x = event.x_root - self._resize_x
-        new_width = max(200, self._start_width + delta_x)
-        
-        # Apply new width
+        new_width = max(250, self._start_width + delta_x)
         self.geometry(f"{new_width}x{self.winfo_height()}")
-        
-        # Force text re-wrap
         self.render_markdown(self.text_area.get("1.0", "end-1c"))
         return "break"
 
     def render_markdown(self, raw_text):
-        """Renders text and Auto-Resizes HEIGHT to fit"""
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
@@ -175,42 +197,40 @@ class GameHelperApp(DraggableWindow):
         self.text_area.delete("end-1c", "end")
         self.text_area.config(state="disabled") 
         
-        # --- AUTO-FIT HEIGHT ---
         self.text_area.update_idletasks() 
-        
-        # Count display lines (handling wrapping)
         count = self.text_area.count("1.0", "end", "displaylines")
-        num_display_lines = count[0] if count else 1
+        num_lines = count[0] if count else 1
 
         import tkinter.font as tkfont
         font = tkfont.Font(family="Consolas", size=11)
         line_height = font.metrics("linespace")
 
-        # Buffer for padding + header spacing
-        required_height = (num_display_lines * line_height) + 40
-        final_height = max(80, min(800, required_height))
+        extra = 40
+        if not getattr(sys, 'frozen', False): extra += 40
+
+        required_height = (num_lines * line_height) + extra
+        final_height = max(100, min(800, required_height))
         
-        # Preserve CURRENT Width (allow user to resize width, we auto-fit height)
         current_width = self.winfo_width()
-        if current_width < 100: current_width = 500 # Default wider
+        if current_width < 100: current_width = 500
             
         x = self.winfo_x()
         y = self.winfo_y()
         self.geometry(f"{current_width}x{final_height}+{x}+{y}")
 
     def run_analysis_thread(self):
+        logging.info("Analysis triggered")
+        self.render_markdown("... 👀 Looking ...")
         t = threading.Thread(target=self.run_logic, daemon=True)
         t.start()
 
     def run_logic(self):
-        self.render_markdown("... 👀 Looking ...")
         try:
             img = capture.capture_screen()
             img.thumbnail((1024, 1024))
-            self.render_markdown("... 🧠 Thinking ...")
-            result = ai.analyze_image(img)
-            self.render_markdown(result)
+            self.finish_analysis(img)
         except Exception as e:
+            logging.error(f"Capture error: {e}")
             self.render_markdown(f"Error: {e}")
 
     def start_hotkeys(self):
@@ -221,11 +241,9 @@ class GameHelperApp(DraggableWindow):
                 keyboard.add_hotkey(config.EXIT_KEY, self.quit)
                 keyboard.wait()
             threading.Thread(target=listen, daemon=True).start()
-        except ImportError:
-            pass
+        except ImportError: pass
 
     def bg_update_check(self):
-        # Small delay to ensure HUD is rendered
         import time
         time.sleep(1)
         available, url, version, msg = updater.check_for_updates()
@@ -235,15 +253,18 @@ class GameHelperApp(DraggableWindow):
             self.new_version = version
             if hasattr(self, 'text_area'):
                 self.show_update_alert()
+        # else:
+            # logging.info(f"Update check result: {msg}")
 
     def show_update_alert(self):
-        current_text = self.text_area.get("1.0", "end-1c")
-        msg = f"\n\n🚨 UPDATE AVAILABLE: {self.new_version}\n[Right-Click to Update Now]"
-        self.render_markdown(current_text + msg)
+        current = self.text_area.get("1.0", "end-1c")
+        msg = f"\n\n🚨 UPDATE: {self.new_version}\n[Right-Click to Update]"
+        self.render_markdown(current + msg)
 
     def trigger_update_or_clear(self, event):
         if self.update_available:
-            self.render_markdown(f"⬇ Downloading {self.new_version}...\nPlease wait, app will restart.")
+            logging.info("User triggered update download")
+            self.render_markdown(f"⬇ Downloading {self.new_version}...")
             threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
         else:
-            self.render_markdown(f"READY ({updater.CURRENT_VERSION})\n[F11] Analyze\n[F12] Quit")
+            self.render_markdown(f"READY ({updater.CURRENT_VERSION})")
