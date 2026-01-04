@@ -101,7 +101,7 @@ jobs:
           $AppName = "ProxiHUD"
 
           # 3. Build Command
-          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/proxihud/main.py
+          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --paths "src" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/run.py
 
       # -----------------------------------------------------------------
       # JOB 3: Upload Asset
