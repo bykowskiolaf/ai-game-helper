@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.18 (2026-01-04)
+
+### Fixed
+
+* [ae6f3] fix: Update version retrieval to return a clean default; enhance logging with current version info (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.17 (2026-01-04)
 
 ### Added
