@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.4 (2026-01-04)
+
+### Added
+
+* [3092f] feat: Refactor startup sequence and enhance UI flow with new StartupWizard class (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.3 (2026-01-04)
 
 ### Added
