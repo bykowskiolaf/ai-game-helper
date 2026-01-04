@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.2.0-rc.4",
+        "name": "0.2.0-rc.5",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767567080000,
+                    "timeStamp": 1767567504000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767567087000,
+                    "timeStamp": 1767567529000,
                     "offset": 60
                   }
                 },
-                "date": 1767567087000,
+                "date": 1767567529000,
                 "message": {
-                  "fullMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class\n",
-                  "shortMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class"
+                  "fullMessage": "feat: Enhance addon installation logic with version checking and update handling\n",
+                  "shortMessage": "feat: Enhance addon installation logic with version checking and update handling"
                 },
                 "parents": [
-                  "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
+                  "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
                 ],
-                "sha": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
+                "sha": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "3092fd9a0d6478ded07df5eef94373d4f10f307e",
-    "infer.output.state.version": "0.2.0-rc.4",
+    "infer.input.repository.last.commit": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d",
+    "infer.output.state.version": "0.2.0-rc.5",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "3092fd9a0d6478ded07df5eef94373d4f10f307e",
-    "make.input.state.initialCommit": "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed",
+    "make.input.repository.last.commit": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d",
+    "make.input.state.initialCommit": "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.4",
+    "make.input.version": "0.2.0-rc.5",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "3092fd9a0d6478ded07df5eef94373d4f10f307e",
-    "mark.input.state.initialCommit": "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed",
+    "mark.input.repository.last.commit": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d",
+    "mark.input.state.initialCommit": "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.4",
-    "publish.input.state.version": "0.2.0-rc.4",
-    "publish.output.state.version": "0.2.0-rc.4"
+    "mark.input.state.version": "0.2.0-rc.5",
+    "publish.input.state.version": "0.2.0-rc.5",
+    "publish.output.state.version": "0.2.0-rc.5"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767567080000,
+            "timeStamp": 1767567504000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767567087000,
+            "timeStamp": 1767567529000,
             "offset": 60
           }
         },
-        "date": 1767567087000,
+        "date": 1767567529000,
         "message": {
-          "fullMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class\n",
-          "shortMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class"
+          "fullMessage": "feat: Enhance addon installation logic with version checking and update handling\n",
+          "shortMessage": "feat: Enhance addon installation logic with version checking and update handling"
         },
         "parents": [
-          "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
+          "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
         ],
-        "sha": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
+        "sha": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767565908000,
+            "timeStamp": 1767567102000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767565908000,
+            "timeStamp": 1767567102000,
             "offset": 0
           }
         },
-        "date": 1767565908000,
+        "date": 1767567102000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.3 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.3 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.4 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.4 changelog and state [skip ci]"
         },
         "parents": [
-          "16c35eb8144b42200db2b047eccc721cca847879"
+          "3092fd9a0d6478ded07df5eef94373d4f10f307e"
         ],
-        "sha": "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
+        "sha": "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767567504000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767567529000,
+          "offset": 60
+        }
+      },
+      "date": 1767567529000,
+      "message": {
+        "fullMessage": "feat: Enhance addon installation logic with version checking and update handling\n",
+        "shortMessage": "feat: Enhance addon installation logic with version checking and update handling"
+      },
+      "parents": [
+        "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
+      ],
+      "sha": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767567102000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767567102000,
+          "offset": 0
+        }
+      },
+      "date": 1767567102000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.4 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.4 changelog and state [skip ci]"
+      },
+      "parents": [
+        "3092fd9a0d6478ded07df5eef94373d4f10f307e"
+      ],
+      "sha": "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
+    },
+    "previousVersion": "0.2.0-rc.4",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
       ],
-      "sha": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767565908000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767565908000,
-          "offset": 0
-        }
-      },
-      "date": 1767565908000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.3 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.3 changelog and state [skip ci]"
-      },
-      "parents": [
-        "16c35eb8144b42200db2b047eccc721cca847879"
-      ],
-      "sha": "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
-    },
-    "previousVersion": "0.2.0-rc.3",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767565884000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767565896000,
-          "offset": 60
-        }
-      },
-      "date": 1767565896000,
-      "message": {
-        "fullMessage": "feat: Add initial ProxiHUD Bridge integration\n",
-        "shortMessage": "feat: Add initial ProxiHUD Bridge integration"
-      },
-      "parents": [
-        "bcd899ba730ebfcecfd894c2da9a62f34cc1cdd4"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.3",
-          "target": "16c35eb8144b42200db2b047eccc721cca847879"
+          "name": "0.2.0-rc.4",
+          "target": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
         }
       ],
-      "sha": "16c35eb8144b42200db2b047eccc721cca847879"
+      "sha": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767567080000,
+            "timeStamp": 1767567504000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767567087000,
+            "timeStamp": 1767567529000,
             "offset": 60
           }
         },
-        "date": 1767567087000,
+        "date": 1767567529000,
         "message": {
-          "fullMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class\n",
-          "shortMessage": "feat: Refactor startup sequence and enhance UI flow with new StartupWizard class"
+          "fullMessage": "feat: Enhance addon installation logic with version checking and update handling\n",
+          "shortMessage": "feat: Enhance addon installation logic with version checking and update handling"
         },
         "parents": [
-          "aa4ef9d41677baadd0ef9120e3c17a02bf2502ed"
+          "b8b1edf2e6c5c49f73a3dfaf9171dc5089c38c87"
         ],
-        "sha": "3092fd9a0d6478ded07df5eef94373d4f10f307e"
+        "sha": "f6a38a44a1589ae17fec07ad4d24be3c5066cb7d"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767567101384,
-  "version": "0.2.0-rc.4",
+  "timestamp": 1767567542230,
+  "version": "0.2.0-rc.5",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.4"
+  "versionPreReleaseIdentifier": "rc.5"
 }

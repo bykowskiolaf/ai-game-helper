@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.5 (2026-01-04)
+
+### Added
+
+* [f6a38] feat: Enhance addon installation logic with version checking and update handling (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.4 (2026-01-04)
 
 ### Added
