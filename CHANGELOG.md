@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.15 (2026-01-04)
+
+### Added
+
+* [199fb] feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.14 (2026-01-04)
 
 ### Added
