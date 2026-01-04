@@ -65,9 +65,9 @@ def get_eso_addon_path():
     return path
 
 def get_eso_saved_vars_path():
-    """Returns the path to the SavedVariables file"""
+    """Returns the path to the SavedVariables file."""
     docs = get_docs_folder()
-    return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Bridge.lua")
+    return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Data.lua")
 
 # --- API KEY MANAGEMENT ---
 _active_key_index = 0
