@@ -6,7 +6,7 @@ import subprocess
 import platform
 import logging
 from packaging.version import parse as parse_version
-from config import REPO_OWNER, REPO_NAME
+from .config import REPO_OWNER, REPO_NAME
 
 def get_version():
     try:

@@ -94,16 +94,14 @@ jobs:
         run: |
           $Version = "${{ needs.release.outputs.version }}"
 
-          # 1. Create the version file
-          echo $Version > src/version.txt
+          # 1. Create the version file inside the package
+          echo $Version > src/proxihud/version.txt
 
-          # 2. Define the new app name (Change 'ProxiHUD' to whatever you want)
+          # 2. Define App Name
           $AppName = "ProxiHUD"
 
           # 3. Build Command
-          # --icon sets the .exe file icon in Windows Explorer
-          # --add-data includes the icon inside the app so the UI can use it
-          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --icon "src/icon.ico" --add-data "src/version.txt;." --add-data "src/icon.ico;." src/main.py
+          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/proxihud/main.py
 
       # -----------------------------------------------------------------
       # JOB 3: Upload Asset

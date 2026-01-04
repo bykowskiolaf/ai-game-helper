@@ -5,10 +5,10 @@ import sys
 import os
 import logging
 from PIL import Image
-import config
-import capture
-import ai
-import updater
+from . import config
+from . import capture
+from . import ai
+from . import updater
 
 class DraggableWindow(ctk.CTk):
     """A frameless window that can be dragged and resized"""
