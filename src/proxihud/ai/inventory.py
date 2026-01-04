@@ -1,6 +1,6 @@
 from .. import utils
 
-def analyze(client, img):
+def analyze(img):
     prompt = """
     **ROLE:** ESO Market Expert & Build Crafter.
     **GOAL:** Evaluate the visible items.
@@ -11,4 +11,4 @@ def analyze(client, img):
     * **Action:** (Keep, Sell, or Deconstruct?)
     * **Note:** (Why is it good? e.g., "Good trait for tanks")
     """
-    return utils.query_gemini(client, prompt, img)
+    return utils.query_gemini(prompt, img)

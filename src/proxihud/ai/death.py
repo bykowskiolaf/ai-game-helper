@@ -1,6 +1,6 @@
 from .. import utils
 
-def analyze(client, img):
+def analyze(img):
     prompt = """
     **ROLE:** Gentle Combat Coach.
     **GOAL:** Analyze the Death Recap.
@@ -11,4 +11,4 @@ def analyze(client, img):
     * **Mistake:** (Did they stand in AOE? Miss a block?)
     * **Tip:** (How to survive this next time)
     """
-    return utils.query_gemini(client, prompt, img)
+    return utils.query_gemini(prompt, img)

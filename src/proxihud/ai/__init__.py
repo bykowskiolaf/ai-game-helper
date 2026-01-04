@@ -1,19 +1,22 @@
-from google import genai
 import logging
 from .. import config, utils
 from . import combat, inventory, death, skills, exploration
 
-def analyze_image(img, user_prompt=None, history=[]):
-    """
-    Handles AI analysis with conversation history.
-    """
-    api_key = config.get_api_key()
-    if not api_key: return "❌ API Key missing."
+def analyze_image(img, user_prompt=None, history=[], settings={}):
+    # Check if we have any keys at all
+    if not config.get_api_keys(): 
+        return "❌ API Key missing. Please add in settings."
 
-    try:
-        client = genai.Client(api_key=api_key)
+    # --- 1. DETERMINE PERSONA ---
+    persona = settings.get("persona", "Default")
+    system_instruction = ""
+    if persona == "Sarcastic": system_instruction = "STYLE: You are a sarcastic, witty companion."
+    elif persona == "Brief": system_instruction = "STYLE: Be extremely concise. Bullet points only."
+    elif persona == "Pirate": system_instruction = "STYLE: You be a pirate! Yarr!"
+    elif persona == "Helpful": system_instruction = "STYLE: You are overly supportive."
 
-        # --- 1. CONSTRUCT HISTORY CONTEXT ---
+    # --- 2. HANDLE USER CHAT ---
+    if user_prompt:
         history_context = ""
         if history:
             history_context = "PREVIOUS CONVERSATION:\n"
@@ -22,48 +25,29 @@ def analyze_image(img, user_prompt=None, history=[]):
                 history_context += f"{role}: {msg['text']}\n"
             history_context += "\nEND HISTORY.\n"
 
-        # --- 2. HANDLE USER CHAT ---
-        if user_prompt:
-            prompt = f"""
-            {history_context}
-            
-            **CURRENT TASK:**
-            The user is asking a follow-up question about the CURRENT screen (image provided).
-            User Question: "{user_prompt}"
-            
-            Answer efficiently based on the image and the previous context.
-            """
-            return utils.query_gemini(client, prompt, img)
-
-        # --- 3. AUTO-ROUTER (If no text, just F11 scan) ---
-        router_prompt = """
-        Classify this ESO screen into ONE category:
-        COMBAT, INVENTORY, SKILLS, DEATH, QUEST, OTHER.
-        Return JSON: {"category": "COMBAT"}
+        prompt = f"""
+        {system_instruction}
+        {history_context}
+        **CURRENT TASK:** Answer User Question about the image: "{user_prompt}"
         """
-        
-        # Use util to query
-        raw_response = utils.query_gemini(client, router_prompt, img)
-        
-        # Use util to parse JSON
-        data = utils.clean_json_response(raw_response)
-        cat = data.get("category", "OTHER") if data else "OTHER"
+        # CHANGED: No client passed
+        return utils.query_gemini(prompt, img)
 
-        logging.info(f"Context Detected: {cat}")
+    # --- 3. AUTO-ROUTER ---
+    logging.info("Auto-Routing...")
+    router_prompt = """
+    Classify ESO screenshot: COMBAT, INVENTORY, SKILLS, DEATH, OTHER.
+    Return JSON: {"category": "COMBAT"}
+    """
+    
+    raw_response = utils.query_gemini(router_prompt, img)
+    data = utils.clean_json_response(raw_response)
+    category = data.get("category", "OTHER") if data else "OTHER"
+    
+    logging.info(f"Context: {category}")
 
-        # Dispatch
-        agents = {
-            "COMBAT": combat,
-            "INVENTORY": inventory,
-            "DEATH": death,
-            "SKILLS": skills,
-            "OTHER": exploration,
-            "QUEST": exploration
-        }
-        
-        agent = agents.get(cat, exploration)
-        return agent.analyze(client, img)
-
-    except Exception as e:
-        if "429" in str(e): return "⏳ Rate Limit."
-        return f"Error: {e}"
+    if category == "COMBAT": return combat.analyze(img)
+    elif category == "INVENTORY": return inventory.analyze(img)
+    elif category == "DEATH": return death.analyze(img)
+    elif category == "SKILLS": return skills.analyze(img)
+    else: return exploration.analyze(img)

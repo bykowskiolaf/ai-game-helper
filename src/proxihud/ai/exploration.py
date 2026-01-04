@@ -1,6 +1,6 @@
 from .. import utils
 
-def analyze(client, img):
+def analyze(img):
     prompt = """
     **ROLE:** Loremaster & Guide.
     **GOAL:** Provide context on the location or quest.
@@ -10,4 +10,4 @@ def analyze(client, img):
     * **Location:** (Where are we?)
     * **Tip:** (Look for skyshards, chests, or quest objectives here)
     """
-    return utils.query_gemini(client, prompt, img)
+    return utils.query_gemini(prompt, img)

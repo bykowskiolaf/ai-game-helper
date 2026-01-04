@@ -7,7 +7,7 @@ import platform
 import logging
 import time
 from packaging.version import parse as parse_version
-from .config import REPO_OWNER, REPO_NAME
+from .config import REPO_OWNER, REPO_NAME, is_dev
 
 def get_version():
     try:
@@ -27,6 +27,10 @@ CURRENT_VERSION = get_version()
 
 def check_for_updates():
     try:
+        if is_dev():
+            logging.info("Dev Mode detected, skipping update check.")
+            return False, None, None, "Dev Mode"
+
         logging.info(f"Checking for updates... Local: {CURRENT_VERSION}")
         
         url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases"

@@ -1,6 +1,6 @@
 from .. import utils
 
-def analyze(client, img):
+def analyze(img):
     prompt = """
     **ROLE:** Veteran ESO Raid Leader.
     **GOAL:** Analyze the combat situation.
@@ -11,4 +11,4 @@ def analyze(client, img):
     * **Threat:** (Identify the most dangerous enemy or mechanic visible)
     * **Advice:** (One specific tactical instruction: e.g., "Block now", "Roll dodge", "Heal")
     """
-    return utils.query_gemini(client, prompt, img)
+    return utils.query_gemini(prompt, img)
