@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.16 (2026-01-04)
+
+### Added
+
+* [b67ab] feat: Remove settings and UI components; refactor application structure for improved maintainability (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.15 (2026-01-04)
 
 ### Added

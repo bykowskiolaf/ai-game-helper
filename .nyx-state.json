@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.15",
+        "name": "0.8.0-rc.16",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767525338000,
+                    "timeStamp": 1767526015000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767525338000,
+                    "timeStamp": 1767526022000,
                     "offset": 60
                   }
                 },
-                "date": 1767525338000,
+                "date": 1767526022000,
                 "message": {
-                  "fullMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization\n",
-                  "shortMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization"
+                  "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
+                  "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
                 },
                 "parents": [
-                  "646e1226d1753efdf2cbb958b2ea924a8953f688"
+                  "908397191c82401f5708a66f35e5273622d5873a"
                 ],
-                "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
+                "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "199fb3594f03eaa9a13e937c9282427c770bb103",
-    "infer.output.state.version": "0.8.0-rc.15",
+    "infer.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
+    "infer.output.state.version": "0.8.0-rc.16",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "199fb3594f03eaa9a13e937c9282427c770bb103",
-    "make.input.state.initialCommit": "646e1226d1753efdf2cbb958b2ea924a8953f688",
+    "make.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
+    "make.input.state.initialCommit": "908397191c82401f5708a66f35e5273622d5873a",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.15",
+    "make.input.version": "0.8.0-rc.16",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "199fb3594f03eaa9a13e937c9282427c770bb103",
-    "mark.input.state.initialCommit": "646e1226d1753efdf2cbb958b2ea924a8953f688",
+    "mark.input.repository.last.commit": "b67ab110d2962601b6799e08828248ec18a77ce8",
+    "mark.input.state.initialCommit": "908397191c82401f5708a66f35e5273622d5873a",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.15",
-    "publish.input.state.version": "0.8.0-rc.15",
-    "publish.output.state.version": "0.8.0-rc.15"
+    "mark.input.state.version": "0.8.0-rc.16",
+    "publish.input.state.version": "0.8.0-rc.16",
+    "publish.output.state.version": "0.8.0-rc.16"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767525338000,
+            "timeStamp": 1767526015000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767525338000,
+            "timeStamp": 1767526022000,
             "offset": 60
           }
         },
-        "date": 1767525338000,
+        "date": 1767526022000,
         "message": {
-          "fullMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization\n",
-          "shortMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization"
+          "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
+          "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
         },
         "parents": [
-          "646e1226d1753efdf2cbb958b2ea924a8953f688"
+          "908397191c82401f5708a66f35e5273622d5873a"
         ],
-        "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
+        "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767491349000,
+            "timeStamp": 1767525356000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767491349000,
+            "timeStamp": 1767525356000,
             "offset": 0
           }
         },
-        "date": 1767491349000,
+        "date": 1767525356000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.14 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.14 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]"
         },
         "parents": [
-          "0f3387179a9ebedb9bb93ae8fbe3e7e1b53d84ec"
+          "199fb3594f03eaa9a13e937c9282427c770bb103"
         ],
-        "sha": "646e1226d1753efdf2cbb958b2ea924a8953f688"
+        "sha": "908397191c82401f5708a66f35e5273622d5873a"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526015000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767526022000,
+          "offset": 60
+        }
+      },
+      "date": 1767526022000,
+      "message": {
+        "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
+        "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
+      },
+      "parents": [
+        "908397191c82401f5708a66f35e5273622d5873a"
+      ],
+      "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767525356000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767525356000,
+          "offset": 0
+        }
+      },
+      "date": 1767525356000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.15 changelog and state [skip ci]"
+      },
+      "parents": [
+        "199fb3594f03eaa9a13e937c9282427c770bb103"
+      ],
+      "sha": "908397191c82401f5708a66f35e5273622d5873a"
+    },
+    "previousVersion": "0.8.0-rc.15",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "646e1226d1753efdf2cbb958b2ea924a8953f688"
       ],
-      "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767491349000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767491349000,
-          "offset": 0
-        }
-      },
-      "date": 1767491349000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.14 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.14 changelog and state [skip ci]"
-      },
-      "parents": [
-        "0f3387179a9ebedb9bb93ae8fbe3e7e1b53d84ec"
-      ],
-      "sha": "646e1226d1753efdf2cbb958b2ea924a8953f688"
-    },
-    "previousVersion": "0.8.0-rc.14",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767491323000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767491331000,
-          "offset": 60
-        }
-      },
-      "date": 1767491331000,
-      "message": {
-        "fullMessage": "feat: Update AI model version and enhance logging format; improve UI layout and resize functionality\n",
-        "shortMessage": "feat: Update AI model version and enhance logging format; improve UI layout and resize functionality"
-      },
-      "parents": [
-        "0cc464ae84b3379510fd3c134479610925a4837f"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.14",
-          "target": "0f3387179a9ebedb9bb93ae8fbe3e7e1b53d84ec"
+          "name": "0.8.0-rc.15",
+          "target": "199fb3594f03eaa9a13e937c9282427c770bb103"
         }
       ],
-      "sha": "0f3387179a9ebedb9bb93ae8fbe3e7e1b53d84ec"
+      "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767525338000,
+            "timeStamp": 1767526015000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767525338000,
+            "timeStamp": 1767526022000,
             "offset": 60
           }
         },
-        "date": 1767525338000,
+        "date": 1767526022000,
         "message": {
-          "fullMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization\n",
-          "shortMessage": "feat: Refactor AI analysis functions to remove client dependency and enhance API key management; add settings management for UI customization"
+          "fullMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability\n",
+          "shortMessage": "feat: Remove settings and UI components; refactor application structure for improved maintainability"
         },
         "parents": [
-          "646e1226d1753efdf2cbb958b2ea924a8953f688"
+          "908397191c82401f5708a66f35e5273622d5873a"
         ],
-        "sha": "199fb3594f03eaa9a13e937c9282427c770bb103"
+        "sha": "b67ab110d2962601b6799e08828248ec18a77ce8"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767525355257,
-  "version": "0.8.0-rc.15",
+  "timestamp": 1767526044317,
+  "version": "0.8.0-rc.16",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.15"
+  "versionPreReleaseIdentifier": "rc.16"
 }
