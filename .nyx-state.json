@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.8",
+        "name": "0.8.0-rc.9",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767488094000,
+                    "timeStamp": 1767488416000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767488094000,
+                    "timeStamp": 1767488416000,
                     "offset": 60
                   }
                 },
-                "date": 1767488094000,
+                "date": 1767488416000,
                 "message": {
-                  "fullMessage": "feat: Implement logging system and application structure for ProxiHUD\n\n- Added logger module to handle logging setup and configuration.\n- Integrated logging into main application flow to capture critical errors.\n- Created UI module with a draggable window and HUD interface.\n- Implemented API key entry and validation within the UI.\n- Added functionality for background update checks and user notifications.\n- Developed updater module to manage version checks and application updates.\n- Included debug features for saving screenshots and loading mock images.\n",
-                  "shortMessage": "feat: Implement logging system and application structure for ProxiHUD"
+                  "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
+                  "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
                 },
                 "parents": [
-                  "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
+                  "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
                 ],
-                "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+                "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "e8861d3c31ff0fc76343f57072a603acd2da3e64",
-    "infer.output.state.version": "0.8.0-rc.8",
+    "infer.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
+    "infer.output.state.version": "0.8.0-rc.9",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "e8861d3c31ff0fc76343f57072a603acd2da3e64",
-    "make.input.state.initialCommit": "71ee2b6d6773d3edc2a1056785450acd5a86fd29",
+    "make.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
+    "make.input.state.initialCommit": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.8",
+    "make.input.version": "0.8.0-rc.9",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "e8861d3c31ff0fc76343f57072a603acd2da3e64",
-    "mark.input.state.initialCommit": "71ee2b6d6773d3edc2a1056785450acd5a86fd29",
+    "mark.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
+    "mark.input.state.initialCommit": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.8",
-    "publish.input.state.version": "0.8.0-rc.8",
-    "publish.output.state.version": "0.8.0-rc.8"
+    "mark.input.state.version": "0.8.0-rc.9",
+    "publish.input.state.version": "0.8.0-rc.9",
+    "publish.output.state.version": "0.8.0-rc.9"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488094000,
+            "timeStamp": 1767488416000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488094000,
+            "timeStamp": 1767488416000,
             "offset": 60
           }
         },
-        "date": 1767488094000,
+        "date": 1767488416000,
         "message": {
-          "fullMessage": "feat: Implement logging system and application structure for ProxiHUD\n\n- Added logger module to handle logging setup and configuration.\n- Integrated logging into main application flow to capture critical errors.\n- Created UI module with a draggable window and HUD interface.\n- Implemented API key entry and validation within the UI.\n- Added functionality for background update checks and user notifications.\n- Developed updater module to manage version checks and application updates.\n- Included debug features for saving screenshots and loading mock images.\n",
-          "shortMessage": "feat: Implement logging system and application structure for ProxiHUD"
+          "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
+          "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
         },
         "parents": [
-          "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
+          "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
         ],
-        "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+        "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767487220000,
+            "timeStamp": 1767488108000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767487220000,
+            "timeStamp": 1767488108000,
             "offset": 0
           }
         },
-        "date": 1767487220000,
+        "date": 1767488108000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.7 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.7 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]"
         },
         "parents": [
-          "2edbb75846965fda83238e3d3211cc9c0e962af7"
+          "e8861d3c31ff0fc76343f57072a603acd2da3e64"
         ],
-        "sha": "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
+        "sha": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488416000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488416000,
+          "offset": 60
+        }
+      },
+      "date": 1767488416000,
+      "message": {
+        "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
+        "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
+      },
+      "parents": [
+        "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+      ],
+      "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488108000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488108000,
+          "offset": 0
+        }
+      },
+      "date": 1767488108000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]"
+      },
+      "parents": [
+        "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+      ],
+      "sha": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+    },
+    "previousVersion": "0.8.0-rc.8",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
       ],
-      "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767487220000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767487220000,
-          "offset": 0
-        }
-      },
-      "date": 1767487220000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.7 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.7 changelog and state [skip ci]"
-      },
-      "parents": [
-        "2edbb75846965fda83238e3d3211cc9c0e962af7"
-      ],
-      "sha": "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
-    },
-    "previousVersion": "0.8.0-rc.7",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767487207000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767487207000,
-          "offset": 60
-        }
-      },
-      "date": 1767487207000,
-      "message": {
-        "fullMessage": "feat: Add logging functionality to the project\n\n- Implemented a logging system in logger.py that writes logs to a file (proxi_debug.log) and outputs to the console.\n- Configured the logging format to include timestamps, log levels, and module names.\n- Set up the log file path to adapt based on whether the application is running as an executable or in a development environment.\n- Added initial log entries to indicate the start of the application and the log file path.\n",
-        "shortMessage": "feat: Add logging functionality to the project"
-      },
-      "parents": [
-        "71e1275b8e289f2e885e6ab7d77d8ffe4132f0cb"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.7",
-          "target": "2edbb75846965fda83238e3d3211cc9c0e962af7"
+          "name": "0.8.0-rc.8",
+          "target": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
         }
       ],
-      "sha": "2edbb75846965fda83238e3d3211cc9c0e962af7"
+      "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488094000,
+            "timeStamp": 1767488416000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488094000,
+            "timeStamp": 1767488416000,
             "offset": 60
           }
         },
-        "date": 1767488094000,
+        "date": 1767488416000,
         "message": {
-          "fullMessage": "feat: Implement logging system and application structure for ProxiHUD\n\n- Added logger module to handle logging setup and configuration.\n- Integrated logging into main application flow to capture critical errors.\n- Created UI module with a draggable window and HUD interface.\n- Implemented API key entry and validation within the UI.\n- Added functionality for background update checks and user notifications.\n- Developed updater module to manage version checks and application updates.\n- Included debug features for saving screenshots and loading mock images.\n",
-          "shortMessage": "feat: Implement logging system and application structure for ProxiHUD"
+          "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
+          "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
         },
         "parents": [
-          "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
+          "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
         ],
-        "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+        "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767488107273,
-  "version": "0.8.0-rc.8",
+  "timestamp": 1767488427791,
+  "version": "0.8.0-rc.9",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.8"
+  "versionPreReleaseIdentifier": "rc.9"
 }

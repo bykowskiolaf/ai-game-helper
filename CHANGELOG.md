@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.9 (2026-01-04)
+
+### Added
+
+* [2b56e] feat: Enhance image analysis with custom user prompts and UI improvements (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.8 (2026-01-04)
 
 ### Added
