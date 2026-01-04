@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.6 (2026-01-04)
+
+### Added
+
+* [3fd4e] feat: Integrate ProxiHUD Bridge for live game data context in image analysis (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.5 (2026-01-04)
 
 ### Added
