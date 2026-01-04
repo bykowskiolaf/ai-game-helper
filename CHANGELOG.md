@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.6 (2026-01-04)
+
+### Added
+
+* [448e5] feat: update icon file for improved visual representation (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.5 (2026-01-03)
 
 ### Fixed
