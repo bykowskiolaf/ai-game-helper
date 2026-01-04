@@ -94,23 +94,20 @@ jobs:
         run: |
           $Version = "${{ needs.release.outputs.version }}"
 
-          # 1. Create the version file inside the package
+          # 1. Write Version File
+          if (Test-Path src/proxihud/version.txt) { Remove-Item src/proxihud/version.txt }
           echo $Version > src/proxihud/version.txt
 
-          # 2. Define App Name
-          $AppName = "ProxiHUD"
+          # 2. Build with CLEAN Name (No Version in filename)
+          # This ensures the output is always 'dist/ProxiHUD.exe'
+          uv run pyinstaller --noconsole --onefile --name "ProxiHUD" --paths "src" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/run.py
 
-          # 3. Build Command
-          uv run pyinstaller --noconsole --onefile --name "$AppName-$Version" --paths "src" --icon "src/proxihud/icon.ico" --add-data "src/proxihud/version.txt;." --add-data "src/proxihud/icon.ico;." --hidden-import "proxihud" src/run.py
-
-      # -----------------------------------------------------------------
-      # JOB 3: Upload Asset
-      # -----------------------------------------------------------------
+      # 3. Upload Step
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.release.outputs.version }}
-          files: dist/ProxiHUD-${{ needs.release.outputs.version }}.exe
+          # Upload the clean filename
+          files: dist/ProxiHUD.exe
         env:
-          # We can use the default token here as the release already exists
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

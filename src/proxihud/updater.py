@@ -5,6 +5,7 @@ import webbrowser
 import subprocess
 import platform
 import logging
+import time
 from packaging.version import parse as parse_version
 from .config import REPO_OWNER, REPO_NAME
 
@@ -13,49 +14,54 @@ def get_version():
         if getattr(sys, 'frozen', False):
             base_path = sys._MEIPASS
         else:
-            base_path = os.path.dirname(__file__)
-        with open(os.path.join(base_path, 'version.txt'), 'r') as f:
+            # Look in the package folder
+            base_path = os.path.dirname(os.path.abspath(__file__))
+        
+        v_file = os.path.join(base_path, 'version.txt')
+        with open(v_file, 'r') as f:
             return f.read().strip()
-    except:
-        return "0.0.0"
+    except Exception as e:
+        return f"0.0.0 ({e})"
 
 CURRENT_VERSION = get_version()
 
 def check_for_updates():
     try:
-        logging.info(f"Checking for updates... Current: {CURRENT_VERSION}")
+        logging.info(f"Checking for updates... Local: {CURRENT_VERSION}")
         
         url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases"
         response = requests.get(url, timeout=5)
         
         if response.status_code != 200: 
-            logging.error(f"GitHub API Error: {response.status_code}")
             return False, None, None, f"API Error {response.status_code}"
         
         releases = response.json()
         current_ver = parse_version(CURRENT_VERSION)
+        
+        # Logic to allow pre-releases if we are currently on one
         allow_pre = current_ver.is_prerelease
-
+        
         best_release = None
         best_ver = parse_version("0.0.0")
 
         for release in releases:
-            r_ver = parse_version(release["tag_name"])
-            if not allow_pre and r_ver.is_prerelease: continue
-            if r_ver > best_ver:
-                best_ver = r_ver
-                best_release = release
+            try:
+                r_ver = parse_version(release["tag_name"])
+                if not allow_pre and r_ver.is_prerelease: continue
+                
+                if r_ver > best_ver:
+                    best_ver = r_ver
+                    best_release = release
+            except: continue
 
         if best_release and best_ver > current_ver:
-            logging.info(f"New update found: {best_release['tag_name']}")
+            logging.info(f"Update available: {best_release['tag_name']}")
             for asset in best_release["assets"]:
                 if asset["name"].endswith(".exe"):
                     return True, asset["browser_download_url"], best_release["tag_name"], "Update found"
             
-            logging.warning("Update exists but has no .exe asset")
             return False, None, None, "No EXE found"
 
-        logging.info("App is up to date.")
         return False, None, None, "Up to date"
     except Exception as e:
         logging.exception("Update check failed")
@@ -67,35 +73,46 @@ def update_app(download_url):
         return
 
     try:
-        logging.info(f"Starting download from: {download_url}")
+        logging.info(f"Downloading update from: {download_url}")
         
-        # 1. Download
+        # 1. Download to temp file
         response = requests.get(download_url, stream=True)
-        new_exe = "Update.exe"
+        new_exe = "Update.tmp.exe"
         with open(new_exe, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
-        logging.info("Download complete. Swapping files...")
+        logging.info("Download finished. preparing to swap.")
 
-        # 2. Swap and Restart
+        # 2. Rename Logic
         current_exe = sys.executable
         old_exe = current_exe + ".old"
         
+        # Clean up previous update mess if it exists
         if os.path.exists(old_exe):
             try: os.remove(old_exe)
             except: pass 
             
+        # 3. The Swap
         os.rename(current_exe, old_exe)
         os.rename(new_exe, current_exe)
         
-        logging.info("Restarting application...")
+        logging.info("Files swapped. Launching new process...")
         
-        # 3. Launch Detached Process
+        time.sleep(2.0)
+
+        # 4. Launch Detached Process
         DETACHED_PROCESS = 0x00000008
+        # CREATE_NEW_PROCESS_GROUP = 0x00000200
         subprocess.Popen([current_exe], creationflags=DETACHED_PROCESS, shell=False)
-        sys.exit(0)
+        
+        # 5. HARD KILL SELF
+        logging.info("Exiting...")
+        os._exit(0)
 
     except Exception as e:
         logging.error(f"Update failed: {e}")
-        webbrowser.open(download_url)
+        # If it failed, try to restore
+        try:
+            if os.path.exists("Update.tmp.exe"): os.remove("Update.tmp.exe")
+        except: pass

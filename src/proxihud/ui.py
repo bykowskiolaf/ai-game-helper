@@ -240,5 +240,14 @@ class GameHelperApp(DraggableWindow):
 
     def trigger_update_or_clear(self, e):
         if self.update_available:
-            self.append_to_chat("System", "Updating...")
-            threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
+            self.append_to_chat("System", f"⬇ Downloading {self.new_ver}...")
+            # Run in thread so UI doesn't freeze, but log errors if it fails
+            threading.Thread(target=self._run_update_thread, daemon=True).start()
+        else:
+            self.render_markdown(f"READY ({updater.CURRENT_VERSION})")
+
+    def _run_update_thread(self):
+        try:
+            updater.update_app(self.update_url)
+        except Exception as e:
+            self.append_to_chat("System", f"Update Failed: {e}")
