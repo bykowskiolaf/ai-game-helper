@@ -255,22 +255,41 @@ class GameHelperApp(DraggableWindow):
         self.text_area.config(state="normal")
         self.text_area.delete("1.0", "end")
         
-        lines = raw_text.split("\n")
+        # 1. Clean up AI artifacts (e.g. ```json or ```markdown wrappers)
+        clean_text = raw_text.replace("```markdown", "").replace("```", "").strip()
+        
+        lines = clean_text.split("\n")
+        
         for line in lines:
+            line = line.strip()
+            if not line:
+                self.text_area.insert("end", "\n")
+                continue
+
+            # --- CASE 1: HEADERS (# or ##) ---
             if line.startswith("#"):
-                self.text_area.insert("end", line.replace("#", "").strip() + "\n", "header")
-            elif line.strip().startswith("* ") or line.strip().startswith("- "):
-                self.text_area.insert("end", " • " + line.strip()[2:] + "\n", "bullet")
-            else:
-                parts = line.split("**")
-                for i, part in enumerate(parts):
-                    tag = "bold" if i % 2 == 1 else "normal"
-                    self.text_area.insert("end", part, tag)
+                # Remove all # chars and whitespace
+                content = line.lstrip("#").strip()
+                self.text_area.insert("end", content + "\n", "header")
+
+            # --- CASE 2: BULLETS (* or -) ---
+            elif line.startswith("* ") or line.startswith("- "):
+                # Insert the bullet symbol first
+                self.text_area.insert("end", " • ", "bullet")
+                # Then parse the rest of the line for bolding
+                content = line[2:] 
+                self._insert_with_bold(content)
                 self.text_area.insert("end", "\n")
 
-        self.text_area.delete("end-1c", "end")
+            # --- CASE 3: STANDARD TEXT ---
+            else:
+                self._insert_with_bold(line)
+                self.text_area.insert("end", "\n")
+
+        self.text_area.delete("end-1c", "end") # Remove trailing newline
         self.text_area.config(state="disabled") 
         
+        # --- AUTO-FIT HEIGHT ---
         self.text_area.update_idletasks() 
         count = self.text_area.count("1.0", "end", "displaylines")
         num_lines = count[0] if count else 1
@@ -279,6 +298,7 @@ class GameHelperApp(DraggableWindow):
         font = tkfont.Font(family="Consolas", size=11)
         line_height = font.metrics("linespace")
 
+        # Dynamic padding calculation
         extra_padding = 40 
         if not getattr(sys, 'frozen', False): extra_padding += 30 
         extra_padding += 40 
@@ -292,6 +312,15 @@ class GameHelperApp(DraggableWindow):
         x = self.winfo_x()
         y = self.winfo_y()
         self.geometry(f"{current_width}x{final_height}+{x}+{y}")
+
+    def _insert_with_bold(self, text):
+        """Helper to handle **bold** parsing within a line"""
+        parts = text.split("**")
+        for i, part in enumerate(parts):
+            # Even indices (0, 2, 4) are normal, Odd (1, 3) are bold
+            tag = "bold" if i % 2 == 1 else "normal"
+            if part:
+                self.text_area.insert("end", part, tag)
 
     def start_hotkeys(self):
         try:
