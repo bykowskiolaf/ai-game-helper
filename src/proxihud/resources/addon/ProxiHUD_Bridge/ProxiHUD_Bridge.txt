@@ -1,0 +1,7 @@
+## Title: ProxiHUD Bridge
+## APIVersion: 101041
+## Author: ProxiHUD
+## Version: 1.0
+## SavedVariables: ProxiHUD_Data
+
+ProxiHUD_Bridge.lua
