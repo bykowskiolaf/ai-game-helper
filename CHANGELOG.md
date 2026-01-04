@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.2 (2026-01-04)
+
+### Added
+
+* [dbae4] feat: Implement startup sequence with API key and addon installation steps (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.1 (2026-01-04)
 
 ### Added
