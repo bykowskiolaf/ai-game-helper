@@ -3,9 +3,10 @@ name: Release & Build
 on:
   push:
     branches: ["main", "dev"]
-    paths-ignore:
-      - "CHANGELOG.md"
-      - ".nyx-state.json"
+    paths:
+      - "src/**"
+      - "pyproject.toml"
+      - ".github/workflows/build_windows.yml"
   workflow_dispatch:
 
 permissions:

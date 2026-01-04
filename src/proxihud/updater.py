@@ -21,7 +21,7 @@ def get_version():
         with open(v_file, 'r') as f:
             return f.read().strip()
     except Exception as e:
-        return f"0.0.0 ({e})"
+        return f"0.0.0!"
 
 CURRENT_VERSION = get_version()
 

@@ -1,7 +1,8 @@
 import logging
 import os
 import sys
-from . import config # Import config to use get_app_data_dir
+from . import config
+from .updater import CURRENT_VERSION
 
 def setup_logging():
     """Configures the logging system to write to AppData and console."""
@@ -23,5 +24,6 @@ def setup_logging():
     
     logging.info("==========================================")
     logging.info("          PROXIHUD SESSION START          ")
+    logging.info(f"            Version: {CURRENT_VERSION}            ")
     logging.info("==========================================")
     logging.info(f"Log path: {log_file}")
