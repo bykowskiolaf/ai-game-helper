@@ -16,6 +16,8 @@ class DraggableWindow(ctk.CTk):
         self.overrideredirect(True) 
         self._offsetx = 0
         self._offsety = 0
+        
+        # Bind dragging to the main window background
         self.bind('<Button-1>', self.clickwin)
         self.bind('<B1-Motion>', self.dragwin)
 
@@ -43,7 +45,6 @@ class GameHelperApp(DraggableWindow):
         self.lift() 
         self.enforce_topmost()
 
-        # --- CHAT HISTORY STATE ---
         self.history = [] 
 
         if not config.get_api_key():
@@ -76,6 +77,8 @@ class GameHelperApp(DraggableWindow):
 
     def show_hud(self):
         self.overrideredirect(True) 
+        
+        # Main Container
         self.frame = ctk.CTkFrame(self, fg_color="transparent")
         self.frame.pack(fill="both", expand=True)
 
@@ -84,15 +87,23 @@ class GameHelperApp(DraggableWindow):
             self.add_debug_controls()
 
         # 2. Input Bar (Above Debug)
-        self.prompt_frame = ctk.CTkFrame(self.frame, height=30, fg_color="#2b2b2b")
-        self.prompt_frame.pack(side="bottom", fill="x", padx=2, pady=2)
+        self.prompt_frame = ctk.CTkFrame(self.frame, height=36, fg_color="#202020", corner_radius=8)
+        self.prompt_frame.pack(side="bottom", fill="x", padx=10, pady=(0, 10))
+        self.prompt_frame.bind('<Button-1>', self.clickwin)
+        self.prompt_frame.bind('<B1-Motion>', self.dragwin)
         
         self.prompt_entry = ctk.CTkEntry(
-            self.prompt_frame, placeholder_text="Ask a follow-up question...",
-            font=("Consolas", 11), border_width=0, fg_color="#333", text_color="#eee"
+            self.prompt_frame, 
+            placeholder_text="Ask a follow-up...",
+            font=("Segoe UI", 12), 
+            border_width=0, 
+            fg_color="transparent", 
+            text_color="#eee",
+            height=30
         )
         
-        self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(2, 25))
+        # CHANGED: Increased padding to 60px to force text away from grip
+        self.prompt_entry.pack(side="left", fill="both", expand=True, padx=(10, 60), pady=2)
         self.prompt_entry.bind("<Return>", self.trigger_chat)
         
         # Focus Fix
@@ -102,27 +113,50 @@ class GameHelperApp(DraggableWindow):
             return "break"
         self.prompt_entry.bind("<Button-1>", on_entry_click)
 
-        # 3. Text Area (Top)
+        # 3. Visual Separator (Vertical Line)
+        # Sits between text and grip to show "Do not type past this point"
+        self.separator = ctk.CTkFrame(self.prompt_frame, width=2, height=18, fg_color="#333333", corner_radius=1)
+        self.separator.place(relx=1.0, rely=0.5, anchor="e", x=-35, y=0)
+
+        # 4. Text Area (Top)
         self.text_area = tk.Text(
-            self.frame, bg="#1a1a1a", fg="#e0e0e0", 
-            font=("Consolas", 11), wrap="word", bd=0, highlightthickness=0, padx=10, pady=10
+            self.frame, 
+            bg="#1a1a1a", fg="#e0e0e0", 
+            font=("Consolas", 11), 
+            wrap="word", 
+            bd=0, highlightthickness=0, 
+            padx=15, pady=15
         )
         self.text_area.pack(side="top", fill="both", expand=True)
         
-        # Resize Grip
-        self.resize_grip = ctk.CTkLabel(self.frame, text="↘", font=("Arial", 12), text_color="gray", cursor="sizing")
-        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=0) 
+        # 5. Resize Grip
+        self.resize_grip = ctk.CTkLabel(
+            self.prompt_frame, 
+            text="↘", 
+            font=("Arial", 16), 
+            text_color="#555", 
+            cursor="sizing",
+            width=30,  # Larger hitbox
+            height=30
+        )
+        # Placed clearly to the right of the separator
+        self.resize_grip.place(relx=1.0, rely=1.0, anchor="se", x=-2, y=-2) 
+        
         self.resize_grip.bind("<Button-1>", self.start_resize)
         self.resize_grip.bind("<B1-Motion>", self.perform_resize)
 
         # Styles
-        self.text_area.tag_config("user_tag", foreground="#4cc9f0", font=("Consolas", 11, "bold"))
-        self.text_area.tag_config("ai_tag", foreground="#f72585", font=("Consolas", 11, "bold"))
+        self.text_area.tag_config("user_tag", foreground="#4cc9f0", font=("Segoe UI", 11, "bold"))
+        self.text_area.tag_config("ai_tag", foreground="#f72585", font=("Segoe UI", 11, "bold"))
         self.text_area.tag_config("bold", font=("Consolas", 11, "bold"), foreground="#ffffff")
         self.text_area.tag_config("header", font=("Consolas", 13, "bold"), foreground="#ffd60a")
         self.text_area.tag_config("bullet", foreground="#ffd60a")
 
-        ver = updater.CURRENT_VERSION
+        # Clean Version String
+        ver_full = updater.CURRENT_VERSION
+        if "Errno" in ver_full: ver = "Dev Mode"
+        else: ver = ver_full
+        
         self.append_to_chat("System", f"ProxiHUD Ready ({ver})\n[F11] New Scan | [Type] Chat")
 
         # Bindings
@@ -142,7 +176,6 @@ class GameHelperApp(DraggableWindow):
     # --- CHAT LOGIC ---
 
     def append_to_chat(self, sender, text, clear=False):
-        """Adds a message to the UI log"""
         self.text_area.config(state="normal")
         if clear:
             self.text_area.delete("1.0", "end")
@@ -151,7 +184,6 @@ class GameHelperApp(DraggableWindow):
             tag = "user_tag" if sender == "You" else "ai_tag"
             self.text_area.insert("end", f"\n{sender}: ", tag)
 
-        # Render Markdown logic
         clean_text = text.replace("```markdown", "").replace("```", "").strip()
         lines = clean_text.split("\n")
         
@@ -179,13 +211,11 @@ class GameHelperApp(DraggableWindow):
             self.text_area.insert("end", part, tag)
 
     def trigger_scan(self):
-        """F11: Starts a FRESH context (clears history)"""
         self.history = [] 
         self.append_to_chat("System", "Scanning...", clear=True)
         threading.Thread(target=self.run_logic, args=(None,), daemon=True).start()
 
     def trigger_chat(self, event):
-        """Enter: Appends to CURRENT context"""
         text = self.prompt_entry.get().strip()
         if not text: return
         self.prompt_entry.delete(0, 'end')
@@ -200,15 +230,25 @@ class GameHelperApp(DraggableWindow):
         try:
             img = capture.capture_screen()
             img.thumbnail((1024, 1024))
-            
-            # Call AI with History
             response = ai.analyze_image(img, user_text, self.history)
-            
             self.history.append({"role": "model", "text": response})
             self.append_to_chat("Proxi", response)
-            
         except Exception as e:
             self.append_to_chat("Error", str(e))
+
+    # --- RESIZE LOGIC ---
+    def start_resize(self, event):
+        self._resize_x = event.x_root
+        self._resize_y = event.y_root
+        self._start_width = self.winfo_width()
+        return "break" # <--- STOP DRAG
+
+    def perform_resize(self, event):
+        delta_x = event.x_root - self._resize_x
+        new_width = max(350, self._start_width + delta_x)
+        self.geometry(f"{new_width}x{self.winfo_height()}")
+        self.render_markdown(self.text_area.get("1.0", "end-1c"))
+        return "break" # <--- STOP DRAG
 
     # --- BOILERPLATE & DEBUG ---
     def start_hotkeys(self):
@@ -218,12 +258,9 @@ class GameHelperApp(DraggableWindow):
             keyboard.add_hotkey(config.EXIT_KEY, self.quit)
         except: pass
 
-    def start_resize(self, e): self._rx, self._ry, self._rw = e.x_root, e.y_root, self.winfo_width()
-    def perform_resize(self, e): 
-        self.geometry(f"{max(350, self._rw + (e.x_root - self._rx))}x{self.winfo_height()}")
-    
     def debug_save(self): 
         capture.capture_screen().save("debug.png"); os.system("start debug.png")
+    
     def debug_load(self):
         if os.path.exists("mock.png"):
             user_text = self.prompt_entry.get().strip() or None
@@ -240,14 +277,8 @@ class GameHelperApp(DraggableWindow):
 
     def trigger_update_or_clear(self, e):
         if self.update_available:
-            self.append_to_chat("System", f"⬇ Downloading {self.new_ver}...")
-            # Run in thread so UI doesn't freeze, but log errors if it fails
-            threading.Thread(target=self._run_update_thread, daemon=True).start()
-        else:
-            self.render_markdown(f"READY ({updater.CURRENT_VERSION})")
-
-    def _run_update_thread(self):
-        try:
-            updater.update_app(self.update_url)
-        except Exception as e:
-            self.append_to_chat("System", f"Update Failed: {e}")
+            self.append_to_chat("System", "Updating...")
+            threading.Thread(target=updater.update_app, args=(self.update_url,), daemon=True).start()
+        
+    def render_markdown(self, raw_text):
+        self.append_to_chat(None, raw_text, clear=True)

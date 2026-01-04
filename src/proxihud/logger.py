@@ -20,12 +20,14 @@ def setup_logging():
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(module)s: %(message)s",
         handlers=[
-            # File Handler: Writes to proxi_debug.log (mode='w' overwrites each run)
-            logging.FileHandler(log_file, mode='w', encoding='utf-8'),
-            # Stream Handler: Still prints to console (useful for dev)
+            # CHANGED: mode='a' appends instead of overwriting
+            logging.FileHandler(log_file, mode='a', encoding='utf-8'),
             logging.StreamHandler(sys.stdout)
         ]
     )
     
-    logging.info("--- ProxiHUD Started ---")
+    # Add a separator to make reading easier
+    logging.info("\n\n==========================================")
+    logging.info("          PROXIHUD SESSION START          ")
+    logging.info("==========================================")
     logging.info(f"Log path: {log_file}")

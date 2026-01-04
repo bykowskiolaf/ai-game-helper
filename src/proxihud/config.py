@@ -10,7 +10,7 @@ REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
-AI_MODEL = "gemini-2.5-flash" 
+AI_MODEL = "gemini-2.5-flash-lite"
 
 # --- HOTKEYS ---
 TRIGGER_KEY = "f11"
