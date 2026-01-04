@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.10 (2026-01-04)
+
+### Added
+
+* [bc191] feat: Update build process and restructure package imports (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.9 (2026-01-04)
 
 ### Added

@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-04",
-        "name": "0.8.0-rc.9",
+        "name": "0.8.0-rc.10",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767488416000,
+                    "timeStamp": 1767488855000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767488416000,
+                    "timeStamp": 1767488855000,
                     "offset": 60
                   }
                 },
-                "date": 1767488416000,
+                "date": 1767488855000,
                 "message": {
-                  "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
-                  "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
+                  "fullMessage": "feat: Update build process and restructure package imports\n",
+                  "shortMessage": "feat: Update build process and restructure package imports"
                 },
                 "parents": [
-                  "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+                  "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
                 ],
-                "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
+                "sha": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
-    "infer.output.state.version": "0.8.0-rc.9",
+    "infer.input.repository.last.commit": "bc19136cb551a6d33d707fedfbeee20b63fd12ca",
+    "infer.output.state.version": "0.8.0-rc.10",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
-    "make.input.state.initialCommit": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2",
+    "make.input.repository.last.commit": "bc19136cb551a6d33d707fedfbeee20b63fd12ca",
+    "make.input.state.initialCommit": "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.8.0-rc.9",
+    "make.input.version": "0.8.0-rc.10",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7",
-    "mark.input.state.initialCommit": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2",
+    "mark.input.repository.last.commit": "bc19136cb551a6d33d707fedfbeee20b63fd12ca",
+    "mark.input.state.initialCommit": "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.8.0-rc.9",
-    "publish.input.state.version": "0.8.0-rc.9",
-    "publish.output.state.version": "0.8.0-rc.9"
+    "mark.input.state.version": "0.8.0-rc.10",
+    "publish.input.state.version": "0.8.0-rc.10",
+    "publish.output.state.version": "0.8.0-rc.10"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488416000,
+            "timeStamp": 1767488855000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488416000,
+            "timeStamp": 1767488855000,
             "offset": 60
           }
         },
-        "date": 1767488416000,
+        "date": 1767488855000,
         "message": {
-          "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
-          "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
+          "fullMessage": "feat: Update build process and restructure package imports\n",
+          "shortMessage": "feat: Update build process and restructure package imports"
         },
         "parents": [
-          "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+          "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
         ],
-        "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
+        "sha": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767488108000,
+            "timeStamp": 1767488428000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767488108000,
+            "timeStamp": 1767488428000,
             "offset": 0
           }
         },
-        "date": 1767488108000,
+        "date": 1767488428000,
         "message": {
-          "fullMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.8.0-rc.9 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.8.0-rc.9 changelog and state [skip ci]"
         },
         "parents": [
-          "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+          "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
         ],
-        "sha": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+        "sha": "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488855000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488855000,
+          "offset": 60
+        }
+      },
+      "date": 1767488855000,
+      "message": {
+        "fullMessage": "feat: Update build process and restructure package imports\n",
+        "shortMessage": "feat: Update build process and restructure package imports"
+      },
+      "parents": [
+        "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
+      ],
+      "sha": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488428000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767488428000,
+          "offset": 0
+        }
+      },
+      "date": 1767488428000,
+      "message": {
+        "fullMessage": "ci: update 0.8.0-rc.9 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.8.0-rc.9 changelog and state [skip ci]"
+      },
+      "parents": [
+        "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
+      ],
+      "sha": "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
+    },
+    "previousVersion": "0.8.0-rc.9",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
       ],
-      "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488108000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488108000,
-          "offset": 0
-        }
-      },
-      "date": 1767488108000,
-      "message": {
-        "fullMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.8.0-rc.8 changelog and state [skip ci]"
-      },
-      "parents": [
-        "e8861d3c31ff0fc76343f57072a603acd2da3e64"
-      ],
-      "sha": "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
-    },
-    "previousVersion": "0.8.0-rc.8",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488094000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767488094000,
-          "offset": 60
-        }
-      },
-      "date": 1767488094000,
-      "message": {
-        "fullMessage": "feat: Implement logging system and application structure for ProxiHUD\n\n- Added logger module to handle logging setup and configuration.\n- Integrated logging into main application flow to capture critical errors.\n- Created UI module with a draggable window and HUD interface.\n- Implemented API key entry and validation within the UI.\n- Added functionality for background update checks and user notifications.\n- Developed updater module to manage version checks and application updates.\n- Included debug features for saving screenshots and loading mock images.\n",
-        "shortMessage": "feat: Implement logging system and application structure for ProxiHUD"
-      },
-      "parents": [
-        "71ee2b6d6773d3edc2a1056785450acd5a86fd29"
-      ],
       "tags": [
         {
-          "name": "0.8.0-rc.8",
-          "target": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+          "name": "0.8.0-rc.9",
+          "target": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
         }
       ],
-      "sha": "e8861d3c31ff0fc76343f57072a603acd2da3e64"
+      "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
     },
     "primeVersion": "0.7.0",
     "primeVersionCommit": {
@@ -397,7 +397,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488416000,
+            "timeStamp": 1767488855000,
             "offset": 60
           }
         },
@@ -407,19 +407,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767488416000,
+            "timeStamp": 1767488855000,
             "offset": 60
           }
         },
-        "date": 1767488416000,
+        "date": 1767488855000,
         "message": {
-          "fullMessage": "feat: Enhance image analysis with custom user prompts and UI improvements\n",
-          "shortMessage": "feat: Enhance image analysis with custom user prompts and UI improvements"
+          "fullMessage": "feat: Update build process and restructure package imports\n",
+          "shortMessage": "feat: Update build process and restructure package imports"
         },
         "parents": [
-          "e0eed5a0ba919a6f1c987fcf60310acea1244dd2"
+          "b0281ef3de2a8f5906550fb3fa47c906a9ce8d5d"
         ],
-        "sha": "2b56e72ab9b838ba9b17b30681ab9ba4956daac7"
+        "sha": "bc19136cb551a6d33d707fedfbeee20b63fd12ca"
       }
     ]
   },
@@ -433,10 +433,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767488427791,
-  "version": "0.8.0-rc.9",
+  "timestamp": 1767488871056,
+  "version": "0.8.0-rc.10",
   "versionMajorNumber": "0",
   "versionMinorNumber": "8",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.9"
+  "versionPreReleaseIdentifier": "rc.10"
 }
