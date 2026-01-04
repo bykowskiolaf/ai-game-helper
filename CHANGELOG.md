@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-rc.13 (2026-01-04)
+
+### Added
+
+* [2c6af] feat: Improve updater logic and enhance version handling in build process (Olaf Bykowski)
+
+# Changelog
+
 ## 0.8.0-rc.12 (2026-01-04)
 
 ### Added
