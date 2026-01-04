@@ -11,7 +11,7 @@ REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
-AI_MODEL = "gemini-1.5-flash"
+AI_MODEL = "gemini-2.5-flash"
 
 # --- DEFAULTS ---
 DEFAULT_SETTINGS = {
@@ -19,10 +19,7 @@ DEFAULT_SETTINGS = {
     "hotkey_trigger": "f11",
     "hotkey_exit": "f12",
     "persona": "Default",
-    "geometry": "500x300+100+100",
-    "player_class": "Generic",
-    "player_role": "Damage Dealer",
-    "game_mode": "PvE"
+    "geometry": "500x300+100+100"
 }
 
 # --- ENVIRONMENT STATE ---

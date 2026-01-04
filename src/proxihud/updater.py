@@ -11,17 +11,19 @@ from .config import REPO_OWNER, REPO_NAME, is_dev
 
 def get_version():
     try:
-        if is_dev():
+        if getattr(sys, 'frozen', False):
             base_path = sys._MEIPASS
+            v_file = os.path.join(base_path, 'proxihud', 'version.txt')
         else:
-            # Look in the package folder
             base_path = os.path.dirname(os.path.abspath(__file__))
-        
-        v_file = os.path.join(base_path, 'version.txt')
-        with open(v_file, 'r') as f:
-            return f.read().strip()
+            v_file = os.path.join(base_path, 'version.txt')
+
+        if os.path.exists(v_file):
+            with open(v_file, 'r') as f:
+                return f.read().strip()
+        return "0.0.0"
     except Exception as e:
-        return f"0.0.0!"
+        return f"Err: {e}"
 
 CURRENT_VERSION = get_version()
 
@@ -32,19 +34,18 @@ def check_for_updates():
             return False, None, None, "Dev Mode"
 
         logging.info(f"Checking for updates... Local: {CURRENT_VERSION}")
-        
+
         url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/releases"
         response = requests.get(url, timeout=5)
-        
-        if response.status_code != 200: 
+
+        if response.status_code != 200:
             return False, None, None, f"API Error {response.status_code}"
-        
+
         releases = response.json()
         current_ver = parse_version(CURRENT_VERSION)
-        
-        # Logic to allow pre-releases if we are currently on one
+
         allow_pre = current_ver.is_prerelease
-        
+
         best_release = None
         best_ver = parse_version("0.0.0")
 
@@ -52,7 +53,7 @@ def check_for_updates():
             try:
                 r_ver = parse_version(release["tag_name"])
                 if not allow_pre and r_ver.is_prerelease: continue
-                
+
                 if r_ver > best_ver:
                     best_ver = r_ver
                     best_release = release
@@ -63,7 +64,7 @@ def check_for_updates():
             for asset in best_release["assets"]:
                 if asset["name"].endswith(".exe"):
                     return True, asset["browser_download_url"], best_release["tag_name"], "Update found"
-            
+
             return False, None, None, "No EXE found"
 
         return False, None, None, "Up to date"
@@ -78,8 +79,7 @@ def update_app(download_url):
 
     try:
         logging.info(f"Downloading update from: {download_url}")
-        
-        # 1. Download to temp file
+
         response = requests.get(download_url, stream=True)
         new_exe = "Update.tmp.exe"
         with open(new_exe, "wb") as f:
@@ -88,35 +88,28 @@ def update_app(download_url):
 
         logging.info("Download finished. preparing to swap.")
 
-        # 2. Rename Logic
         current_exe = sys.executable
         old_exe = current_exe + ".old"
-        
-        # Clean up previous update mess if it exists
+
         if os.path.exists(old_exe):
             try: os.remove(old_exe)
-            except: pass 
-            
-        # 3. The Swap
+            except: pass
+
         os.rename(current_exe, old_exe)
         os.rename(new_exe, current_exe)
-        
+
         logging.info("Files swapped. Launching new process...")
-        
+
         time.sleep(2.0)
 
-        # 4. Launch Detached Process
         DETACHED_PROCESS = 0x00000008
-        # CREATE_NEW_PROCESS_GROUP = 0x00000200
         subprocess.Popen([current_exe], creationflags=DETACHED_PROCESS, shell=False)
-        
-        # 5. HARD KILL SELF
+
         logging.info("Exiting...")
         os._exit(0)
 
     except Exception as e:
         logging.error(f"Update failed: {e}")
-        # If it failed, try to restore
         try:
             if os.path.exists("Update.tmp.exe"): os.remove("Update.tmp.exe")
         except: pass

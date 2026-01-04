@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ steps.app-token.outputs.token }} # Use App Token
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Nyx publish
         id: nyx
@@ -54,12 +54,9 @@ jobs:
       - name: Commit Changelog
         if: steps.nyx.outputs.newVersion == 'true'
         run: |
-          # Use the Bot Identity for the commit
           git config user.name "gh-actions-releaser[bot]"
           git config user.email "gh-actions-releaser[bot]@users.noreply.github.com"
-
           git add CHANGELOG.md .nyx-state.json
-
           if git diff-index --quiet HEAD; then
             echo "No changes. Skipping commit."
           else
@@ -73,7 +70,6 @@ jobs:
   build:
     name: 📦 Build Windows EXE
     needs: release
-    # Only run if Nyx actually created a new version
     if: needs.release.outputs.new_release == 'true'
     runs-on: windows-latest
 
@@ -84,36 +80,38 @@ jobs:
         uses: astral-sh/setup-uv@v5
 
       - name: Set up Python
-        run: uv python install 3.10
+        run: uv python install 3.11
 
       - name: Install Dependencies
         run: |
           uv venv
-          uv pip install mss customtkinter keyboard google-genai pillow pyinstaller python-dotenv packaging
+          # Install the project and dependencies from pyproject.toml
+          uv pip install . 
+          uv pip install pyinstaller
 
       - name: Build EXE
         run: |
           $Version = "${{ needs.release.outputs.version }}"
-
-          # 1. Write Version File
-          if (Test-Path src/proxihud/version.txt) { Remove-Item src/proxihud/version.txt }
-          echo $Version > src/proxihud/version.txt
-
-          # 2. Build with CLEAN Name (No Version in filename)
-          # This ensures the output is always 'dist/ProxiHUD.exe'
-          uv run pyinstaller --noconsole --onefile --name "ProxiHUD" \
-            --add-data "src/proxihud/resources;src/proxihud/resources" \
-            --icon "src/proxihud/icon.ico" \
-            --paths "src" \
-            --hidden-import "proxihud" \
+          
+          # 1. Write Version File safely
+          $VersionPath = "src/proxihud/version.txt"
+          if (Test-Path $VersionPath) { Remove-Item $VersionPath }
+          Set-Content -Path $VersionPath -Value $Version -NoNewline
+          
+          # 2. Build with CLEAN Name
+          # NOTE: Added line below to include version.txt
+          uv run pyinstaller --noconsole --onefile --name "ProxiHUD" `
+            --add-data "src/proxihud/resources;src/proxihud/resources" `
+            --add-data "src/proxihud/version.txt;proxihud" `
+            --icon "src/proxihud/icon.ico" `
+            --paths "src" `
+            --hidden-import "proxihud" `
             src/run.py
 
-      # 3. Upload Step
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.release.outputs.version }}
-          # Upload the clean filename
           files: dist/ProxiHUD.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
