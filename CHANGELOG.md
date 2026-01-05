@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.18 (2026-01-05)
+
+### Added
+
+* [9d083] feat: Update production AI model to gemini-2.5-flash (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.17 (2026-01-05)
 
 ### Added
