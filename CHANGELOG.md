@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.16 (2026-01-05)
+
+### Added
+
+* [8ffe0] feat: Update AI model configuration for production and development environments (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.15 (2026-01-05)
 
 ### Added

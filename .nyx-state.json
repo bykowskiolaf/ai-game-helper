@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.15",
+        "name": "0.2.0-rc.16",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767617499000,
+                    "timeStamp": 1767617743000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767617499000,
+                    "timeStamp": 1767617748000,
                     "offset": 60
                   }
                 },
-                "date": 1767617499000,
+                "date": 1767617748000,
                 "message": {
-                  "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
-                  "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
+                  "fullMessage": "feat: Update AI model configuration for production and development environments\n",
+                  "shortMessage": "feat: Update AI model configuration for production and development environments"
                 },
                 "parents": [
-                  "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+                  "7a0774989604a0304a4fc75cd8864ae57aad2558"
                 ],
-                "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
+                "sha": "8ffe03d175009ff59dd8dacb81755e5a4225929c"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
-    "infer.output.state.version": "0.2.0-rc.15",
+    "infer.input.repository.last.commit": "8ffe03d175009ff59dd8dacb81755e5a4225929c",
+    "infer.output.state.version": "0.2.0-rc.16",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
-    "make.input.state.initialCommit": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5",
+    "make.input.repository.last.commit": "8ffe03d175009ff59dd8dacb81755e5a4225929c",
+    "make.input.state.initialCommit": "7a0774989604a0304a4fc75cd8864ae57aad2558",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.15",
+    "make.input.version": "0.2.0-rc.16",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
-    "mark.input.state.initialCommit": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5",
+    "mark.input.repository.last.commit": "8ffe03d175009ff59dd8dacb81755e5a4225929c",
+    "mark.input.state.initialCommit": "7a0774989604a0304a4fc75cd8864ae57aad2558",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.15",
-    "publish.input.state.version": "0.2.0-rc.15",
-    "publish.output.state.version": "0.2.0-rc.15"
+    "mark.input.state.version": "0.2.0-rc.16",
+    "publish.input.state.version": "0.2.0-rc.16",
+    "publish.output.state.version": "0.2.0-rc.16"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767617499000,
+            "timeStamp": 1767617743000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767617499000,
+            "timeStamp": 1767617748000,
             "offset": 60
           }
         },
-        "date": 1767617499000,
+        "date": 1767617748000,
         "message": {
-          "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
-          "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
+          "fullMessage": "feat: Update AI model configuration for production and development environments\n",
+          "shortMessage": "feat: Update AI model configuration for production and development environments"
         },
         "parents": [
-          "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+          "7a0774989604a0304a4fc75cd8864ae57aad2558"
         ],
-        "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
+        "sha": "8ffe03d175009ff59dd8dacb81755e5a4225929c"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767615797000,
+            "timeStamp": 1767617525000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767615797000,
+            "timeStamp": 1767617525000,
             "offset": 0
           }
         },
-        "date": 1767615797000,
+        "date": 1767617525000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.15 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.15 changelog and state [skip ci]"
         },
         "parents": [
-          "7288545a03dba6148549fccb119c6160b54c415a"
+          "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
         ],
-        "sha": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+        "sha": "7a0774989604a0304a4fc75cd8864ae57aad2558"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617743000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617748000,
+          "offset": 60
+        }
+      },
+      "date": 1767617748000,
+      "message": {
+        "fullMessage": "feat: Update AI model configuration for production and development environments\n",
+        "shortMessage": "feat: Update AI model configuration for production and development environments"
+      },
+      "parents": [
+        "7a0774989604a0304a4fc75cd8864ae57aad2558"
+      ],
+      "sha": "8ffe03d175009ff59dd8dacb81755e5a4225929c"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617525000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617525000,
+          "offset": 0
+        }
+      },
+      "date": 1767617525000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.15 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.15 changelog and state [skip ci]"
+      },
+      "parents": [
+        "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
+      ],
+      "sha": "7a0774989604a0304a4fc75cd8864ae57aad2558"
+    },
+    "previousVersion": "0.2.0-rc.15",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
       ],
-      "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615797000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615797000,
-          "offset": 0
-        }
-      },
-      "date": 1767615797000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]"
-      },
-      "parents": [
-        "7288545a03dba6148549fccb119c6160b54c415a"
-      ],
-      "sha": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
-    },
-    "previousVersion": "0.2.0-rc.14",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615775000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615781000,
-          "offset": 60
-        }
-      },
-      "date": 1767615781000,
-      "message": {
-        "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
-        "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
-      },
-      "parents": [
-        "60c82836c99167f0aaaba126ebc1490c28edbdac"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.14",
-          "target": "7288545a03dba6148549fccb119c6160b54c415a"
+          "name": "0.2.0-rc.15",
+          "target": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
         }
       ],
-      "sha": "7288545a03dba6148549fccb119c6160b54c415a"
+      "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767617499000,
+            "timeStamp": 1767617743000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767617499000,
+            "timeStamp": 1767617748000,
             "offset": 60
           }
         },
-        "date": 1767617499000,
+        "date": 1767617748000,
         "message": {
-          "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
-          "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
+          "fullMessage": "feat: Update AI model configuration for production and development environments\n",
+          "shortMessage": "feat: Update AI model configuration for production and development environments"
         },
         "parents": [
-          "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+          "7a0774989604a0304a4fc75cd8864ae57aad2558"
         ],
-        "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
+        "sha": "8ffe03d175009ff59dd8dacb81755e5a4225929c"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767617524120,
-  "version": "0.2.0-rc.15",
+  "timestamp": 1767617760530,
+  "version": "0.2.0-rc.16",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.15"
+  "versionPreReleaseIdentifier": "rc.16"
 }
