@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.13 (2026-01-05)
+
+### Added
+
+* [703f9] feat: Improve updater logic with clean environment launch and subprocess handling (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.12 (2026-01-05)
 
 ### Fixed

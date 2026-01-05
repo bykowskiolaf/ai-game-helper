@@ -1,14 +1,14 @@
 {
   "branch": "dev",
-  "bump": "patch",
+  "bump": "minor",
   "changelog": {
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.12",
+        "name": "0.2.0-rc.13",
         "sections": [
           {
-            "name": "Fixed",
+            "name": "Added",
             "commits": [
               {
                 "authorAction": {
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767614968000,
+                    "timeStamp": 1767615374000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767614973000,
+                    "timeStamp": 1767615380000,
                     "offset": 60
                   }
                 },
-                "date": 1767614973000,
+                "date": 1767615380000,
                 "message": {
-                  "fullMessage": "fix: Add unicodedata import to run.py\n",
-                  "shortMessage": "fix: Add unicodedata import to run.py"
+                  "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
+                  "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
                 },
                 "parents": [
-                  "a3025ad653a59d5902784329222a93831a0a8195"
+                  "44f89750b3e0e3dfce01b4436741d5726503c2d7"
                 ],
-                "sha": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
+                "sha": "703f9a1928944043260fd6bb04644216debf5846"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea",
-    "infer.output.state.version": "0.2.0-rc.12",
+    "infer.input.repository.last.commit": "703f9a1928944043260fd6bb04644216debf5846",
+    "infer.output.state.version": "0.2.0-rc.13",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea",
-    "make.input.state.initialCommit": "a3025ad653a59d5902784329222a93831a0a8195",
+    "make.input.repository.last.commit": "703f9a1928944043260fd6bb04644216debf5846",
+    "make.input.state.initialCommit": "44f89750b3e0e3dfce01b4436741d5726503c2d7",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.12",
+    "make.input.version": "0.2.0-rc.13",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea",
-    "mark.input.state.initialCommit": "a3025ad653a59d5902784329222a93831a0a8195",
+    "mark.input.repository.last.commit": "703f9a1928944043260fd6bb04644216debf5846",
+    "mark.input.state.initialCommit": "44f89750b3e0e3dfce01b4436741d5726503c2d7",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.12",
-    "publish.input.state.version": "0.2.0-rc.12",
-    "publish.output.state.version": "0.2.0-rc.12"
+    "mark.input.state.version": "0.2.0-rc.13",
+    "publish.input.state.version": "0.2.0-rc.13",
+    "publish.output.state.version": "0.2.0-rc.13"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614968000,
+            "timeStamp": 1767615374000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614973000,
+            "timeStamp": 1767615380000,
             "offset": 60
           }
         },
-        "date": 1767614973000,
+        "date": 1767615380000,
         "message": {
-          "fullMessage": "fix: Add unicodedata import to run.py\n",
-          "shortMessage": "fix: Add unicodedata import to run.py"
+          "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
+          "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
         },
         "parents": [
-          "a3025ad653a59d5902784329222a93831a0a8195"
+          "44f89750b3e0e3dfce01b4436741d5726503c2d7"
         ],
-        "sha": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
+        "sha": "703f9a1928944043260fd6bb04644216debf5846"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767614777000,
+            "timeStamp": 1767614996000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767614777000,
+            "timeStamp": 1767614996000,
             "offset": 0
           }
         },
-        "date": 1767614777000,
+        "date": 1767614996000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.11 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.11 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.12 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.12 changelog and state [skip ci]"
         },
         "parents": [
-          "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
+          "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
         ],
-        "sha": "a3025ad653a59d5902784329222a93831a0a8195"
+        "sha": "44f89750b3e0e3dfce01b4436741d5726503c2d7"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767615374000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767615380000,
+          "offset": 60
+        }
+      },
+      "date": 1767615380000,
+      "message": {
+        "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
+        "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
+      },
+      "parents": [
+        "44f89750b3e0e3dfce01b4436741d5726503c2d7"
+      ],
+      "sha": "703f9a1928944043260fd6bb04644216debf5846"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614996000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614996000,
+          "offset": 0
+        }
+      },
+      "date": 1767614996000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.12 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.12 changelog and state [skip ci]"
+      },
+      "parents": [
+        "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
+      ],
+      "sha": "44f89750b3e0e3dfce01b4436741d5726503c2d7"
+    },
+    "previousVersion": "0.2.0-rc.12",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "a3025ad653a59d5902784329222a93831a0a8195"
       ],
-      "sha": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767614777000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767614777000,
-          "offset": 0
-        }
-      },
-      "date": 1767614777000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.11 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.11 changelog and state [skip ci]"
-      },
-      "parents": [
-        "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
-      ],
-      "sha": "a3025ad653a59d5902784329222a93831a0a8195"
-    },
-    "previousVersion": "0.2.0-rc.11",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767614756000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767614762000,
-          "offset": 60
-        }
-      },
-      "date": 1767614762000,
-      "message": {
-        "fullMessage": "feat: Add hidden import for unicodedata in Windows build configuration\n",
-        "shortMessage": "feat: Add hidden import for unicodedata in Windows build configuration"
-      },
-      "parents": [
-        "f21dd75f85a79fd95630280e57d22fbfdba7a693"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.11",
-          "target": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
+          "name": "0.2.0-rc.12",
+          "target": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
         }
       ],
-      "sha": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
+      "sha": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614968000,
+            "timeStamp": 1767615374000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614973000,
+            "timeStamp": 1767615380000,
             "offset": 60
           }
         },
-        "date": 1767614973000,
+        "date": 1767615380000,
         "message": {
-          "fullMessage": "fix: Add unicodedata import to run.py\n",
-          "shortMessage": "fix: Add unicodedata import to run.py"
+          "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
+          "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
         },
         "parents": [
-          "a3025ad653a59d5902784329222a93831a0a8195"
+          "44f89750b3e0e3dfce01b4436741d5726503c2d7"
         ],
-        "sha": "1c97eafc9aa7b551c8e3f7bbc0cb660cbe0aa7ea"
+        "sha": "703f9a1928944043260fd6bb04644216debf5846"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767614994986,
-  "version": "0.2.0-rc.12",
+  "timestamp": 1767615394408,
+  "version": "0.2.0-rc.13",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.12"
+  "versionPreReleaseIdentifier": "rc.13"
 }
