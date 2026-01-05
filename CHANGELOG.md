@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.20 (2026-01-05)
+
+### Added
+
+* [e250b] feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.19 (2026-01-05)
 
 ### Added
