@@ -1,14 +1,14 @@
 {
   "branch": "dev",
-  "bump": "minor",
+  "bump": "patch",
   "changelog": {
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.22",
+        "name": "0.2.0-rc.23",
         "sections": [
           {
-            "name": "Added",
+            "name": "Fixed",
             "commits": [
               {
                 "authorAction": {
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767646015000,
+                    "timeStamp": 1767648501000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767646021000,
+                    "timeStamp": 1767648501000,
                     "offset": 60
                   }
                 },
-                "date": 1767646021000,
+                "date": 1767648501000,
                 "message": {
-                  "fullMessage": "feat: Add support for retrieving Golden Pursuits in game data\n",
-                  "shortMessage": "feat: Add support for retrieving Golden Pursuits in game data"
+                  "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
+                  "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
                 },
                 "parents": [
-                  "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
+                  "6e594f27e8629f386e052f7995a6b03789b2de3d"
                 ],
-                "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
+                "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "a951ba37652d3673a6269603fcebe751beabaa9b",
-    "infer.output.state.version": "0.2.0-rc.22",
+    "infer.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
+    "infer.output.state.version": "0.2.0-rc.23",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "a951ba37652d3673a6269603fcebe751beabaa9b",
-    "make.input.state.initialCommit": "874ecf491dc107b5bf7e456ef704f2e2b0756cca",
+    "make.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
+    "make.input.state.initialCommit": "23b62764e6f725baa6160063de816c02924ab8d5",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.22",
+    "make.input.version": "0.2.0-rc.23",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "a951ba37652d3673a6269603fcebe751beabaa9b",
-    "mark.input.state.initialCommit": "874ecf491dc107b5bf7e456ef704f2e2b0756cca",
+    "mark.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
+    "mark.input.state.initialCommit": "23b62764e6f725baa6160063de816c02924ab8d5",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.22",
-    "publish.input.state.version": "0.2.0-rc.22",
-    "publish.output.state.version": "0.2.0-rc.22"
+    "mark.input.state.version": "0.2.0-rc.23",
+    "publish.input.state.version": "0.2.0-rc.23",
+    "publish.output.state.version": "0.2.0-rc.23"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646015000,
+            "timeStamp": 1767648501000,
             "offset": 60
           }
         },
@@ -205,19 +205,50 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646021000,
+            "timeStamp": 1767648501000,
             "offset": 60
           }
         },
-        "date": 1767646021000,
+        "date": 1767648501000,
         "message": {
-          "fullMessage": "feat: Add support for retrieving Golden Pursuits in game data\n",
-          "shortMessage": "feat: Add support for retrieving Golden Pursuits in game data"
+          "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
+          "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
         },
         "parents": [
-          "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
+          "6e594f27e8629f386e052f7995a6b03789b2de3d"
         ],
-        "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
+        "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+      },
+      {
+        "authorAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767646202000,
+            "offset": 60
+          }
+        },
+        "commitAction": {
+          "identity": {
+            "email": "olafbykowski1@gmail.com",
+            "name": "Olaf Bykowski"
+          },
+          "timeStamp": {
+            "timeStamp": 1767646209000,
+            "offset": 60
+          }
+        },
+        "date": 1767646209000,
+        "message": {
+          "fullMessage": "chore: Bump ProxiHUD Bridge version to 1.3\n",
+          "shortMessage": "chore: Bump ProxiHUD Bridge version to 1.3"
+        },
+        "parents": [
+          "23b62764e6f725baa6160063de816c02924ab8d5"
+        ],
+        "sha": "6e594f27e8629f386e052f7995a6b03789b2de3d"
       },
       {
         "authorAction": {
@@ -226,7 +257,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767643969000,
+            "timeStamp": 1767646038000,
             "offset": 0
           }
         },
@@ -236,22 +267,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767643969000,
+            "timeStamp": 1767646038000,
             "offset": 0
           }
         },
-        "date": 1767643969000,
+        "date": 1767646038000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.21 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.21 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]"
         },
         "parents": [
-          "e21e7ecd1ceadace2489d515a4b9a664c3905222"
+          "a951ba37652d3673a6269603fcebe751beabaa9b"
         ],
-        "sha": "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
+        "sha": "23b62764e6f725baa6160063de816c02924ab8d5"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767648501000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767648501000,
+          "offset": 60
+        }
+      },
+      "date": 1767648501000,
+      "message": {
+        "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
+        "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
+      },
+      "parents": [
+        "6e594f27e8629f386e052f7995a6b03789b2de3d"
+      ],
+      "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767646038000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767646038000,
+          "offset": 0
+        }
+      },
+      "date": 1767646038000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]"
+      },
+      "parents": [
+        "a951ba37652d3673a6269603fcebe751beabaa9b"
+      ],
+      "sha": "23b62764e6f725baa6160063de816c02924ab8d5"
+    },
+    "previousVersion": "0.2.0-rc.22",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +374,13 @@
       "parents": [
         "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
       ],
-      "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643969000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643969000,
-          "offset": 0
-        }
-      },
-      "date": 1767643969000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.21 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.21 changelog and state [skip ci]"
-      },
-      "parents": [
-        "e21e7ecd1ceadace2489d515a4b9a664c3905222"
-      ],
-      "sha": "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
-    },
-    "previousVersion": "0.2.0-rc.21",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643946000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643952000,
-          "offset": 60
-        }
-      },
-      "date": 1767643952000,
-      "message": {
-        "fullMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages\n",
-        "shortMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages"
-      },
-      "parents": [
-        "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.21",
-          "target": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
+          "name": "0.2.0-rc.22",
+          "target": "a951ba37652d3673a6269603fcebe751beabaa9b"
         }
       ],
-      "sha": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
+      "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +391,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646015000,
+            "timeStamp": 1767648501000,
             "offset": 60
           }
         },
@@ -370,19 +401,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646021000,
+            "timeStamp": 1767648501000,
             "offset": 60
           }
         },
-        "date": 1767646021000,
+        "date": 1767648501000,
         "message": {
-          "fullMessage": "feat: Add support for retrieving Golden Pursuits in game data\n",
-          "shortMessage": "feat: Add support for retrieving Golden Pursuits in game data"
+          "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
+          "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
         },
         "parents": [
-          "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
+          "6e594f27e8629f386e052f7995a6b03789b2de3d"
         ],
-        "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
+        "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
       }
     ]
   },
@@ -396,10 +427,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767646037428,
-  "version": "0.2.0-rc.22",
+  "timestamp": 1767648517961,
+  "version": "0.2.0-rc.23",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.22"
+  "versionPreReleaseIdentifier": "rc.23"
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.23 (2026-01-05)
+
+### Fixed
+
+* [3aa5a] fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.22 (2026-01-05)
 
 ### Added
