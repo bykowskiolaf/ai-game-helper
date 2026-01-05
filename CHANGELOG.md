@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.17 (2026-01-05)
+
+### Added
+
+* [132e1] feat: Clean up PyInstaller environment variables to prevent Tkinter issues (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.16 (2026-01-05)
 
 ### Added
