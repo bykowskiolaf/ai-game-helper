@@ -28,20 +28,21 @@ def get_active_quests() -> str:
     return "\n".join(quests)
 
 def get_character_build() -> str:
-    """Retrieves combat build."""
+    """Retrieves combat build (Class, Front/Back bar skills)."""
     logging.debug("Tool: 'get_character_build' called.")
 
     data = bridge.load_game_data()
     if not data: return "Data unavailable."
 
-    build_info = f"Class: {data.get('class')}, Skills: {len(data.get('skills_dump', []))}"
-    logging.debug(f"Tool: Build info found -> {build_info}")
+    skills = data.get('skills_dump', [])
 
     return f"""
     Class: {data.get('class', 'Unknown')}
     Role: {data.get('role', 'Unknown')}
     Attributes: Mag={data.get('stats_mag')}, Stam={data.get('stats_stam')}, HP={data.get('stats_hp')}
-    Skills: {', '.join(data.get('skills_dump', []))}
+    
+    Active Skills:
+    {chr(10).join(['- ' + s for s in skills])}
     """
 
 definitions = [get_inventory, get_active_quests, get_character_build]

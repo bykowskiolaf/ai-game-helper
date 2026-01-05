@@ -3,29 +3,64 @@ ProxiHUD.name = "ProxiHUD_Bridge"
 
 function ProxiHUD.OnPlayerUnloaded()
     local function GetFullInventory()
-        local inv = {}
+            local inv = {}
 
-        -- Internal function to scan a specific bag
-        local function ScanBag(bagId, locationTag)
-            local bagCache = SHARED_INVENTORY:GenerateFullSlotData(nil, bagId)
-            for _, data in pairs(bagCache) do
-                -- Format: "Iron Sword (x1) [Bank]"
-                local entry = data.name
-                if data.stackCount > 1 then
-                    entry = entry .. " (x" .. data.stackCount .. ")"
-                end
-                entry = entry .. " [" .. locationTag .. "]"
+            -- Quality Map
+            local qualityNames = {[0]="Trash", [1]="Normal", [2]="Fine", [3]="Superior", [4]="Epic", [5]="Legendary"}
 
-                table.insert(inv, entry)
+            -- Trait Map (Simplified for readability)
+            local function GetTraitName(itemLink)
+                local traitType, _ = GetItemLinkTraitInfo(itemLink)
+                -- You can map specific IDs to strings here, or just use the in-game text
+                -- Getting the raw name is easier via GetString("SI_ITEMTRAITTYPE", traitType)
+                -- but for simplicity we will just extract it from the link logic if possible
+                -- or simpler: use the game's built-in formatter if available,
+                -- otherwise just return the ID so the AI can guess or we rely on the item name often containing it.
+                -- A better approach for the AI:
+                if traitType == 0 then return "None" end
+                return GetString("SI_ITEMTRAITTYPE", traitType)
             end
+
+            local function ScanBag(bagId, locationTag)
+                local bagCache = SHARED_INVENTORY:GenerateFullSlotData(nil, bagId)
+
+                for _, data in pairs(bagCache) do
+                    local link = data.itemLink
+
+                    -- 1. Quality
+                    local quality = data.quality or 1
+                    local qualityStr = qualityNames[quality] or "Unknown"
+
+                    -- 2. Trait
+                    local traitStr = GetTraitName(link)
+
+                    -- 3. Set Name
+                    local hasSet, setName, _, _, _ = GetItemLinkSetInfo(link, false)
+                    if not hasSet then setName = "No Set" end
+
+                    -- 4. Value
+                    local value = GetItemLinkValue(link, false)
+
+                    -- Format: "Mother's Sorrow Inferno Staff (x1) [Bag] {Epic} <Divines> (Set: Mother's Sorrow) $50g"
+                    local entry = string.format("%s (x%d) [%s] {%s} <%s> (Set: %s) $%dg",
+                        data.name,
+                        data.stackCount,
+                        locationTag,
+                        qualityStr,
+                        traitStr,
+                        setName,
+                        value
+                    )
+
+                    table.insert(inv, entry)
+                end
+            end
+
+            ScanBag(BAG_BACKPACK, "Bag")
+            ScanBag(BAG_BANK, "Bank")
+
+            return inv
         end
-
-        -- Scan both locations
-        ScanBag(BAG_BACKPACK, "Bag")
-        ScanBag(BAG_BANK, "Bank")
-
-        return inv
-    end
 
     local function GetActiveQuests()
         local quests = {}
@@ -38,37 +73,26 @@ function ProxiHUD.OnPlayerUnloaded()
         return quests
     end
 
-    local function GetGoldenPursuits()
-        local pursuits = {}
+    local function GetSkills()
+            local skills = {}
 
-        -- Check if the API exists (Update 44+)
-        if not GetActivePromotionalEventId then return pursuits end
-
-        local campaignId = GetActivePromotionalEventId()
-        if campaignId == 0 then return pursuits end -- No active campaign
-
-        local numActivities = GetPromotionalEventNumActivities(campaignId)
-        for i = 1, numActivities do
-            local name, description, _, _, _, _ = GetPromotionalEventActivityInfo(campaignId, i)
-            local progress, maxProgress = GetPromotionalEventActivityProgress(campaignId, i)
-
-            -- Format: "Slay Daedra [5/10]: Kill 10 Daedra"
-            local entry = string.format("%s [%d/%d]: %s", name, progress, maxProgress, description)
-            table.insert(pursuits, entry)
-        end
-        return pursuits
-    end
-
-    local function GetSkills(hotbarCategory)
-        local skills = {}
-        for i = 3, 8 do
-            local slotId = GetSlotBoundId(i, hotbarCategory)
-            if slotId > 0 then
-                table.insert(skills, GetAbilityName(slotId))
+            local function ScanBar(category, name)
+                for i = 3, 8 do
+                    local slotId = GetSlotBoundId(i, category)
+                    if slotId > 0 then
+                        local skillName = GetAbilityName(slotId)
+                        -- Format: "Crystal Fragments (Front Bar)"
+                        table.insert(skills, string.format("%s (%s)", skillName, name))
+                    end
+                end
             end
+
+            -- Scan both bars
+            ScanBar(HOTBAR_CATEGORY_PRIMARY, "Front Bar")
+            ScanBar(HOTBAR_CATEGORY_BACKUP, "Back Bar")
+
+            return skills
         end
-        return skills
-    end
 
     ProxiHUD_Data = {
         timestamp = os.time(),
@@ -96,7 +120,7 @@ function ProxiHUD.OnPlayerUnloaded()
         -- HEAVY DATA DUMPS (For AI Tools)
         inventory_dump = GetFullInventory(),
         quest_dump = GetActiveQuests(),
-        skills_dump = GetSkills(HOTBAR_CATEGORY_PRIMARY),
+        skills_dump = GetSkills(),
 
         -- Legacy field (keep empty to avoid errors if python expects it)
         equipment = {}
