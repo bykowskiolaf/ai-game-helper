@@ -1,5 +1,6 @@
 import sys
 import os
+import unicodedata
 
 # Ensure the current directory is in the path so we can import the package
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
