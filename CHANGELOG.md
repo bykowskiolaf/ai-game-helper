@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.22 (2026-01-05)
+
+### Added
+
+* [a951b] feat: Add support for retrieving Golden Pursuits in game data (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.21 (2026-01-05)
 
 ### Added
