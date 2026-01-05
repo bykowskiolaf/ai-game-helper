@@ -106,6 +106,7 @@ jobs:
             --icon "src/proxihud/icon.ico" `
             --paths "src" `
             --hidden-import "proxihud" `
+            --hidden-import "unicodedata" `
             src/run.py
 
       - name: Upload to Release
