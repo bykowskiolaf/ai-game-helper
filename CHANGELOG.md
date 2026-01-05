@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.11 (2026-01-05)
+
+### Added
+
+* [7a6b3] feat: Add hidden import for unicodedata in Windows build configuration (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.10 (2026-01-05)
 
 ### Added

@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.10",
+        "name": "0.2.0-rc.11",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767614209000,
+                    "timeStamp": 1767614756000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767614209000,
+                    "timeStamp": 1767614762000,
                     "offset": 60
                   }
                 },
-                "date": 1767614209000,
+                "date": 1767614762000,
                 "message": {
-                  "fullMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic\n",
-                  "shortMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic"
+                  "fullMessage": "feat: Add hidden import for unicodedata in Windows build configuration\n",
+                  "shortMessage": "feat: Add hidden import for unicodedata in Windows build configuration"
                 },
                 "parents": [
-                  "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
+                  "f21dd75f85a79fd95630280e57d22fbfdba7a693"
                 ],
-                "sha": "4332e733ab66db388adda2bb277ac5ed1cf35278"
+                "sha": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "4332e733ab66db388adda2bb277ac5ed1cf35278",
-    "infer.output.state.version": "0.2.0-rc.10",
+    "infer.input.repository.last.commit": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f",
+    "infer.output.state.version": "0.2.0-rc.11",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "4332e733ab66db388adda2bb277ac5ed1cf35278",
-    "make.input.state.initialCommit": "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2",
+    "make.input.repository.last.commit": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f",
+    "make.input.state.initialCommit": "f21dd75f85a79fd95630280e57d22fbfdba7a693",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.10",
+    "make.input.version": "0.2.0-rc.11",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "4332e733ab66db388adda2bb277ac5ed1cf35278",
-    "mark.input.state.initialCommit": "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2",
+    "mark.input.repository.last.commit": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f",
+    "mark.input.state.initialCommit": "f21dd75f85a79fd95630280e57d22fbfdba7a693",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.10",
-    "publish.input.state.version": "0.2.0-rc.10",
-    "publish.output.state.version": "0.2.0-rc.10"
+    "mark.input.state.version": "0.2.0-rc.11",
+    "publish.input.state.version": "0.2.0-rc.11",
+    "publish.output.state.version": "0.2.0-rc.11"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614209000,
+            "timeStamp": 1767614756000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614209000,
+            "timeStamp": 1767614762000,
             "offset": 60
           }
         },
-        "date": 1767614209000,
+        "date": 1767614762000,
         "message": {
-          "fullMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic\n",
-          "shortMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic"
+          "fullMessage": "feat: Add hidden import for unicodedata in Windows build configuration\n",
+          "shortMessage": "feat: Add hidden import for unicodedata in Windows build configuration"
         },
         "parents": [
-          "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
+          "f21dd75f85a79fd95630280e57d22fbfdba7a693"
         ],
-        "sha": "4332e733ab66db388adda2bb277ac5ed1cf35278"
+        "sha": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767570587000,
+            "timeStamp": 1767614225000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767570587000,
+            "timeStamp": 1767614225000,
             "offset": 0
           }
         },
-        "date": 1767570587000,
+        "date": 1767614225000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.9 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.9 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.10 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.10 changelog and state [skip ci]"
         },
         "parents": [
-          "7f57e7de390646f44fd65234ae5391a1e55516d1"
+          "4332e733ab66db388adda2bb277ac5ed1cf35278"
         ],
-        "sha": "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
+        "sha": "f21dd75f85a79fd95630280e57d22fbfdba7a693"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614756000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614762000,
+          "offset": 60
+        }
+      },
+      "date": 1767614762000,
+      "message": {
+        "fullMessage": "feat: Add hidden import for unicodedata in Windows build configuration\n",
+        "shortMessage": "feat: Add hidden import for unicodedata in Windows build configuration"
+      },
+      "parents": [
+        "f21dd75f85a79fd95630280e57d22fbfdba7a693"
+      ],
+      "sha": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614225000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767614225000,
+          "offset": 0
+        }
+      },
+      "date": 1767614225000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.10 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.10 changelog and state [skip ci]"
+      },
+      "parents": [
+        "4332e733ab66db388adda2bb277ac5ed1cf35278"
+      ],
+      "sha": "f21dd75f85a79fd95630280e57d22fbfdba7a693"
+    },
+    "previousVersion": "0.2.0-rc.10",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
       ],
-      "sha": "4332e733ab66db388adda2bb277ac5ed1cf35278"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767570587000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767570587000,
-          "offset": 0
-        }
-      },
-      "date": 1767570587000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.9 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.9 changelog and state [skip ci]"
-      },
-      "parents": [
-        "7f57e7de390646f44fd65234ae5391a1e55516d1"
-      ],
-      "sha": "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
-    },
-    "previousVersion": "0.2.0-rc.9",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767570565000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767570572000,
-          "offset": 60
-        }
-      },
-      "date": 1767570572000,
-      "message": {
-        "fullMessage": "feat: Improve update process with user feedback and enhanced file handling\n",
-        "shortMessage": "feat: Improve update process with user feedback and enhanced file handling"
-      },
-      "parents": [
-        "d4d28ea35f559625dadb3e3043f554d8017cdac4"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.9",
-          "target": "7f57e7de390646f44fd65234ae5391a1e55516d1"
+          "name": "0.2.0-rc.10",
+          "target": "4332e733ab66db388adda2bb277ac5ed1cf35278"
         }
       ],
-      "sha": "7f57e7de390646f44fd65234ae5391a1e55516d1"
+      "sha": "4332e733ab66db388adda2bb277ac5ed1cf35278"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614209000,
+            "timeStamp": 1767614756000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767614209000,
+            "timeStamp": 1767614762000,
             "offset": 60
           }
         },
-        "date": 1767614209000,
+        "date": 1767614762000,
         "message": {
-          "fullMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic\n",
-          "shortMessage": "feat: Add inventory and quest retrieval helpers, refactor image analysis query logic"
+          "fullMessage": "feat: Add hidden import for unicodedata in Windows build configuration\n",
+          "shortMessage": "feat: Add hidden import for unicodedata in Windows build configuration"
         },
         "parents": [
-          "d8d10a6e4d2bc2a22bb81bef992665cb71fbc8d2"
+          "f21dd75f85a79fd95630280e57d22fbfdba7a693"
         ],
-        "sha": "4332e733ab66db388adda2bb277ac5ed1cf35278"
+        "sha": "7a6b3f92ea6709726a5e1aa63b9f19f523e2a15f"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767614224127,
-  "version": "0.2.0-rc.10",
+  "timestamp": 1767614776671,
+  "version": "0.2.0-rc.11",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.10"
+  "versionPreReleaseIdentifier": "rc.11"
 }
