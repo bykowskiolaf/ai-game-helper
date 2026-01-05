@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from .. import config
 from .components import ApiKeyRow
+from .. import logger
 
 class SettingsDialog(ctk.CTkToplevel):
     def __init__(self, parent, current_settings, apply_callback):
@@ -25,6 +26,19 @@ class SettingsDialog(ctk.CTkToplevel):
         self.opacity_slider = ctk.CTkSlider(self.scroll, from_=0.2, to=1.0, command=self.update_opacity)
         self.opacity_slider.set(self.settings["opacity"])
         self.opacity_slider.pack(fill="x", padx=10, pady=5)
+
+        self.debug_switch = ctk.CTkSwitch(
+            self.scroll,
+            text="Enable Debug Logging",
+            command=self.update_debug
+        )
+        # Set initial state
+        if self.settings.get("debug_logging", False):
+            self.debug_switch.select()
+        else:
+            self.debug_switch.deselect()
+
+        self.debug_switch.pack(anchor="w", padx=10, pady=(10, 5))
 
         # 3. API Keys
         self.add_header("🔑 API Keys")
@@ -55,6 +69,7 @@ class SettingsDialog(ctk.CTkToplevel):
         self.save_btn = ctk.CTkButton(self, text="Save & Close", height=40, command=self.save_and_close)
         self.save_btn.pack(side="bottom", fill="x", padx=20, pady=15)
 
+
     def add_header(self, text):
         ctk.CTkLabel(self.scroll, text=text, font=("Segoe UI", 13, "bold"), text_color="#ccc").pack(anchor="w", padx=10, pady=(15, 2))
 
@@ -65,6 +80,15 @@ class SettingsDialog(ctk.CTkToplevel):
     def remove_key_row(self, row_widget):
         self.key_rows.remove(row_widget)
         row_widget.destroy()
+
+    def update_debug(self):
+        is_debug = bool(self.debug_switch.get())
+        self.settings["debug_logging"] = is_debug
+
+        logger.update_log_level(is_debug)
+
+        # Save to file
+        self.apply_callback(self.settings)
 
     def update_opacity(self, value):
         self.settings["opacity"] = value

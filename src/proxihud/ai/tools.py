@@ -1,42 +1,47 @@
+import logging  # <--- Ensure this is imported
 from .. import bridge
 
 def get_inventory() -> str:
-    """
-    Retrieves the player's full inventory (Backpack and Bank).
-    Call this when the user asks about specific items, loot, counts, crafting materials, or wealth.
-    """
-    data = bridge.load_game_data()
-    # Check if we have the heavy dump available
-    if not data or 'inventory_dump' not in data:
-        return "Inventory data unavailable. User needs to /reloadui in ESO."
+    """Retrieves the player's full inventory."""
+    logging.debug("Tool: 'get_inventory' called.")
 
-    # We join the list into a single string block for the AI to read
-    return "\n".join(data['inventory_dump'])
+    data = bridge.load_game_data()
+    if not data or 'inventory_dump' not in data:
+        logging.warning("Tool: Inventory data missing.")
+        return "Inventory unavailable."
+
+    items = data['inventory_dump']
+    logging.debug(f"Tool: Retrieved {len(items)} inventory items.")
+    return "\n".join(items)
 
 def get_active_quests() -> str:
-    """
-    Retrieves the names of all active quests in the player's journal.
-    Call this when the user asks 'What should I do?', 'Where do I go?', or about current objectives.
-    """
+    """Retrieves active quests."""
+    logging.debug("Tool: 'get_active_quests' called.")
+
     data = bridge.load_game_data()
     if not data or 'quest_dump' not in data:
-        return "Quest log is empty or unavailable."
-    return "\n".join(data['quest_dump'])
+        logging.warning("Tool: Quest data missing.")
+        return "Quest log empty."
+
+    quests = data['quest_dump']
+    logging.debug(f"Tool: Retrieved {len(quests)} active quests.")
+    return "\n".join(quests)
 
 def get_character_build() -> str:
-    """
-    Retrieves the player's combat build, including Class, Attributes, and Active Skills.
-    Call this when the user asks for combat advice, rotation help, or build optimization.
-    """
+    """Retrieves combat build."""
+    logging.debug("Tool: 'get_character_build' called.")
+
     data = bridge.load_game_data()
-    if not data: return "Character data unavailable."
+    if not data: return "Data unavailable."
+
+    build_info = f"Class: {data.get('class')}, Skills: {len(data.get('skills_dump', []))}"
+    logging.debug(f"Tool: Build info found -> {build_info}")
 
     return f"""
     Class: {data.get('class', 'Unknown')}
     Role: {data.get('role', 'Unknown')}
-    Attributes: Magicka={data.get('stats_mag')}, Stamina={data.get('stats_stam')}, Health={data.get('stats_hp')}
-    Skills Bar: {', '.join(data.get('skills_dump', []))}
+    Attributes: Mag={data.get('stats_mag')}, Stam={data.get('stats_stam')}, HP={data.get('stats_hp')}
+    Skills: {', '.join(data.get('skills_dump', []))}
     """
 
-# List of tools to register with Gemini
 definitions = [get_inventory, get_active_quests, get_character_build]

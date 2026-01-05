@@ -12,14 +12,15 @@ REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
 PROD_AI_MODEL = "gemini-2.5-flash"
-DEV_AI_MODEL = "gemini-2.5-flash-lite"
+DEV_AI_MODEL = "gemini-2.5-flash"
 
 # --- DEFAULTS ---
 DEFAULT_SETTINGS = {
     "opacity": 0.90,
     "hotkey_trigger": "f11",
     "hotkey_exit": "f12",
-    "geometry": "500x300+100+100"
+    "geometry": "500x300+100+100",
+    "debug_logging": False
 }
 
 # --- ENVIRONMENT STATE ---

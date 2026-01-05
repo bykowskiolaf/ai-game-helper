@@ -32,6 +32,10 @@ def is_installed():
     Checks if installed AND up-to-date.
     Returns False if missing OR if old version.
     """
+
+    if config.is_dev():
+        return True
+
     try:
         eso_path = config.get_eso_addon_path()
         if not eso_path: return False

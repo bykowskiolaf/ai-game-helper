@@ -3,64 +3,47 @@ from .. import config, utils, bridge
 from . import query
 
 def analyze_image(img, user_prompt=None, history=[]):
-    """
-    Single-Shot Analysis:
-    Combines Visuals (Screen) + Tools (Deep Data) into one query.
-    """
     if not config.get_api_keys():
-        return "❌ API Key missing. Please add in settings."
+        return "❌ API Key missing."
 
-    # 1. FETCH LIGHTWEIGHT CONTEXT (Always loaded)
-    # We only load the 'Lite' data here. Heavy dumps (Inventory/Quests)
-    # are hidden behind the Tools and only loaded if the AI requests them.
+    # --- 1. STATIC SYSTEM INSTRUCTION (The Rules) ---
+    static_system_instruction = """
+    You are ProxiHUD, an expert ESO companion.
+    
+    **AVAILABLE TOOLS:**
+    - `get_inventory()`: CALL THIS for loot, wealth, or "Do I have X?".
+    - `get_active_quests()`: CALL THIS for "What should I do?" or objective help.
+    - `get_character_build()`: CALL THIS for combat advice/stats.
+
+    **RULES:**
+    1. **SUMMARIZE TOOLS:** If you call a tool, you MUST summarize the result (e.g., "I checked your bag, you have X").
+    2. **CHECK HISTORY:** If the user asks about data you just retrieved, READ THE HISTORY. Do not call the tool again.
+    3. **BE DIRECT:** Keep answers tactical and concise.
+    """
+
+    # --- 2. DYNAMIC CONTEXT (The State) ---
+    # This changes every frame/request.
     game_data = bridge.load_game_data()
 
-    player_context = ""
+    status_block = "**STATUS:** Sync Inactive (/reloadui needed)"
     if game_data:
-        player_context = f"""
+        status_block = f"""
         **LIVE STATUS:**
-        - Identity: {game_data.get('name')} (Level {game_data.get('level')} {game_data.get('class')})
-        - Zone: {game_data.get('subzone')} (Zone: {game_data.get('zone')})
-        - Vitals: {game_data.get('stats_hp')} HP / {game_data.get('stats_mag')} Mag / {game_data.get('stats_stam')} Stam
-        - Wallet: {game_data.get('gold')} Gold
+        - {game_data.get('name')} (Lvl {game_data.get('level')} {game_data.get('class')})
+        - Zone: {game_data.get('subzone')} ({game_data.get('zone')})
+        - HP: {game_data.get('stats_hp')} / Mag: {game_data.get('stats_mag')} / Stam: {game_data.get('stats_stam')}
+        - Gold: {game_data.get('gold')}
         """
-    else:
-        player_context = "**STATUS:** Data Sync Inactive. (User needs to /reloadui)"
 
-    # 2. HISTORY
-    chat_history = ""
-    if history:
-        chat_history = "PREVIOUS CHAT:\n" + "\n".join(
-            [f"{'User' if msg['role'] == 'user' else 'AI'}: {msg['text']}" for msg in history[-4:]]
-        )
-
-    # 3. THE "MCP" SYSTEM PROMPT
-    # We instruct the model to use the Python functions we defined in tools.py
-    system_prompt = f"""
-    You are ProxiHUD, an intelligent ESO companion.
-    
-    {player_context}
-    
-    {chat_history}
+    # We attach this to the USER'S prompt so the model sees it as "Current Situation"
+    user_text = f"""
+    {status_block}
 
     **USER QUESTION:** "{user_prompt if user_prompt else 'Analyze the screen'}"
-
-    **AVAILABLE DATA TOOLS:**
-    - `get_inventory()`: CALL THIS for questions about loot, items, wealth, or "Do I have X?".
-    - `get_active_quests()`: CALL THIS for "What should I do?", "Where is the quest?", or objective help.
-    - `get_character_build()`: CALL THIS for combat advice, rotation help, or "Is my build good?".
-
-    **INSTRUCTIONS:**
-    1. **VISUALS FIRST:** Look at the screen image. If the answer is visible (e.g., "Boss is casting a spell", "Health is low"), answer immediately.
-    2. **TOOLS SECOND:** If the answer requires hidden data (e.g., "Do I have enough materials?"), **DO NOT GUESS.** Call the appropriate tool.
-    3. **BE DIRECT:** Keep answers under 50 words unless the user asks for a deep dive.
-
-    **SCENARIOS:**
-    - User: "What is in my bag?" -> Call `get_inventory()`.
-    - User: "Help me fight this boss!" -> Analyze image for mechanics (Red circles, Cast bars).
-    - User: "Where do I go next?" -> Call `get_active_quests()`.
     """
 
-    # 4. EXECUTE
-    logging.info("Sending Single-Shot Request to Gemini...")
-    return query.query_gemini(system_prompt, img)
+    # --- 3. EXECUTE ---
+    logging.info("Sending Structured Request to Gemini...")
+
+    # Pass separated parts: Instructions vs History vs Current
+    return query.query_gemini(static_system_instruction, history, user_text, img)

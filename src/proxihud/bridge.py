@@ -14,10 +14,13 @@ def load_game_data():
         return None
 
     try:
+        logging.debug(f"Bridge: Reading data from {path}")
+
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
         if "ProxiHUD_Data" not in content:
+            logging.debug("Bridge: File exists but 'ProxiHUD_Data' table missing.")
             return None
 
         data = {
@@ -50,6 +53,9 @@ def load_game_data():
             # Equipment (Complex Object)
             "equipment": _extract_equipment(content),
         }
+
+        logging.debug(f"Bridge: Parse success. Name={data['name']}, Zone={data['zone']}")
+
         return data
 
     except Exception as e:
