@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.10 (2026-01-05)
+
+### Added
+
+* [4332e] feat: Add inventory and quest retrieval helpers, refactor image analysis query logic (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.9 (2026-01-04)
 
 ### Added
