@@ -5,6 +5,7 @@ import webbrowser
 import platform
 import logging
 import time
+import subprocess
 from packaging.version import parse as parse_version
 from .config import REPO_OWNER, REPO_NAME, is_dev
 
@@ -78,8 +79,7 @@ def update_app(download_url):
     try:
         logging.info(f"Downloading update from: {download_url}")
 
-        # 1. Download to temp file
-        # Use a session or context manager to ensure the connection closes
+        # 1. Download
         new_exe = "Update.tmp.exe"
         with requests.get(download_url, stream=True) as response:
             response.raise_for_status()
@@ -88,37 +88,42 @@ def update_app(download_url):
                     f.write(chunk)
 
         logging.info("Download finished. Waiting for AV scan to release lock...")
-
-        # FIX: Sleep to let Windows Defender finish scanning the new .exe
         time.sleep(2.0)
 
-        # 2. Rename Logic
+        # 2. Rename
         current_exe = sys.executable
         old_exe = current_exe + ".old"
 
-        # Clean up previous update mess if it exists
         if os.path.exists(old_exe):
             try: os.remove(old_exe)
             except: pass
 
-        # 3. The Swap (With Retries)
         logging.info("Swapping files...")
-        _safe_rename(current_exe, old_exe) # Move active out
-        _safe_rename(new_exe, current_exe) # Move new in
+        _safe_rename(current_exe, old_exe)
+        _safe_rename(new_exe, current_exe)
 
         logging.info("Files swapped. Launching new process...")
-        time.sleep(1.0) # Give filesystem a moment to sync
+        time.sleep(1.0)
 
-        # 4. Launch new exe
-        os.startfile(current_exe)
+        # 3. CLEAN LAUNCH (The Fix)
+        # Create a fresh environment copy
+        env = os.environ.copy()
 
-        # 5. Exit
+        # Remove the toxic variables that point to the OLD temp folder
+        # This forces the new process to find its OWN temp folder
+        env.pop('TCL_LIBRARY', None)
+        env.pop('TK_LIBRARY', None)
+        env.pop('_MEIPASS2', None)
+
+        # Use Popen instead of startfile  to inject the clean env
+        subprocess.Popen([current_exe], env=env)
+
+        # 4. Exit
         logging.info("Exiting...")
         os._exit(0)
 
     except Exception as e:
         logging.error(f"Update failed: {e}")
-        # Try to clean up
         if os.path.exists("Update.tmp.exe"):
             try: os.remove("Update.tmp.exe")
             except: pass
