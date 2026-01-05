@@ -1,6 +1,6 @@
 import logging
 from .. import config, utils, bridge
-
+from . import query
 def analyze_image(img, user_prompt=None, history=[], settings={}):
     """
     Single-Shot Analysis:
@@ -46,20 +46,19 @@ def analyze_image(img, user_prompt=None, history=[], settings={}):
     **USER QUESTION:** "{user_prompt if user_prompt else 'Analyze the screen'}"
 
     **INSTRUCTIONS:**
-    1. **READ THE HUD:** Prioritize reading text on screen (Quest Tracker, Death Recap, Item Tooltips, Boss Health Bars).
-    2. **DETECT CONTEXT:** Instantly decide if this is Combat, Inventory, Death, or Questing.
-    3. **BE DIRECT:** No fluff. No personas. Give tactical, actionable advice based on what you see.
+    1. **READ THE HUD:** Prioritize reading text on screen (Quest Tracker, Death Recap, Tooltips).
+    2. **SEARCH IF NEEDED:** If the user asks about specific mechanics, drop locations, or prices that are not on screen, **use Google Search** to find the latest UESP wiki data.
+    3. **BE DIRECT:** No fluff. Give tactical, actionable advice.
     
     **SCENARIOS:**
-    - **IF DEATH RECAP:** Read the "Killing Blow" and "Hints" text. Explain exactly how to counter that specific mechanic.
-    - **IF INVENTORY/ITEM:** Identify the item trait/set. Is it valuable? Is it meta for the player's class ({game_data.get('class') if game_data else 'Unknown'})?
-    - **IF COMBAT:** Identify the enemy. Are there red AOE circles? Is Magicka/Stamina low?
-    - **IF QUESTING:** Read the quest tracker text. Give a 1-sentence tip on that specific objective.
+    - **IF BOSS:** Search for "ESO [Boss Name] mechanics". Tell me what to interrupt or dodge.
+    - **IF ITEM:** Search for "ESO [Item Name] build". Is it meta?
+    - **IF QUEST:** Search the quest name. Where is the objective?
 
     **OUTPUT FORMAT:**
-    Use Markdown. Use bolding for key terms. Keep it under 100 words unless asked for details.
+    Use Markdown. Use bolding. Keep it under 100 words.
     """
 
     # 4. EXECUTE
     logging.info("Sending Single-Shot Request to Gemini...")
-    return utils.query_gemini(system_prompt, img)
+    return query.query_gemini(system_prompt, img)

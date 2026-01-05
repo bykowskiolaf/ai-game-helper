@@ -33,17 +33,23 @@ def load_game_data():
             "zone": _extract_str(content, "zone"),
             "subzone": _extract_str(content, "subzone"),
 
-            # Lists (New)
-            "skills": _extract_list(content, "skills"),
-            "quests": _extract_list(content, "quests"),
-
             # Stats (Flattened)
-            # Regex finds ["magicka"] = 1234, globally, which works for SavedVars
             "stats_mag": _extract_num(content, "magicka"),
             "stats_hp": _extract_num(content, "health"),
             "stats_stam": _extract_num(content, "stamina"),
 
-            # Complex Objects
+            # Currencies
+            "gold": _extract_num(content, "gold"),
+            "ap": _extract_num(content, "ap"),
+            "telvar": _extract_num(content, "telvar"),
+
+            # HEAVY DATA DUMPS (Lists)
+            # These keys match exactly what we wrote in Lua ("inventory_dump", etc.)
+            "inventory_dump": _extract_list(content, "inventory_dump"),
+            "quest_dump": _extract_list(content, "quest_dump"),
+            "skills_dump": _extract_list(content, "skills_dump"),
+
+            # Equipment (Complex Object)
             "equipment": _extract_equipment(content),
         }
         return data
