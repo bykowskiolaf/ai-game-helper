@@ -97,7 +97,6 @@ function ProxiHUD.OnPlayerUnloaded()
         inventory_dump = GetFullInventory(),
         quest_dump = GetActiveQuests(),
         skills_dump = GetSkills(HOTBAR_CATEGORY_PRIMARY),
-        golden_pursuits = GetGoldenPursuits(),
 
         -- Legacy field (keep empty to avoid errors if python expects it)
         equipment = {}
