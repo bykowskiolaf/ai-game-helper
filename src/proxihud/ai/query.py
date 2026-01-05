@@ -26,7 +26,7 @@ def query_gemini(prompt, img):
             client = genai.Client(api_key=api_key)
 
             response = client.models.generate_content(
-                model=config.AI_MODEL,
+                model=config.DEV_AI_MODEL if config.is_dev() else config.PROD_AI_MODEL,
                 contents=[prompt, img],
                 config=my_config
             )
