@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.19 (2026-01-05)
+
+### Added
+
+* [b0672] feat: Enhance logging and improve inventory, quest, and character build retrieval functions (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.18 (2026-01-05)
 
 ### Added

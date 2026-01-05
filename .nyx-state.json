@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.18",
+        "name": "0.2.0-rc.19",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767618626000,
+                    "timeStamp": 1767643051000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767618632000,
+                    "timeStamp": 1767643051000,
                     "offset": 60
                   }
                 },
-                "date": 1767618632000,
+                "date": 1767643051000,
                 "message": {
-                  "fullMessage": "feat: Update production AI model to gemini-2.5-flash\n",
-                  "shortMessage": "feat: Update production AI model to gemini-2.5-flash"
+                  "fullMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions\n",
+                  "shortMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions"
                 },
                 "parents": [
-                  "ccd39ac85c3b45b86578a1465355decf496ebee9"
+                  "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
                 ],
-                "sha": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
+                "sha": "b0672d336c0014195a14741c34ea1778e68d5d5b"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf",
-    "infer.output.state.version": "0.2.0-rc.18",
+    "infer.input.repository.last.commit": "b0672d336c0014195a14741c34ea1778e68d5d5b",
+    "infer.output.state.version": "0.2.0-rc.19",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf",
-    "make.input.state.initialCommit": "ccd39ac85c3b45b86578a1465355decf496ebee9",
+    "make.input.repository.last.commit": "b0672d336c0014195a14741c34ea1778e68d5d5b",
+    "make.input.state.initialCommit": "e140341f14fc823dfd4acf5c1b96f9e50ad79d22",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.18",
+    "make.input.version": "0.2.0-rc.19",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf",
-    "mark.input.state.initialCommit": "ccd39ac85c3b45b86578a1465355decf496ebee9",
+    "mark.input.repository.last.commit": "b0672d336c0014195a14741c34ea1778e68d5d5b",
+    "mark.input.state.initialCommit": "e140341f14fc823dfd4acf5c1b96f9e50ad79d22",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.18",
-    "publish.input.state.version": "0.2.0-rc.18",
-    "publish.output.state.version": "0.2.0-rc.18"
+    "mark.input.state.version": "0.2.0-rc.19",
+    "publish.input.state.version": "0.2.0-rc.19",
+    "publish.output.state.version": "0.2.0-rc.19"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767618626000,
+            "timeStamp": 1767643051000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767618632000,
+            "timeStamp": 1767643051000,
             "offset": 60
           }
         },
-        "date": 1767618632000,
+        "date": 1767643051000,
         "message": {
-          "fullMessage": "feat: Update production AI model to gemini-2.5-flash\n",
-          "shortMessage": "feat: Update production AI model to gemini-2.5-flash"
+          "fullMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions\n",
+          "shortMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions"
         },
         "parents": [
-          "ccd39ac85c3b45b86578a1465355decf496ebee9"
+          "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
         ],
-        "sha": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
+        "sha": "b0672d336c0014195a14741c34ea1778e68d5d5b"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767618159000,
+            "timeStamp": 1767618646000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767618159000,
+            "timeStamp": 1767618646000,
             "offset": 0
           }
         },
-        "date": 1767618159000,
+        "date": 1767618646000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.17 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.17 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.18 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.18 changelog and state [skip ci]"
         },
         "parents": [
-          "132e1ffbad3cb4412509148679ffaf4204acd6eb"
+          "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
         ],
-        "sha": "ccd39ac85c3b45b86578a1465355decf496ebee9"
+        "sha": "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643051000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643051000,
+          "offset": 60
+        }
+      },
+      "date": 1767643051000,
+      "message": {
+        "fullMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions\n",
+        "shortMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions"
+      },
+      "parents": [
+        "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
+      ],
+      "sha": "b0672d336c0014195a14741c34ea1778e68d5d5b"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767618646000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767618646000,
+          "offset": 0
+        }
+      },
+      "date": 1767618646000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.18 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.18 changelog and state [skip ci]"
+      },
+      "parents": [
+        "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
+      ],
+      "sha": "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
+    },
+    "previousVersion": "0.2.0-rc.18",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "ccd39ac85c3b45b86578a1465355decf496ebee9"
       ],
-      "sha": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767618159000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767618159000,
-          "offset": 0
-        }
-      },
-      "date": 1767618159000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.17 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.17 changelog and state [skip ci]"
-      },
-      "parents": [
-        "132e1ffbad3cb4412509148679ffaf4204acd6eb"
-      ],
-      "sha": "ccd39ac85c3b45b86578a1465355decf496ebee9"
-    },
-    "previousVersion": "0.2.0-rc.17",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767618139000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767618144000,
-          "offset": 60
-        }
-      },
-      "date": 1767618144000,
-      "message": {
-        "fullMessage": "feat: Clean up PyInstaller environment variables to prevent Tkinter issues\n",
-        "shortMessage": "feat: Clean up PyInstaller environment variables to prevent Tkinter issues"
-      },
-      "parents": [
-        "f725b5e155ffcc92f0876c053402b022d3550a5a"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.17",
-          "target": "132e1ffbad3cb4412509148679ffaf4204acd6eb"
+          "name": "0.2.0-rc.18",
+          "target": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
         }
       ],
-      "sha": "132e1ffbad3cb4412509148679ffaf4204acd6eb"
+      "sha": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767618626000,
+            "timeStamp": 1767643051000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767618632000,
+            "timeStamp": 1767643051000,
             "offset": 60
           }
         },
-        "date": 1767618632000,
+        "date": 1767643051000,
         "message": {
-          "fullMessage": "feat: Update production AI model to gemini-2.5-flash\n",
-          "shortMessage": "feat: Update production AI model to gemini-2.5-flash"
+          "fullMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions\n",
+          "shortMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions"
         },
         "parents": [
-          "ccd39ac85c3b45b86578a1465355decf496ebee9"
+          "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
         ],
-        "sha": "9d083b9f5d2ba26b44fd76529b58ed330b0697cf"
+        "sha": "b0672d336c0014195a14741c34ea1778e68d5d5b"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767618644926,
-  "version": "0.2.0-rc.18",
+  "timestamp": 1767643065634,
+  "version": "0.2.0-rc.19",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.18"
+  "versionPreReleaseIdentifier": "rc.19"
 }
