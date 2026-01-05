@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.20",
+        "name": "0.2.0-rc.21",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767643497000,
+                    "timeStamp": 1767643946000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767643503000,
+                    "timeStamp": 1767643952000,
                     "offset": 60
                   }
                 },
-                "date": 1767643503000,
+                "date": 1767643952000,
                 "message": {
-                  "fullMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component\n",
-                  "shortMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component"
+                  "fullMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages\n",
+                  "shortMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages"
                 },
                 "parents": [
-                  "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
+                  "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
                 ],
-                "sha": "e250b3451f598e85b32df52063115fb8736ccd63"
+                "sha": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "e250b3451f598e85b32df52063115fb8736ccd63",
-    "infer.output.state.version": "0.2.0-rc.20",
+    "infer.input.repository.last.commit": "e21e7ecd1ceadace2489d515a4b9a664c3905222",
+    "infer.output.state.version": "0.2.0-rc.21",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "e250b3451f598e85b32df52063115fb8736ccd63",
-    "make.input.state.initialCommit": "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53",
+    "make.input.repository.last.commit": "e21e7ecd1ceadace2489d515a4b9a664c3905222",
+    "make.input.state.initialCommit": "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.20",
+    "make.input.version": "0.2.0-rc.21",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "e250b3451f598e85b32df52063115fb8736ccd63",
-    "mark.input.state.initialCommit": "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53",
+    "mark.input.repository.last.commit": "e21e7ecd1ceadace2489d515a4b9a664c3905222",
+    "mark.input.state.initialCommit": "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.20",
-    "publish.input.state.version": "0.2.0-rc.20",
-    "publish.output.state.version": "0.2.0-rc.20"
+    "mark.input.state.version": "0.2.0-rc.21",
+    "publish.input.state.version": "0.2.0-rc.21",
+    "publish.output.state.version": "0.2.0-rc.21"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767643497000,
+            "timeStamp": 1767643946000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767643503000,
+            "timeStamp": 1767643952000,
             "offset": 60
           }
         },
-        "date": 1767643503000,
+        "date": 1767643952000,
         "message": {
-          "fullMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component\n",
-          "shortMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component"
+          "fullMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages\n",
+          "shortMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages"
         },
         "parents": [
-          "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
+          "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
         ],
-        "sha": "e250b3451f598e85b32df52063115fb8736ccd63"
+        "sha": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767643066000,
+            "timeStamp": 1767643517000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767643066000,
+            "timeStamp": 1767643517000,
             "offset": 0
           }
         },
-        "date": 1767643066000,
+        "date": 1767643517000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.19 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.19 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.20 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.20 changelog and state [skip ci]"
         },
         "parents": [
-          "b0672d336c0014195a14741c34ea1778e68d5d5b"
+          "e250b3451f598e85b32df52063115fb8736ccd63"
         ],
-        "sha": "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
+        "sha": "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643946000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643952000,
+          "offset": 60
+        }
+      },
+      "date": 1767643952000,
+      "message": {
+        "fullMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages\n",
+        "shortMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages"
+      },
+      "parents": [
+        "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
+      ],
+      "sha": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643517000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767643517000,
+          "offset": 0
+        }
+      },
+      "date": 1767643517000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.20 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.20 changelog and state [skip ci]"
+      },
+      "parents": [
+        "e250b3451f598e85b32df52063115fb8736ccd63"
+      ],
+      "sha": "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
+    },
+    "previousVersion": "0.2.0-rc.20",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
       ],
-      "sha": "e250b3451f598e85b32df52063115fb8736ccd63"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643066000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643066000,
-          "offset": 0
-        }
-      },
-      "date": 1767643066000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.19 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.19 changelog and state [skip ci]"
-      },
-      "parents": [
-        "b0672d336c0014195a14741c34ea1778e68d5d5b"
-      ],
-      "sha": "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
-    },
-    "previousVersion": "0.2.0-rc.19",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643051000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767643051000,
-          "offset": 60
-        }
-      },
-      "date": 1767643051000,
-      "message": {
-        "fullMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions\n",
-        "shortMessage": "feat: Enhance logging and improve inventory, quest, and character build retrieval functions"
-      },
-      "parents": [
-        "e140341f14fc823dfd4acf5c1b96f9e50ad79d22"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.19",
-          "target": "b0672d336c0014195a14741c34ea1778e68d5d5b"
+          "name": "0.2.0-rc.20",
+          "target": "e250b3451f598e85b32df52063115fb8736ccd63"
         }
       ],
-      "sha": "b0672d336c0014195a14741c34ea1778e68d5d5b"
+      "sha": "e250b3451f598e85b32df52063115fb8736ccd63"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767643497000,
+            "timeStamp": 1767643946000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767643503000,
+            "timeStamp": 1767643952000,
             "offset": 60
           }
         },
-        "date": 1767643503000,
+        "date": 1767643952000,
         "message": {
-          "fullMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component\n",
-          "shortMessage": "feat: Refactor GameHelperApp to improve UI structure and add ChatDisplay component"
+          "fullMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages\n",
+          "shortMessage": "feat: Improve chat text handling by checking if the text area is empty before appending messages"
         },
         "parents": [
-          "3a5d060c2575fdf0b1b92bd9ad3a4ea7f60cff53"
+          "6c83764896d4d5de9e1c2e9641db71b3bcbfc47d"
         ],
-        "sha": "e250b3451f598e85b32df52063115fb8736ccd63"
+        "sha": "e21e7ecd1ceadace2489d515a4b9a664c3905222"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767643515903,
-  "version": "0.2.0-rc.20",
+  "timestamp": 1767643967714,
+  "version": "0.2.0-rc.21",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.20"
+  "versionPreReleaseIdentifier": "rc.21"
 }

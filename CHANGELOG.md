@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.21 (2026-01-05)
+
+### Added
+
+* [e21e7] feat: Improve chat text handling by checking if the text area is empty before appending messages (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.20 (2026-01-05)
 
 ### Added
