@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.14",
+        "name": "0.2.0-rc.15",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767615775000,
+                    "timeStamp": 1767617499000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767615781000,
+                    "timeStamp": 1767617499000,
                     "offset": 60
                   }
                 },
-                "date": 1767615781000,
+                "date": 1767617499000,
                 "message": {
-                  "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
-                  "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
+                  "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
+                  "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
                 },
                 "parents": [
-                  "60c82836c99167f0aaaba126ebc1490c28edbdac"
+                  "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
                 ],
-                "sha": "7288545a03dba6148549fccb119c6160b54c415a"
+                "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "7288545a03dba6148549fccb119c6160b54c415a",
-    "infer.output.state.version": "0.2.0-rc.14",
+    "infer.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
+    "infer.output.state.version": "0.2.0-rc.15",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "7288545a03dba6148549fccb119c6160b54c415a",
-    "make.input.state.initialCommit": "60c82836c99167f0aaaba126ebc1490c28edbdac",
+    "make.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
+    "make.input.state.initialCommit": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.14",
+    "make.input.version": "0.2.0-rc.15",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "7288545a03dba6148549fccb119c6160b54c415a",
-    "mark.input.state.initialCommit": "60c82836c99167f0aaaba126ebc1490c28edbdac",
+    "mark.input.repository.last.commit": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d",
+    "mark.input.state.initialCommit": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.14",
-    "publish.input.state.version": "0.2.0-rc.14",
-    "publish.output.state.version": "0.2.0-rc.14"
+    "mark.input.state.version": "0.2.0-rc.15",
+    "publish.input.state.version": "0.2.0-rc.15",
+    "publish.output.state.version": "0.2.0-rc.15"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767615775000,
+            "timeStamp": 1767617499000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767615781000,
+            "timeStamp": 1767617499000,
             "offset": 60
           }
         },
-        "date": 1767615781000,
+        "date": 1767617499000,
         "message": {
-          "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
-          "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
+          "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
+          "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
         },
         "parents": [
-          "60c82836c99167f0aaaba126ebc1490c28edbdac"
+          "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
         ],
-        "sha": "7288545a03dba6148549fccb119c6160b54c415a"
+        "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767615395000,
+            "timeStamp": 1767615797000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767615395000,
+            "timeStamp": 1767615797000,
             "offset": 0
           }
         },
-        "date": 1767615395000,
+        "date": 1767615797000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.13 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.13 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]"
         },
         "parents": [
-          "703f9a1928944043260fd6bb04644216debf5846"
+          "7288545a03dba6148549fccb119c6160b54c415a"
         ],
-        "sha": "60c82836c99167f0aaaba126ebc1490c28edbdac"
+        "sha": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617499000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767617499000,
+          "offset": 60
+        }
+      },
+      "date": 1767617499000,
+      "message": {
+        "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
+        "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
+      },
+      "parents": [
+        "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+      ],
+      "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767615797000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767615797000,
+          "offset": 0
+        }
+      },
+      "date": 1767615797000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.14 changelog and state [skip ci]"
+      },
+      "parents": [
+        "7288545a03dba6148549fccb119c6160b54c415a"
+      ],
+      "sha": "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
+    },
+    "previousVersion": "0.2.0-rc.14",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "60c82836c99167f0aaaba126ebc1490c28edbdac"
       ],
-      "sha": "7288545a03dba6148549fccb119c6160b54c415a"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615395000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615395000,
-          "offset": 0
-        }
-      },
-      "date": 1767615395000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.13 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.13 changelog and state [skip ci]"
-      },
-      "parents": [
-        "703f9a1928944043260fd6bb04644216debf5846"
-      ],
-      "sha": "60c82836c99167f0aaaba126ebc1490c28edbdac"
-    },
-    "previousVersion": "0.2.0-rc.13",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615374000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767615380000,
-          "offset": 60
-        }
-      },
-      "date": 1767615380000,
-      "message": {
-        "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
-        "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
-      },
-      "parents": [
-        "44f89750b3e0e3dfce01b4436741d5726503c2d7"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.13",
-          "target": "703f9a1928944043260fd6bb04644216debf5846"
+          "name": "0.2.0-rc.14",
+          "target": "7288545a03dba6148549fccb119c6160b54c415a"
         }
       ],
-      "sha": "703f9a1928944043260fd6bb04644216debf5846"
+      "sha": "7288545a03dba6148549fccb119c6160b54c415a"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767615775000,
+            "timeStamp": 1767617499000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767615781000,
+            "timeStamp": 1767617499000,
             "offset": 60
           }
         },
-        "date": 1767615781000,
+        "date": 1767617499000,
         "message": {
-          "fullMessage": "feat: Improve updater logic with clean environment launch and subprocess handling\n",
-          "shortMessage": "feat: Improve updater logic with clean environment launch and subprocess handling"
+          "fullMessage": "feat: Refactor image analysis logic and enhance user prompts for better context\n",
+          "shortMessage": "feat: Refactor image analysis logic and enhance user prompts for better context"
         },
         "parents": [
-          "60c82836c99167f0aaaba126ebc1490c28edbdac"
+          "a45a443a48f727e01eb2adac9db2a117fd0b3fe5"
         ],
-        "sha": "7288545a03dba6148549fccb119c6160b54c415a"
+        "sha": "e1a9c8a4e3461cd4e8b85936a72cfba69dcba37d"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767615795869,
-  "version": "0.2.0-rc.14",
+  "timestamp": 1767617524120,
+  "version": "0.2.0-rc.15",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.14"
+  "versionPreReleaseIdentifier": "rc.15"
 }

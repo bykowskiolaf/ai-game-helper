@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.15 (2026-01-05)
+
+### Added
+
+* [e1a9c] feat: Refactor image analysis logic and enhance user prompts for better context (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.14 (2026-01-05)
 
 ### Added
