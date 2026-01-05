@@ -9,22 +9,21 @@ def query_gemini(prompt, img):
     if not keys:
         raise ValueError("No API Keys configured. Please check settings.")
 
+    # 1. Define Search Tool
     search_tool = types.Tool(
         google_search=types.GoogleSearch()
     )
 
-    function_tool = types.Tool(
-        function_declarations=[
-            types.FunctionDeclaration.from_function(fn) for fn in tools.definitions
-        ]
-    )
+    # 2. Prepare Tool List
+    all_tools = [search_tool] + tools.definitions
 
+    # 3. Configure Request
     my_config = types.GenerateContentConfig(
-        tools=[search_tool, function_tool],
+        tools=all_tools,
         response_modalities=["TEXT"],
         automatic_function_calling=types.AutomaticFunctionCallingConfig(
             disable=False,
-            maximum_remote_calls=2  # Safety limit to prevent infinite loops
+            maximum_remote_calls=2
         )
     )
 
