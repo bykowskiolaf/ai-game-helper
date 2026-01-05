@@ -1,14 +1,14 @@
 {
   "branch": "dev",
-  "bump": "patch",
+  "bump": "minor",
   "changelog": {
     "releases": [
       {
         "date": "2026-01-05",
-        "name": "0.2.0-rc.23",
+        "name": "0.2.0-rc.24",
         "sections": [
           {
-            "name": "Fixed",
+            "name": "Added",
             "commits": [
               {
                 "authorAction": {
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767648501000,
+                    "timeStamp": 1767655207000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767648501000,
+                    "timeStamp": 1767655207000,
                     "offset": 60
                   }
                 },
-                "date": 1767648501000,
+                "date": 1767655207000,
                 "message": {
-                  "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
-                  "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
+                  "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
+                  "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
                 },
                 "parents": [
-                  "6e594f27e8629f386e052f7995a6b03789b2de3d"
+                  "34bca51607eaf04e29cf158e1cfe504201d7280a"
                 ],
-                "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+                "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
-    "infer.output.state.version": "0.2.0-rc.23",
+    "infer.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
+    "infer.output.state.version": "0.2.0-rc.24",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
-    "make.input.state.initialCommit": "23b62764e6f725baa6160063de816c02924ab8d5",
+    "make.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
+    "make.input.state.initialCommit": "3efcd1ec8e5ea651c2fbe4731286073199c5183d",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.23",
+    "make.input.version": "0.2.0-rc.24",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe",
-    "mark.input.state.initialCommit": "23b62764e6f725baa6160063de816c02924ab8d5",
+    "mark.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
+    "mark.input.state.initialCommit": "3efcd1ec8e5ea651c2fbe4731286073199c5183d",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.23",
-    "publish.input.state.version": "0.2.0-rc.23",
-    "publish.output.state.version": "0.2.0-rc.23"
+    "mark.input.state.version": "0.2.0-rc.24",
+    "publish.input.state.version": "0.2.0-rc.24",
+    "publish.output.state.version": "0.2.0-rc.24"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767648501000,
+            "timeStamp": 1767655207000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767648501000,
+            "timeStamp": 1767655207000,
             "offset": 60
           }
         },
-        "date": 1767648501000,
+        "date": 1767655207000,
         "message": {
-          "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
-          "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
+          "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
+          "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
         },
         "parents": [
-          "6e594f27e8629f386e052f7995a6b03789b2de3d"
+          "34bca51607eaf04e29cf158e1cfe504201d7280a"
         ],
-        "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+        "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646202000,
+            "timeStamp": 1767654717000,
             "offset": 60
           }
         },
@@ -236,19 +236,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767646209000,
+            "timeStamp": 1767654722000,
             "offset": 60
           }
         },
-        "date": 1767646209000,
+        "date": 1767654722000,
         "message": {
-          "fullMessage": "chore: Bump ProxiHUD Bridge version to 1.3\n",
-          "shortMessage": "chore: Bump ProxiHUD Bridge version to 1.3"
+          "fullMessage": "chore: Remove support for retrieving Golden Pursuits from game data\n",
+          "shortMessage": "chore: Remove support for retrieving Golden Pursuits from game data"
         },
         "parents": [
-          "23b62764e6f725baa6160063de816c02924ab8d5"
+          "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
         ],
-        "sha": "6e594f27e8629f386e052f7995a6b03789b2de3d"
+        "sha": "34bca51607eaf04e29cf158e1cfe504201d7280a"
       },
       {
         "authorAction": {
@@ -257,7 +257,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767646038000,
+            "timeStamp": 1767648519000,
             "offset": 0
           }
         },
@@ -267,22 +267,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767646038000,
+            "timeStamp": 1767648519000,
             "offset": 0
           }
         },
-        "date": 1767646038000,
+        "date": 1767648519000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]"
         },
         "parents": [
-          "a951ba37652d3673a6269603fcebe751beabaa9b"
+          "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
         ],
-        "sha": "23b62764e6f725baa6160063de816c02924ab8d5"
+        "sha": "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767655207000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767655207000,
+          "offset": 60
+        }
+      },
+      "date": 1767655207000,
+      "message": {
+        "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
+        "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
+      },
+      "parents": [
+        "34bca51607eaf04e29cf158e1cfe504201d7280a"
+      ],
+      "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767648519000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767648519000,
+          "offset": 0
+        }
+      },
+      "date": 1767648519000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]"
+      },
+      "parents": [
+        "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+      ],
+      "sha": "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
+    },
+    "previousVersion": "0.2.0-rc.23",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -311,76 +374,13 @@
       "parents": [
         "6e594f27e8629f386e052f7995a6b03789b2de3d"
       ],
-      "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767646038000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767646038000,
-          "offset": 0
-        }
-      },
-      "date": 1767646038000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.22 changelog and state [skip ci]"
-      },
-      "parents": [
-        "a951ba37652d3673a6269603fcebe751beabaa9b"
-      ],
-      "sha": "23b62764e6f725baa6160063de816c02924ab8d5"
-    },
-    "previousVersion": "0.2.0-rc.22",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767646015000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767646021000,
-          "offset": 60
-        }
-      },
-      "date": 1767646021000,
-      "message": {
-        "fullMessage": "feat: Add support for retrieving Golden Pursuits in game data\n",
-        "shortMessage": "feat: Add support for retrieving Golden Pursuits in game data"
-      },
-      "parents": [
-        "874ecf491dc107b5bf7e456ef704f2e2b0756cca"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.22",
-          "target": "a951ba37652d3673a6269603fcebe751beabaa9b"
+          "name": "0.2.0-rc.23",
+          "target": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
         }
       ],
-      "sha": "a951ba37652d3673a6269603fcebe751beabaa9b"
+      "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -391,7 +391,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767648501000,
+            "timeStamp": 1767655207000,
             "offset": 60
           }
         },
@@ -401,19 +401,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767648501000,
+            "timeStamp": 1767655207000,
             "offset": 60
           }
         },
-        "date": 1767648501000,
+        "date": 1767655207000,
         "message": {
-          "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
-          "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
+          "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
+          "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
         },
         "parents": [
-          "6e594f27e8629f386e052f7995a6b03789b2de3d"
+          "34bca51607eaf04e29cf158e1cfe504201d7280a"
         ],
-        "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+        "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
       }
     ]
   },
@@ -427,10 +427,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767648517961,
-  "version": "0.2.0-rc.23",
+  "timestamp": 1767655230726,
+  "version": "0.2.0-rc.24",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.23"
+  "versionPreReleaseIdentifier": "rc.24"
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.24 (2026-01-05)
+
+### Added
+
+* [0b4b9] feat: Enhance inventory and skills retrieval with detailed formatting and additional checks (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.23 (2026-01-05)
 
 ### Fixed
