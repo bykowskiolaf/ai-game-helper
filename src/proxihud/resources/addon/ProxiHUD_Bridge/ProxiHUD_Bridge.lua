@@ -2,7 +2,6 @@ ProxiHUD = {}
 ProxiHUD.name = "ProxiHUD_Bridge"
 
 function ProxiHUD.OnPlayerUnloaded()
-    -- 1. Helper: Get Full Inventory (Backpack + Bank)
     local function GetFullInventory()
         local inv = {}
 
@@ -28,7 +27,6 @@ function ProxiHUD.OnPlayerUnloaded()
         return inv
     end
 
-    -- 2. Helper: Get Active Quests
     local function GetActiveQuests()
         local quests = {}
         for i = 1, GetNumJournalQuests() do
@@ -40,7 +38,27 @@ function ProxiHUD.OnPlayerUnloaded()
         return quests
     end
 
-    -- 3. Helper: Get Slotted Skills
+    local function GetGoldenPursuits()
+        local pursuits = {}
+
+        -- Check if the API exists (Update 44+)
+        if not GetActivePromotionalEventId then return pursuits end
+
+        local campaignId = GetActivePromotionalEventId()
+        if campaignId == 0 then return pursuits end -- No active campaign
+
+        local numActivities = GetPromotionalEventNumActivities(campaignId)
+        for i = 1, numActivities do
+            local name, description, _, _, _, _ = GetPromotionalEventActivityInfo(campaignId, i)
+            local progress, maxProgress = GetPromotionalEventActivityProgress(campaignId, i)
+
+            -- Format: "Slay Daedra [5/10]: Kill 10 Daedra"
+            local entry = string.format("%s [%d/%d]: %s", name, progress, maxProgress, description)
+            table.insert(pursuits, entry)
+        end
+        return pursuits
+    end
+
     local function GetSkills(hotbarCategory)
         local skills = {}
         for i = 3, 8 do
@@ -52,7 +70,6 @@ function ProxiHUD.OnPlayerUnloaded()
         return skills
     end
 
-    -- 4. Build the Data Table
     ProxiHUD_Data = {
         timestamp = os.time(),
 
@@ -80,6 +97,7 @@ function ProxiHUD.OnPlayerUnloaded()
         inventory_dump = GetFullInventory(),
         quest_dump = GetActiveQuests(),
         skills_dump = GetSkills(HOTBAR_CATEGORY_PRIMARY),
+        golden_pursuits = GetGoldenPursuits(),
 
         -- Legacy field (keep empty to avoid errors if python expects it)
         equipment = {}

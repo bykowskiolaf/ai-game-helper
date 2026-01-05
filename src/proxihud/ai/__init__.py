@@ -13,6 +13,7 @@ def analyze_image(img, user_prompt=None, history=[]):
     **AVAILABLE TOOLS:**
     - `get_inventory()`: CALL THIS for loot, wealth, or "Do I have X?".
     - `get_active_quests()`: CALL THIS for "What should I do?" or objective help.
+    - `get_golden_pursuits()`: CALL THIS for "Golden Pursuits", "Activities", or "Campaigns".
     - `get_character_build()`: CALL THIS for combat advice/stats.
 
     **RULES:**

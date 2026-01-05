@@ -44,4 +44,21 @@ def get_character_build() -> str:
     Skills: {', '.join(data.get('skills_dump', []))}
     """
 
-definitions = [get_inventory, get_active_quests, get_character_build]
+def get_golden_pursuits() -> str:
+    """Retrieves active Golden Pursuits (Activity Finder campaigns)."""
+    logging.debug("Tool: 'get_golden_pursuits' called.")
+
+    data = bridge.load_game_data()
+    if not data or 'golden_pursuits' not in data:
+        logging.warning("Tool: Golden Pursuits data missing.")
+        return "No active Golden Pursuits found."
+
+    pursuits = data['golden_pursuits']
+
+    if not pursuits:
+        return "No active Golden Pursuits campaign currently running."
+
+    logging.debug(f"Tool: Retrieved {len(pursuits)} pursuits.")
+    return "\n".join(pursuits)
+
+definitions = [get_inventory, get_active_quests, get_character_build, get_golden_pursuits]
