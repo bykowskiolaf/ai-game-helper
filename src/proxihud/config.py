@@ -11,7 +11,7 @@ REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
-PROD_AI_MODEL = "gemini-3-flash"
+PROD_AI_MODEL = "gemini-2.5-flash"
 DEV_AI_MODEL = "gemini-2.5-flash-lite"
 
 # --- DEFAULTS ---
