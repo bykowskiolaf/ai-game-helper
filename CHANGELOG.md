@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.12 (2026-01-05)
+
+### Fixed
+
+* [1c97e] fix: Add unicodedata import to run.py (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.11 (2026-01-05)
 
 ### Added
