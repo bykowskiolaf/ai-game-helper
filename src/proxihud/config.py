@@ -11,7 +11,7 @@ REPO_OWNER = "bykowskiolaf"
 REPO_NAME = "ai-game-helper"
 
 # --- AI CONFIG ---
-AI_MODEL = "gemini-2.5-flash"
+AI_MODEL = "gemini-2.5-flash-lite"
 
 # --- DEFAULTS ---
 DEFAULT_SETTINGS = {
@@ -64,7 +64,18 @@ def get_eso_addon_path():
     return path
 
 def get_eso_saved_vars_path():
-    """Returns the path to the SavedVariables file."""
+    """
+    Returns the path to the SavedVariables file.
+    - Dev Mode: Uses 'mocks/ProxiHUD_Bridge.lua' in project root.
+    - Prod Mode: Uses the actual ESO Documents folder.
+    """
+    if is_dev():
+        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        mock_path = os.path.join(base_dir, "mocks", "ProxiHUD_Bridge.lua")
+
+        return mock_path
+
+    # Production logic (Real ESO Path)
     docs = get_docs_folder()
     return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Data.lua")
 

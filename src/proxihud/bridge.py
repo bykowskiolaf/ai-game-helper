@@ -17,7 +17,6 @@ def load_game_data():
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # Simple check to ensure we have data
         if "ProxiHUD_Data" not in content:
             return None
 
@@ -44,7 +43,6 @@ def load_game_data():
             "telvar": _extract_num(content, "telvar"),
 
             # HEAVY DATA DUMPS (Lists)
-            # These keys match exactly what we wrote in Lua ("inventory_dump", etc.)
             "inventory_dump": _extract_list(content, "inventory_dump"),
             "quest_dump": _extract_list(content, "quest_dump"),
             "skills_dump": _extract_list(content, "skills_dump"),
@@ -61,38 +59,27 @@ def load_game_data():
 # --- Extraction Helpers ---
 
 def _extract_str(text, key):
-    # Lua format: ["key"] = "value",
     match = re.search(r'\s*\["' + key + r'"\]\s*=\s*"(.*?)",', text)
     return match.group(1) if match else "Unknown"
 
 def _extract_num(text, key):
-    # Lua format: ["key"] = 123,
     match = re.search(r'\s*\["' + key + r'"\]\s*=\s*(\d+),', text)
     return int(match.group(1)) if match else 0
 
 def _extract_list(text, key):
-    # Lua format: ["key"] = { "A", "B", "C" },
-    # 1. Find the table block
     match = re.search(r'\s*\[' + f'"{key}"' + r'\]\s*=\s*\{(.*?)\},', text, re.DOTALL)
     if not match: return []
-
-    # 2. Extract items inside quotes within that block
     return re.findall(r'"(.*?)"', match.group(1))
 
 def _extract_equipment(text):
-    # Extracts the equipment list items
     items = []
-    # Find the equipment block
     eq_block_match = re.search(r'\["equipment"\]\s*=\s*\{(.*?)\},', text, re.DOTALL)
-    if not eq_block_match:
-        return []
+    if not eq_block_match: return []
 
     block = eq_block_match.group(1)
-    # Find all name="X" and link="Y"
     names = re.findall(r'\["name"\]\s*=\s*"(.*?)",', block)
     links = re.findall(r'\["link"\]\s*=\s*"(.*?)",', block)
 
-    # Zip them (safely)
     for i in range(len(names)):
         link_str = f" ({links[i]})" if i < len(links) else ""
         items.append(f"{names[i]}{link_str}")

@@ -1,10 +1,9 @@
-# src/proxihud/ai/tools.py
 from .. import bridge
 
 def get_inventory() -> str:
     """
     Retrieves the player's full inventory (Backpack and Bank).
-    Call this when the user asks about specific items, loot, counts, or wealth.
+    Call this when the user asks about specific items, loot, counts, crafting materials, or wealth.
     """
     data = bridge.load_game_data()
     # Check if we have the heavy dump available
@@ -17,7 +16,7 @@ def get_inventory() -> str:
 def get_active_quests() -> str:
     """
     Retrieves the names of all active quests in the player's journal.
-    Call this when the user asks 'What should I do?' or about current objectives.
+    Call this when the user asks 'What should I do?', 'Where do I go?', or about current objectives.
     """
     data = bridge.load_game_data()
     if not data or 'quest_dump' not in data:
@@ -39,5 +38,5 @@ def get_character_build() -> str:
     Skills Bar: {', '.join(data.get('skills_dump', []))}
     """
 
-# Register the functions here so query.py can find them
+# List of tools to register with Gemini
 definitions = [get_inventory, get_active_quests, get_character_build]

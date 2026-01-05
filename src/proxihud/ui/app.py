@@ -132,7 +132,7 @@ class GameHelperApp(DraggableWindow):
         try:
             img = capture.capture_screen()
             img.thumbnail((1024, 1024))
-            response = ai.analyze_image(img, user_text, self.history, self.settings)
+            response = ai.analyze_image(img, user_text, self.history)
             self.history.append({"role": "model", "text": response})
             self.append_to_chat("Proxi", response)
         except Exception as e:
