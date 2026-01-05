@@ -37,10 +37,18 @@ class ChatDisplay(ctk.CTkFrame):
         self.text_widget.tag_config("header", font=("Consolas", 13, "bold"), foreground="#ffd60a", spacing1=5, spacing3=2)
         self.text_widget.tag_config("bullet", foreground="#ffd60a", font=("Consolas", 11, "bold"), lmargin1=15, lmargin2=25, spacing2=2)
 
+    # ... inside ui/chat.py ...
+
     def append(self, sender, text, clear=False):
         self.text_widget.config(state="normal")
+
         if clear:
             self.text_widget.delete("1.0", "end")
+
+        # FIX: Check if the text area is currently empty
+        # 'end-1c' ignores the automatic trailing newline that Tkinter always keeps
+        current_content = self.text_widget.get("1.0", "end-1c")
+        is_empty = (len(current_content) == 0)
 
         if text is None: text = "(No response)"
 
@@ -50,7 +58,8 @@ class ChatDisplay(ctk.CTkFrame):
         elif sender == "Proxi": tag = "ai_tag"
 
         if sender:
-            self.text_widget.insert("end", f"\n{sender}: ", tag)
+            prefix = "" if is_empty else "\n"
+            self.text_widget.insert("end", f"{prefix}{sender}: ", tag)
 
         # Parse Markdown-ish text
         clean_text = str(text).replace("```markdown", "").replace("```", "").strip()
