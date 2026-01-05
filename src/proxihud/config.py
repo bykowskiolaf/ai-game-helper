@@ -79,7 +79,7 @@ def get_eso_saved_vars_path():
 
     # Production logic (Real ESO Path)
     docs = get_docs_folder()
-    return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Data.lua")
+    return os.path.join(docs, "Elder Scrolls Online", "live", "SavedVariables", "ProxiHUD_Bridge.lua")
 
 # --- API KEY MANAGEMENT ---
 _active_key_index = 0
