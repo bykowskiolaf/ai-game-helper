@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.26 (2026-01-06)
+
+### Added
+
+* [4d990] feat: Add Champion Points retrieval to enhance character build data (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.25 (2026-01-06)
 
 ### Added
