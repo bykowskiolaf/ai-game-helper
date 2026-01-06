@@ -4,8 +4,8 @@
   "changelog": {
     "releases": [
       {
-        "date": "2026-01-05",
-        "name": "0.2.0-rc.24",
+        "date": "2026-01-06",
+        "name": "0.2.0-rc.25",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767655207000,
+                    "timeStamp": 1767660941000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767655207000,
+                    "timeStamp": 1767660946000,
                     "offset": 60
                   }
                 },
-                "date": 1767655207000,
+                "date": 1767660946000,
                 "message": {
-                  "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
-                  "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
+                  "fullMessage": "feat: Add build advice and unlock skill retrieval to enhance character data\n",
+                  "shortMessage": "feat: Add build advice and unlock skill retrieval to enhance character data"
                 },
                 "parents": [
-                  "34bca51607eaf04e29cf158e1cfe504201d7280a"
+                  "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
                 ],
-                "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
+                "sha": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
-    "infer.output.state.version": "0.2.0-rc.24",
+    "infer.input.repository.last.commit": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9",
+    "infer.output.state.version": "0.2.0-rc.25",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
-    "make.input.state.initialCommit": "3efcd1ec8e5ea651c2fbe4731286073199c5183d",
+    "make.input.repository.last.commit": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9",
+    "make.input.state.initialCommit": "ded0fafcf995f0841c4ed8c19834b1a6914ee02d",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.24",
+    "make.input.version": "0.2.0-rc.25",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a",
-    "mark.input.state.initialCommit": "3efcd1ec8e5ea651c2fbe4731286073199c5183d",
+    "mark.input.repository.last.commit": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9",
+    "mark.input.state.initialCommit": "ded0fafcf995f0841c4ed8c19834b1a6914ee02d",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.24",
-    "publish.input.state.version": "0.2.0-rc.24",
-    "publish.output.state.version": "0.2.0-rc.24"
+    "mark.input.state.version": "0.2.0-rc.25",
+    "publish.input.state.version": "0.2.0-rc.25",
+    "publish.output.state.version": "0.2.0-rc.25"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767655207000,
+            "timeStamp": 1767660941000,
             "offset": 60
           }
         },
@@ -205,50 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767655207000,
+            "timeStamp": 1767660946000,
             "offset": 60
           }
         },
-        "date": 1767655207000,
+        "date": 1767660946000,
         "message": {
-          "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
-          "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
+          "fullMessage": "feat: Add build advice and unlock skill retrieval to enhance character data\n",
+          "shortMessage": "feat: Add build advice and unlock skill retrieval to enhance character data"
         },
         "parents": [
-          "34bca51607eaf04e29cf158e1cfe504201d7280a"
+          "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
         ],
-        "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
-      },
-      {
-        "authorAction": {
-          "identity": {
-            "email": "olafbykowski1@gmail.com",
-            "name": "Olaf Bykowski"
-          },
-          "timeStamp": {
-            "timeStamp": 1767654717000,
-            "offset": 60
-          }
-        },
-        "commitAction": {
-          "identity": {
-            "email": "olafbykowski1@gmail.com",
-            "name": "Olaf Bykowski"
-          },
-          "timeStamp": {
-            "timeStamp": 1767654722000,
-            "offset": 60
-          }
-        },
-        "date": 1767654722000,
-        "message": {
-          "fullMessage": "chore: Remove support for retrieving Golden Pursuits from game data\n",
-          "shortMessage": "chore: Remove support for retrieving Golden Pursuits from game data"
-        },
-        "parents": [
-          "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
-        ],
-        "sha": "34bca51607eaf04e29cf158e1cfe504201d7280a"
+        "sha": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9"
       },
       {
         "authorAction": {
@@ -257,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767648519000,
+            "timeStamp": 1767655231000,
             "offset": 0
           }
         },
@@ -267,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767648519000,
+            "timeStamp": 1767655231000,
             "offset": 0
           }
         },
-        "date": 1767648519000,
+        "date": 1767655231000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.24 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.24 changelog and state [skip ci]"
         },
         "parents": [
-          "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+          "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
         ],
-        "sha": "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
+        "sha": "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767660941000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767660946000,
+          "offset": 60
+        }
+      },
+      "date": 1767660946000,
+      "message": {
+        "fullMessage": "feat: Add build advice and unlock skill retrieval to enhance character data\n",
+        "shortMessage": "feat: Add build advice and unlock skill retrieval to enhance character data"
+      },
+      "parents": [
+        "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
+      ],
+      "sha": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767655231000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767655231000,
+          "offset": 0
+        }
+      },
+      "date": 1767655231000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.24 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.24 changelog and state [skip ci]"
+      },
+      "parents": [
+        "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
+      ],
+      "sha": "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
+    },
+    "previousVersion": "0.2.0-rc.24",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -311,76 +343,13 @@
       "parents": [
         "34bca51607eaf04e29cf158e1cfe504201d7280a"
       ],
-      "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767648519000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767648519000,
-          "offset": 0
-        }
-      },
-      "date": 1767648519000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.23 changelog and state [skip ci]"
-      },
-      "parents": [
-        "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
-      ],
-      "sha": "3efcd1ec8e5ea651c2fbe4731286073199c5183d"
-    },
-    "previousVersion": "0.2.0-rc.23",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767648501000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767648501000,
-          "offset": 60
-        }
-      },
-      "date": 1767648501000,
-      "message": {
-        "fullMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua\n",
-        "shortMessage": "fix: Update ProxiHUD data file name to ProxiHUD_Bridge.lua"
-      },
-      "parents": [
-        "6e594f27e8629f386e052f7995a6b03789b2de3d"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.23",
-          "target": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+          "name": "0.2.0-rc.24",
+          "target": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
         }
       ],
-      "sha": "3aa5a73e38ab73c5a7a2635e53edd8db04e9e8fe"
+      "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -391,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767655207000,
+            "timeStamp": 1767660941000,
             "offset": 60
           }
         },
@@ -401,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767655207000,
+            "timeStamp": 1767660946000,
             "offset": 60
           }
         },
-        "date": 1767655207000,
+        "date": 1767660946000,
         "message": {
-          "fullMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks\n",
-          "shortMessage": "feat: Enhance inventory and skills retrieval with detailed formatting and additional checks"
+          "fullMessage": "feat: Add build advice and unlock skill retrieval to enhance character data\n",
+          "shortMessage": "feat: Add build advice and unlock skill retrieval to enhance character data"
         },
         "parents": [
-          "34bca51607eaf04e29cf158e1cfe504201d7280a"
+          "ded0fafcf995f0841c4ed8c19834b1a6914ee02d"
         ],
-        "sha": "0b4b9346de32f5fe619eabecd4ad63d2a14efb0a"
+        "sha": "0e0a1bbeb94c9f4fce2ffef25cd526363d20e5e9"
       }
     ]
   },
@@ -427,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767655230726,
-  "version": "0.2.0-rc.24",
+  "timestamp": 1767660960145,
+  "version": "0.2.0-rc.25",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.24"
+  "versionPreReleaseIdentifier": "rc.25"
 }

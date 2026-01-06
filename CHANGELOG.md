@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.25 (2026-01-06)
+
+### Added
+
+* [0e0a1] feat: Add build advice and unlock skill retrieval to enhance character data (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.24 (2026-01-05)
 
 ### Added
