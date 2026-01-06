@@ -63,6 +63,53 @@ function ProxiHUD.OnPlayerUnloaded()
         return inv
     end
 
+    local function GetEquippedGear()
+        local gear = {}
+
+        -- Map slot indices to readable names
+        -- 0=Head, 1=Neck, 2=Chest, 3=Shoulders, 4=MainHand, 5=OffHand, 6=Waist, etc.
+        -- We won't map all of them manually, we'll just grab the item data.
+
+        local qualityNames = {[0]="Trash", [1]="Normal", [2]="Fine", [3]="Superior", [4]="Epic", [5]="Legendary"}
+
+        for i = 0, 18 do -- 0 to 18 covers all equipment slots
+            local link = GetItemLink(BAG_WORN, i)
+
+            if link ~= "" then
+                local name = GetItemName(BAG_WORN, i)
+                local stack = 1 -- Equipped is always 1
+
+                -- 1. Quality
+                local quality = GetItemQuality(BAG_WORN, i)
+                local qualityStr = qualityNames[quality] or "Unknown"
+
+                -- 2. Trait
+                local traitType = GetItemLinkTraitInfo(link)
+                local traitStr = "None"
+                if traitType > 0 then traitStr = GetString("SI_ITEMTRAITTYPE", traitType) end
+
+                -- 3. Set Name
+                local hasSet, setName, _, _, _ = GetItemLinkSetInfo(link, false)
+                if not hasSet or setName == "" then setName = "No Set" else setName = zo_strformat("<<1>>", setName) end
+
+                -- Format: "Head: Helm of the Fire {Epic} <Divines> (Set: Burning Spellweave)"
+                -- We prepend the Slot Name (e.g. "Head") for context
+                -- 'GetSlotName' isn't a direct API, so we can just use the item name or infer it.
+                -- Actually, the item name usually describes it (e.g. "Jack", "Helmet").
+                -- Let's just output the rich string.
+
+                local entry = string.format("%s {%s} <%s> (Set: %s)",
+                    zo_strformat("<<1>>", name),
+                    qualityStr,
+                    traitStr,
+                    setName
+                )
+                table.insert(gear, entry)
+            end
+        end
+        return gear
+    end
+
     local function GetActiveQuests()
         local quests = {}
         for i = 1, GetNumJournalQuests() do
@@ -177,26 +224,12 @@ function ProxiHUD.OnPlayerUnloaded()
 
         -- HEAVY DATA DUMPS (For AI Tools)
         inventory_dump = GetFullInventory(),
+        equipment_dump = GetEquippedGear(),
         quest_dump = GetActiveQuests(),
         skills_dump = GetSkills(),
         unlocked_dump = GetUnlockedSkills(),
         cp_dump = GetSlottedCP(),
-
-        -- Legacy field (keep empty to avoid errors if python expects it)
-        equipment = {}
     }
-
-
-    for i = 0, 18 do
-        local link = GetItemLink(BAG_WORN, i)
-        if link ~= "" then
-            table.insert(ProxiHUD_Data.equipment, {
-                slot = i,
-                name = GetItemLinkName(link),
-                link = link
-            })
-        end
-    end
 end
 
 EVENT_MANAGER:RegisterForEvent(ProxiHUD.name, EVENT_PLAYER_DEACTIVATED, ProxiHUD.OnPlayerUnloaded)

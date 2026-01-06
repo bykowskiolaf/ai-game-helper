@@ -28,28 +28,33 @@ def get_active_quests() -> str:
     return "\n".join(quests)
 
 def get_character_build() -> str:
-    """Retrieves combat build (Active Bar, Unlocked Skills, Champion Points)."""
+    """Retrieves combat build (Equipment, Skills, CP, Stats)."""
     logging.debug("Tool: 'get_character_build' called.")
 
     data = bridge.load_game_data()
     if not data: return "Data unavailable."
 
+    # Grab all data points
+    equipment = data.get('equipment_dump', [])
     active_skills = data.get('skills_dump', [])
-    unlocked_skills = data.get('unlocked_dump', [])
     cp_stars = data.get('cp_dump', [])
+    unlocked_skills = data.get('unlocked_dump', [])
 
     return f"""
     Class: {data.get('class', 'Unknown')}
     Role: {data.get('role', 'Unknown')}
     Stats: Mag={data.get('stats_mag')}, Stam={data.get('stats_stam')}, HP={data.get('stats_hp')}
     
-    == CHAMPION POINTS (SLOTTED) ==
-    {chr(10).join(['- ' + s for s in cp_stars])}
+    == EQUIPPED GEAR ==
+    {chr(10).join(['- ' + s for s in equipment]) or "None"}
 
-    == CURRENTLY SLOTTED SKILLS ==
+    == CHAMPION POINTS ==
+    {chr(10).join(['- ' + s for s in cp_stars]) or "None"}
+
+    == ACTIVE SKILLS ==
     {chr(10).join(['- ' + s for s in active_skills])}
 
-    == AVAILABLE / UNLOCKED OPTIONS ==
+    == UNLOCKED OPTIONS ==
     (Passives and other skills the player owns)
     {chr(10).join(['- ' + s for s in unlocked_skills])}
     """

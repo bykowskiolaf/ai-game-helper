@@ -47,13 +47,11 @@ def load_game_data():
 
             # HEAVY DATA DUMPS (Lists)
             "inventory_dump": _extract_list(content, "inventory_dump"),
+            "equipment_dump": _extract_list(content, "equipment_dump"),
             "quest_dump": _extract_list(content, "quest_dump"),
             "skills_dump": _extract_list(content, "skills_dump"),
             "unlocked_dump": _extract_list(content, "unlocked_dump"),
             "cp_dump": _extract_list(content, "cp_dump"),
-
-            # Equipment (Complex Object)
-            "equipment": _extract_equipment(content),
         }
 
         logging.debug(f"Bridge: Parse success. Name={data['name']}, Zone={data['zone']}")
@@ -78,21 +76,6 @@ def _extract_list(text, key):
     match = re.search(r'\s*\[' + f'"{key}"' + r'\]\s*=\s*\{(.*?)\},', text, re.DOTALL)
     if not match: return []
     return re.findall(r'"(.*?)"', match.group(1))
-
-def _extract_equipment(text):
-    items = []
-    eq_block_match = re.search(r'\["equipment"\]\s*=\s*\{(.*?)\},', text, re.DOTALL)
-    if not eq_block_match: return []
-
-    block = eq_block_match.group(1)
-    names = re.findall(r'\["name"\]\s*=\s*"(.*?)",', block)
-    links = re.findall(r'\["link"\]\s*=\s*"(.*?)",', block)
-
-    for i in range(len(names)):
-        link_str = f" ({links[i]})" if i < len(links) else ""
-        items.append(f"{names[i]}{link_str}")
-
-    return items
 
 def get_eso_saved_vars_path():
     return config.get_eso_saved_vars_path()
