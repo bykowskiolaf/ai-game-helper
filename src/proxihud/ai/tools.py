@@ -28,7 +28,7 @@ def get_active_quests() -> str:
     return "\n".join(quests)
 
 def get_character_build() -> str:
-    """Retrieves combat build (Active Bar + All Unlocked Skills/Passives)."""
+    """Retrieves combat build (Active Bar, Unlocked Skills, Champion Points)."""
     logging.debug("Tool: 'get_character_build' called.")
 
     data = bridge.load_game_data()
@@ -36,13 +36,17 @@ def get_character_build() -> str:
 
     active_skills = data.get('skills_dump', [])
     unlocked_skills = data.get('unlocked_dump', [])
+    cp_stars = data.get('cp_dump', [])
 
     return f"""
     Class: {data.get('class', 'Unknown')}
     Role: {data.get('role', 'Unknown')}
     Stats: Mag={data.get('stats_mag')}, Stam={data.get('stats_stam')}, HP={data.get('stats_hp')}
     
-    == CURRENTLY SLOTTED ==
+    == CHAMPION POINTS (SLOTTED) ==
+    {chr(10).join(['- ' + s for s in cp_stars])}
+
+    == CURRENTLY SLOTTED SKILLS ==
     {chr(10).join(['- ' + s for s in active_skills])}
 
     == AVAILABLE / UNLOCKED OPTIONS ==

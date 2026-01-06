@@ -50,6 +50,7 @@ def load_game_data():
             "quest_dump": _extract_list(content, "quest_dump"),
             "skills_dump": _extract_list(content, "skills_dump"),
             "unlocked_dump": _extract_list(content, "unlocked_dump"),
+            "cp_dump": _extract_list(content, "cp_dump"),
 
             # Equipment (Complex Object)
             "equipment": _extract_equipment(content),

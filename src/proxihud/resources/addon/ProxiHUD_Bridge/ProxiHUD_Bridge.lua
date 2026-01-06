@@ -2,6 +2,7 @@ ProxiHUD = {}
 ProxiHUD.name = "ProxiHUD_Bridge"
 
 function ProxiHUD.OnPlayerUnloaded()
+
     local function GetFullInventory()
         local inv = {}
 
@@ -125,6 +126,32 @@ function ProxiHUD.OnPlayerUnloaded()
         return list
     end
 
+    local function GetSlottedCP()
+        local cpList = {}
+
+        -- Check if CP system is unlocked (Level 50+)
+        if GetUnitLevel("player") < 50 then return {"Not unlocked (Below Lvl 50)"} end
+
+        -- Iterate the 3 Disciplines: 1=Warfare (Blue), 2=Fitness (Red), 3=Craft (Green)
+        -- Note: The exact index order might vary, so we rely on GetChampionDisciplineName
+        for disciplineIndex = 1, GetNumChampionDisciplines() do
+            local discName = GetChampionDisciplineName(disciplineIndex)
+
+            -- Each discipline has 4 slots bar
+            for slotIndex = 1, 4 do
+                local skillId = GetChampionSkillBarSlotSkill(disciplineIndex, slotIndex)
+                if skillId > 0 then
+                    local skillName = GetChampionSkillName(skillId)
+                    -- Format: "Warfare: Deadly Aim"
+                    table.insert(cpList, string.format("%s: %s", discName, skillName))
+                end
+            end
+        end
+
+        if #cpList == 0 then return {"None Slotted"} end
+        return cpList
+    end
+
     ProxiHUD_Data = {
         timestamp = os.time(),
 
@@ -152,7 +179,8 @@ function ProxiHUD.OnPlayerUnloaded()
         inventory_dump = GetFullInventory(),
         quest_dump = GetActiveQuests(),
         skills_dump = GetSkills(),
-        unlocked_dump = GetUnlockedSkills(), -- Everything you OWN (Passives included)
+        unlocked_dump = GetUnlockedSkills(),
+        cp_dump = GetSlottedCP(),
 
         -- Legacy field (keep empty to avoid errors if python expects it)
         equipment = {}
