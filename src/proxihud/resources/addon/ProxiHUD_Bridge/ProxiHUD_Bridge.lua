@@ -3,64 +3,64 @@ ProxiHUD.name = "ProxiHUD_Bridge"
 
 function ProxiHUD.OnPlayerUnloaded()
     local function GetFullInventory()
-            local inv = {}
+        local inv = {}
 
-            -- Quality Map
-            local qualityNames = {[0]="Trash", [1]="Normal", [2]="Fine", [3]="Superior", [4]="Epic", [5]="Legendary"}
+        local qualityNames = {
+            [0]="Trash", [1]="Normal", [2]="Fine", [3]="Superior", [4]="Epic", [5]="Legendary"
+        }
 
-            -- Trait Map (Simplified for readability)
-            local function GetTraitName(itemLink)
-                local traitType, _ = GetItemLinkTraitInfo(itemLink)
-                -- You can map specific IDs to strings here, or just use the in-game text
-                -- Getting the raw name is easier via GetString("SI_ITEMTRAITTYPE", traitType)
-                -- but for simplicity we will just extract it from the link logic if possible
-                -- or simpler: use the game's built-in formatter if available,
-                -- otherwise just return the ID so the AI can guess or we rely on the item name often containing it.
-                -- A better approach for the AI:
-                if traitType == 0 then return "None" end
-                return GetString("SI_ITEMTRAITTYPE", traitType)
-            end
+        local function ScanBag(bagId, locationTag)
+            local bagCache = SHARED_INVENTORY:GenerateFullSlotData(nil, bagId)
 
-            local function ScanBag(bagId, locationTag)
-                local bagCache = SHARED_INVENTORY:GenerateFullSlotData(nil, bagId)
+            for _, data in pairs(bagCache) do
+                -- FIX: Generate a fresh, valid Item Link using the ID and Slot
+                -- The default 'data.itemLink' is often insufficient for deep queries.
+                local link = GetItemLink(data.bagId, data.slotIndex)
 
-                for _, data in pairs(bagCache) do
-                    local link = data.itemLink
+                -- 1. Quality
+                local quality = data.quality or 1
+                local qualityStr = qualityNames[quality] or "Unknown"
 
-                    -- 1. Quality
-                    local quality = data.quality or 1
-                    local qualityStr = qualityNames[quality] or "Unknown"
-
-                    -- 2. Trait
-                    local traitStr = GetTraitName(link)
-
-                    -- 3. Set Name
-                    local hasSet, setName, _, _, _ = GetItemLinkSetInfo(link, false)
-                    if not hasSet then setName = "No Set" end
-
-                    -- 4. Value
-                    local value = GetItemLinkValue(link, false)
-
-                    -- Format: "Mother's Sorrow Inferno Staff (x1) [Bag] {Epic} <Divines> (Set: Mother's Sorrow) $50g"
-                    local entry = string.format("%s (x%d) [%s] {%s} <%s> (Set: %s) $%dg",
-                        data.name,
-                        data.stackCount,
-                        locationTag,
-                        qualityStr,
-                        traitStr,
-                        setName,
-                        value
-                    )
-
-                    table.insert(inv, entry)
+                -- 2. Trait (Fixed)
+                local traitType = GetItemLinkTraitInfo(link)
+                local traitStr = "None"
+                if traitType and traitType > 0 then
+                    -- Get the in-game string for this trait ID (e.g., "Divines")
+                    traitStr = GetString("SI_ITEMTRAITTYPE", traitType)
                 end
+
+                -- 3. Set Name (Fixed)
+                local hasSet, setName, _, _, _ = GetItemLinkSetInfo(link, false)
+                if not hasSet or setName == "" then
+                    setName = "No Set"
+                else
+                    -- Clean up name casing just in case
+                    setName = zo_strformat("<<1>>", setName)
+                end
+
+                -- 4. Value
+                local value = GetItemLinkValue(link, false)
+
+                -- Format: "Mother's Sorrow Inferno Staff (x1) [Bag] {Epic} <Divines> (Set: Mother's Sorrow) $50g"
+                local entry = string.format("%s (x%d) [%s] {%s} <%s> (Set: %s) $%dg",
+                    zo_strformat("<<1>>", data.name), -- Proper capitalization
+                    data.stackCount,
+                    locationTag,
+                    qualityStr,
+                    traitStr,
+                    setName,
+                    value
+                )
+
+                table.insert(inv, entry)
             end
-
-            ScanBag(BAG_BACKPACK, "Bag")
-            ScanBag(BAG_BANK, "Bank")
-
-            return inv
         end
+
+        ScanBag(BAG_BACKPACK, "Bag")
+        ScanBag(BAG_BANK, "Bank")
+
+        return inv
+    end
 
     local function GetActiveQuests()
         local quests = {}
@@ -74,25 +74,56 @@ function ProxiHUD.OnPlayerUnloaded()
     end
 
     local function GetSkills()
-            local skills = {}
+        local skills = {}
 
-            local function ScanBar(category, name)
-                for i = 3, 8 do
-                    local slotId = GetSlotBoundId(i, category)
-                    if slotId > 0 then
-                        local skillName = GetAbilityName(slotId)
-                        -- Format: "Crystal Fragments (Front Bar)"
-                        table.insert(skills, string.format("%s (%s)", skillName, name))
+        local function ScanBar(category, name)
+            for i = 3, 8 do
+                local slotId = GetSlotBoundId(i, category)
+                if slotId > 0 then
+                    local skillName = GetAbilityName(slotId)
+                    -- Format: "Crystal Fragments (Front Bar)"
+                    table.insert(skills, string.format("%s (%s)", skillName, name))
+                end
+            end
+        end
+
+        -- Scan both bars
+        ScanBar(HOTBAR_CATEGORY_PRIMARY, "Front Bar")
+        ScanBar(HOTBAR_CATEGORY_BACKUP, "Back Bar")
+
+        return skills
+    end
+
+    local function GetUnlockedSkills()
+        local list = {}
+
+        -- Iterate through all Skill Types (Class, Weapon, World, Guild, etc.)
+        local numSkillTypes = GetNumSkillTypes()
+
+        for skillType = 1, numSkillTypes do
+            local numSkillLines = GetNumSkillLines(skillType)
+
+            for skillLineIndex = 1, numSkillLines do
+                local lineName, _, _, _, _, _, active = GetSkillLineInfo(skillType, skillLineIndex)
+
+                -- Only check active lines (e.g., don't scan Werewolf if you aren't one)
+                if active then
+                    local numAbilities = GetNumSkillAbilities(skillType, skillLineIndex)
+
+                    for abilityIndex = 1, numAbilities do
+                        local name, _, _, _, _, purchased, _, rank = GetSkillAbilityInfo(skillType, skillLineIndex, abilityIndex)
+
+                        -- CRITICAL FILTER: Only dump if we bought it or have progress
+                        if purchased then
+                            -- Format: "Destruction Staff: Elemental Blockade (Rank 4)"
+                            table.insert(list, string.format("%s: %s (Rank %d)", lineName, name, rank))
+                        end
                     end
                 end
             end
-
-            -- Scan both bars
-            ScanBar(HOTBAR_CATEGORY_PRIMARY, "Front Bar")
-            ScanBar(HOTBAR_CATEGORY_BACKUP, "Back Bar")
-
-            return skills
         end
+        return list
+    end
 
     ProxiHUD_Data = {
         timestamp = os.time(),
@@ -121,10 +152,12 @@ function ProxiHUD.OnPlayerUnloaded()
         inventory_dump = GetFullInventory(),
         quest_dump = GetActiveQuests(),
         skills_dump = GetSkills(),
+        unlocked_dump = GetUnlockedSkills(), -- Everything you OWN (Passives included)
 
         -- Legacy field (keep empty to avoid errors if python expects it)
         equipment = {}
     }
+
 
     for i = 0, 18 do
         local link = GetItemLink(BAG_WORN, i)
