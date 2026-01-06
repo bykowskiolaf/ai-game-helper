@@ -31,11 +31,14 @@ def load_game_data():
             "level": _extract_num(content, "level"),
             "role": _extract_str(content, "role"),
 
+            # CHANGED: Use _extract_num for consistency (CP is always a number)
+            "cp_total": _extract_num(content, "cp_total"),
+
             # Location
             "zone": _extract_str(content, "zone"),
             "subzone": _extract_str(content, "subzone"),
 
-            # Stats (Flattened)
+            # Stats
             "stats_mag": _extract_num(content, "magicka"),
             "stats_hp": _extract_num(content, "health"),
             "stats_stam": _extract_num(content, "stamina"),
@@ -54,7 +57,7 @@ def load_game_data():
             "cp_dump": _extract_list(content, "cp_dump"),
         }
 
-        logging.debug(f"Bridge: Parse success. Name={data['name']}, Zone={data['zone']}")
+        logging.debug(f"Bridge: Parse success. Name={data['name']}, Level={data['level']}")
 
         return data
 
@@ -65,14 +68,17 @@ def load_game_data():
 # --- Extraction Helpers ---
 
 def _extract_str(text, key):
+    # Matches: ["key"] = "value",
     match = re.search(r'\s*\["' + key + r'"\]\s*=\s*"(.*?)",', text)
     return match.group(1) if match else "Unknown"
 
 def _extract_num(text, key):
+    # Matches: ["key"] = 123,
     match = re.search(r'\s*\["' + key + r'"\]\s*=\s*(\d+),', text)
     return int(match.group(1)) if match else 0
 
 def _extract_list(text, key):
+    # Matches: ["key"] = { "Item1", "Item2" },
     match = re.search(r'\s*\[' + f'"{key}"' + r'\]\s*=\s*\{(.*?)\},', text, re.DOTALL)
     if not match: return []
     return re.findall(r'"(.*?)"', match.group(1))

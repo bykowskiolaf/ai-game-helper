@@ -213,6 +213,8 @@ function ProxiHUD.OnPlayerUnloaded()
         race = GetUnitRace("player"),
         class = GetUnitClass("player"),
         role = GetSelectedLFGRole(),
+        level = GetUnitLevel("player"),
+        cp_total = GetPlayerChampionPointsEarned(),
         zone = GetUnitZone("player"),
         subzone = GetMapName(),
 
