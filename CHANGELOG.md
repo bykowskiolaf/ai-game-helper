@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.27 (2026-01-06)
+
+### Added
+
+* [fa7da] feat: Add equipment retrieval to enhance character build data (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.26 (2026-01-06)
 
 ### Added
