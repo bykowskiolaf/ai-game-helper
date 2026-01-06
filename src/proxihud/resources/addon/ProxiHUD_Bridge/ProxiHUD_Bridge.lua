@@ -173,31 +173,37 @@ function ProxiHUD.OnPlayerUnloaded()
         return list
     end
 
-    local function GetSlottedCP()
-        local cpList = {}
+    -- 5. Get Slotted CP (Generic Action Bar Method)
+        local function GetSlottedCP()
+            local cpList = {}
+            if GetUnitLevel("player") < 50 then return {} end
 
-        -- Check if CP system is unlocked (Level 50+)
-        if GetUnitLevel("player") < 50 then return {"Not unlocked (Below Lvl 50)"} end
+            -- 1. Get the correct Hotbar Category
+            -- This global constant usually exists. If not, 5 is the standard ID for CP.
+            local category = HOTBAR_CATEGORY_CHAMPION or 5
 
-        -- Iterate the 3 Disciplines: 1=Warfare (Blue), 2=Fitness (Red), 3=Craft (Green)
-        -- Note: The exact index order might vary, so we rely on GetChampionDisciplineName
-        for disciplineIndex = 1, GetNumChampionDisciplines() do
-            local discName = GetChampionDisciplineName(disciplineIndex)
+            -- 2. Get the Slot Range (Using the function found in your logs!)
+            -- This usually returns 1 and 12 (4 slots x 3 disciplines)
+            local startSlot, endSlot = GetAssignableChampionBarStartAndEndSlots()
 
-            -- Each discipline has 4 slots bar
-            for slotIndex = 1, 4 do
-                local skillId = GetChampionSkillBarSlotSkill(disciplineIndex, slotIndex)
+            -- Fallback if the function fails (nil)
+            if not startSlot then startSlot, endSlot = 1, 12 end
+
+            -- 3. Iterate the slots
+            for slotIndex = startSlot, endSlot do
+                -- Get the ID of the thing in this slot
+                local skillId = GetSlotBoundId(slotIndex, category)
+
                 if skillId > 0 then
+                    -- Since we are in the Champion Category, the ID returned IS the ChampionSkillId
                     local skillName = GetChampionSkillName(skillId)
-                    -- Format: "Warfare: Deadly Aim"
-                    table.insert(cpList, string.format("%s: %s", discName, skillName))
+                    table.insert(cpList, skillName)
                 end
             end
-        end
 
-        if #cpList == 0 then return {"None Slotted"} end
-        return cpList
-    end
+            if #cpList == 0 then return {"None Slotted"} end
+            return cpList
+        end
 
     ProxiHUD_Data = {
         timestamp = os.time(),
