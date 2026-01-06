@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.28 (2026-01-06)
+
+### Added
+
+* [ad5d4] feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.27 (2026-01-06)
 
 ### Added

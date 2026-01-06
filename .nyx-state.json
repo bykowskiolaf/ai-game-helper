@@ -5,7 +5,7 @@
     "releases": [
       {
         "date": "2026-01-06",
-        "name": "0.2.0-rc.27",
+        "name": "0.2.0-rc.28",
         "sections": [
           {
             "name": "Added",
@@ -17,7 +17,7 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767661541000,
+                    "timeStamp": 1767663244000,
                     "offset": 60
                   }
                 },
@@ -27,19 +27,19 @@
                     "name": "Olaf Bykowski"
                   },
                   "timeStamp": {
-                    "timeStamp": 1767661547000,
+                    "timeStamp": 1767663249000,
                     "offset": 60
                   }
                 },
-                "date": 1767661547000,
+                "date": 1767663249000,
                 "message": {
-                  "fullMessage": "feat: Add equipment retrieval to enhance character build data\n",
-                  "shortMessage": "feat: Add equipment retrieval to enhance character build data"
+                  "fullMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting\n",
+                  "shortMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting"
                 },
                 "parents": [
-                  "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
+                  "3466d1785e265c14efd24f2871e1a907389bf3cf"
                 ],
-                "sha": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
+                "sha": "ad5d408735c49dc182f39a2fb88424f1548dc68d"
               }
             ]
           }
@@ -163,24 +163,24 @@
     "infer.input.configured.scheme": "SEMVER",
     "infer.input.configured.version": "null",
     "infer.input.repository.current.branch": "dev",
-    "infer.input.repository.last.commit": "fa7dabf24692320e1e629f7376ae7506eb4dfb97",
-    "infer.output.state.version": "0.2.0-rc.27",
+    "infer.input.repository.last.commit": "ad5d408735c49dc182f39a2fb88424f1548dc68d",
+    "infer.output.state.version": "0.2.0-rc.28",
     "make.input.changelog.file": "/github/workspace/CHANGELOG.md",
     "make.input.repository.current.branch": "dev",
-    "make.input.repository.last.commit": "fa7dabf24692320e1e629f7376ae7506eb4dfb97",
-    "make.input.state.initialCommit": "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c",
+    "make.input.repository.last.commit": "ad5d408735c49dc182f39a2fb88424f1548dc68d",
+    "make.input.state.initialCommit": "3466d1785e265c14efd24f2871e1a907389bf3cf",
     "make.input.state.newVersion": "true",
-    "make.input.version": "0.2.0-rc.27",
+    "make.input.version": "0.2.0-rc.28",
     "mark.input.configured.git.commit": "null",
     "mark.input.configured.git.push": "true",
     "mark.input.configured.git.tag": "true",
     "mark.input.repository.current.branch": "dev",
-    "mark.input.repository.last.commit": "fa7dabf24692320e1e629f7376ae7506eb4dfb97",
-    "mark.input.state.initialCommit": "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c",
+    "mark.input.repository.last.commit": "ad5d408735c49dc182f39a2fb88424f1548dc68d",
+    "mark.input.state.initialCommit": "3466d1785e265c14efd24f2871e1a907389bf3cf",
     "mark.input.state.newVersion": "true",
-    "mark.input.state.version": "0.2.0-rc.27",
-    "publish.input.state.version": "0.2.0-rc.27",
-    "publish.output.state.version": "0.2.0-rc.27"
+    "mark.input.state.version": "0.2.0-rc.28",
+    "publish.input.state.version": "0.2.0-rc.28",
+    "publish.output.state.version": "0.2.0-rc.28"
   },
   "latestVersion": true,
   "newVersion": true,
@@ -195,7 +195,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767661541000,
+            "timeStamp": 1767663244000,
             "offset": 60
           }
         },
@@ -205,19 +205,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767661547000,
+            "timeStamp": 1767663249000,
             "offset": 60
           }
         },
-        "date": 1767661547000,
+        "date": 1767663249000,
         "message": {
-          "fullMessage": "feat: Add equipment retrieval to enhance character build data\n",
-          "shortMessage": "feat: Add equipment retrieval to enhance character build data"
+          "fullMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting\n",
+          "shortMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting"
         },
         "parents": [
-          "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
+          "3466d1785e265c14efd24f2871e1a907389bf3cf"
         ],
-        "sha": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
+        "sha": "ad5d408735c49dc182f39a2fb88424f1548dc68d"
       },
       {
         "authorAction": {
@@ -226,7 +226,7 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767661153000,
+            "timeStamp": 1767661560000,
             "offset": 0
           }
         },
@@ -236,22 +236,85 @@
             "name": "gh-actions-releaser[bot]"
           },
           "timeStamp": {
-            "timeStamp": 1767661153000,
+            "timeStamp": 1767661560000,
             "offset": 0
           }
         },
-        "date": 1767661153000,
+        "date": 1767661560000,
         "message": {
-          "fullMessage": "ci: update 0.2.0-rc.26 changelog and state [skip ci]\n",
-          "shortMessage": "ci: update 0.2.0-rc.26 changelog and state [skip ci]"
+          "fullMessage": "ci: update 0.2.0-rc.27 changelog and state [skip ci]\n",
+          "shortMessage": "ci: update 0.2.0-rc.27 changelog and state [skip ci]"
         },
         "parents": [
-          "4d9908c843f7016e22abb170beb73d53e8d28cdd"
+          "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
         ],
-        "sha": "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
+        "sha": "3466d1785e265c14efd24f2871e1a907389bf3cf"
       }
     ],
     "finalCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767663244000,
+          "offset": 60
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "olafbykowski1@gmail.com",
+          "name": "Olaf Bykowski"
+        },
+        "timeStamp": {
+          "timeStamp": 1767663249000,
+          "offset": 60
+        }
+      },
+      "date": 1767663249000,
+      "message": {
+        "fullMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting\n",
+        "shortMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting"
+      },
+      "parents": [
+        "3466d1785e265c14efd24f2871e1a907389bf3cf"
+      ],
+      "sha": "ad5d408735c49dc182f39a2fb88424f1548dc68d"
+    },
+    "initialCommit": {
+      "authorAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767661560000,
+          "offset": 0
+        }
+      },
+      "commitAction": {
+        "identity": {
+          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
+          "name": "gh-actions-releaser[bot]"
+        },
+        "timeStamp": {
+          "timeStamp": 1767661560000,
+          "offset": 0
+        }
+      },
+      "date": 1767661560000,
+      "message": {
+        "fullMessage": "ci: update 0.2.0-rc.27 changelog and state [skip ci]\n",
+        "shortMessage": "ci: update 0.2.0-rc.27 changelog and state [skip ci]"
+      },
+      "parents": [
+        "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
+      ],
+      "sha": "3466d1785e265c14efd24f2871e1a907389bf3cf"
+    },
+    "previousVersion": "0.2.0-rc.27",
+    "previousVersionCommit": {
       "authorAction": {
         "identity": {
           "email": "olafbykowski1@gmail.com",
@@ -280,76 +343,13 @@
       "parents": [
         "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
       ],
-      "sha": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
-    },
-    "initialCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767661153000,
-          "offset": 0
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "gh-actions-releaser[bot]@users.noreply.github.com",
-          "name": "gh-actions-releaser[bot]"
-        },
-        "timeStamp": {
-          "timeStamp": 1767661153000,
-          "offset": 0
-        }
-      },
-      "date": 1767661153000,
-      "message": {
-        "fullMessage": "ci: update 0.2.0-rc.26 changelog and state [skip ci]\n",
-        "shortMessage": "ci: update 0.2.0-rc.26 changelog and state [skip ci]"
-      },
-      "parents": [
-        "4d9908c843f7016e22abb170beb73d53e8d28cdd"
-      ],
-      "sha": "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
-    },
-    "previousVersion": "0.2.0-rc.26",
-    "previousVersionCommit": {
-      "authorAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767661135000,
-          "offset": 60
-        }
-      },
-      "commitAction": {
-        "identity": {
-          "email": "olafbykowski1@gmail.com",
-          "name": "Olaf Bykowski"
-        },
-        "timeStamp": {
-          "timeStamp": 1767661141000,
-          "offset": 60
-        }
-      },
-      "date": 1767661141000,
-      "message": {
-        "fullMessage": "feat: Add Champion Points retrieval to enhance character build data\n",
-        "shortMessage": "feat: Add Champion Points retrieval to enhance character build data"
-      },
-      "parents": [
-        "a1ce4e5073cd9eccb03b71338e7cfc0c1854dd21"
-      ],
       "tags": [
         {
-          "name": "0.2.0-rc.26",
-          "target": "4d9908c843f7016e22abb170beb73d53e8d28cdd"
+          "name": "0.2.0-rc.27",
+          "target": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
         }
       ],
-      "sha": "4d9908c843f7016e22abb170beb73d53e8d28cdd"
+      "sha": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
     },
     "primeVersion": "0.1.0",
     "significantCommits": [
@@ -360,7 +360,7 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767661541000,
+            "timeStamp": 1767663244000,
             "offset": 60
           }
         },
@@ -370,19 +370,19 @@
             "name": "Olaf Bykowski"
           },
           "timeStamp": {
-            "timeStamp": 1767661547000,
+            "timeStamp": 1767663249000,
             "offset": 60
           }
         },
-        "date": 1767661547000,
+        "date": 1767663249000,
         "message": {
-          "fullMessage": "feat: Add equipment retrieval to enhance character build data\n",
-          "shortMessage": "feat: Add equipment retrieval to enhance character build data"
+          "fullMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting\n",
+          "shortMessage": "feat: Enhance Slotted Champion Points retrieval with improved slot handling and formatting"
         },
         "parents": [
-          "cfa24ac208dc7bcfa27c5bf9a49a976bb36e902c"
+          "3466d1785e265c14efd24f2871e1a907389bf3cf"
         ],
-        "sha": "fa7dabf24692320e1e629f7376ae7506eb4dfb97"
+        "sha": "ad5d408735c49dc182f39a2fb88424f1548dc68d"
       }
     ]
   },
@@ -396,10 +396,10 @@
     "publish": "true"
   },
   "scheme": "SEMVER",
-  "timestamp": 1767661559781,
-  "version": "0.2.0-rc.27",
+  "timestamp": 1767663263664,
+  "version": "0.2.0-rc.28",
   "versionMajorNumber": "0",
   "versionMinorNumber": "2",
   "versionPatchNumber": "0",
-  "versionPreReleaseIdentifier": "rc.27"
+  "versionPreReleaseIdentifier": "rc.28"
 }
