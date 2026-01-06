@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-rc.29 (2026-01-06)
+
+### Added
+
+* [b83e8] feat: Enhance ProxiHUD functionality with improved character data extraction and critical protocols (Olaf Bykowski)
+
+# Changelog
+
 ## 0.2.0-rc.28 (2026-01-06)
 
 ### Added
